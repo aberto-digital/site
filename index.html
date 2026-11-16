@@ -104,6 +104,13 @@
   .cabeca{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
   h2{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:clamp(2.2rem,5vw,3.9rem);line-height:.98;letter-spacing:-.015em;max-width:720px}
   .cabeca p{color:var(--secundario);max-width:380px}
+  .cabeca h2.tempo{max-width:820px}
+  .tempo .fixo{display:block}
+  .tempo .gira{display:block;color:var(--ceu);min-height:2em}
+  .tempo .cursor{display:inline-block;width:.08em;height:.82em;margin-left:.06em;background:var(--ceu);vertical-align:-.04em;animation:pisca 1s steps(1) infinite}
+  @keyframes pisca{50%{opacity:0}}
+  .so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  @media (prefers-reduced-motion: reduce){.tempo .cursor{display:none}}
   .faixa .cabeca p{color:var(--muted)}
   h3{font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;margin-bottom:6px}
   p{color:var(--secundario)}
@@ -316,7 +323,7 @@
   <section id="servicos">
     <div class="wrap">
       <div class="cabeca">
-        <h2 data-i18n="hServ"></h2>
+        <h2 class="tempo"><span class="fixo" data-i18n="hServ"></span><span class="gira" aria-hidden="true"><span id="digita"></span><span class="cursor"></span></span><span class="so-leitor" data-i18n="hServLeitor"></span></h2>
         <p data-i18n="pServ"></p>
       </div>
       <div class="grupos">
@@ -507,8 +514,9 @@
       c3: 'Quanto fica a troca de óleo?',
       c4: 'Sai a partir de R$ 189, com filtro incluído. Passo para o Rogério confirmar o horário?',
       c5: 'Sim, pode mandar pra mim. Agendado para sábado às 10h.',
-      hServ: 'Tudo para o seu negócio ser encontrado e lembrado mais facilmente, respondendo a todos com qualidade e agilidade.',
-      pServ: 'Você escolhe o que faz sentido agora. Começa pela base e adiciona o resto quando quiser.',
+      hServ: 'A Aberto Digital é para quem não quer perder tempo',
+      hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
+      pServ: 'Tudo para o seu negócio ser encontrado e lembrado mais facilmente, respondendo a todos com qualidade e agilidade. Você começa pela base e adiciona o resto quando quiser.',
       g1: 'Atender', g2: 'Vender de novo', g3: 'Mostrar', g4: 'Controlar',
       s1t: 'Chatbot de WhatsApp com IA', s1d: 'Responde horário, preço e endereço, pré-agenda e avisa você só do que importa.',
       s2t: 'Agendamento online', s2d: 'Link de agenda com lembrete automático, para diminuir faltas.',
@@ -586,8 +594,9 @@
       c3: 'How much is an oil change?',
       c4: 'Starts at a fixed price, filter included. Want me to have Rogério confirm a time?',
       c5: 'Yes, send it to me. Booked for Saturday at 10am.',
-      hServ: 'Everything your business needs to be found and remembered more easily, answering everyone with quality and speed.',
-      pServ: 'Pick what makes sense now. Start with the basics and add the rest when you want.',
+      hServ: 'Aberto Digital is for people who don\'t want to waste time',
+      hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
+      pServ: 'Everything your business needs to be found and remembered more easily, answering everyone with quality and speed. Start with the basics and add the rest when you want.',
       g1: 'Answer', g2: 'Sell again', g3: 'Show up', g4: 'Stay in control',
       s1t: 'AI chatbot on WhatsApp', s1d: 'Answers hours, prices and address, pre-books visits and only pings you when it matters.',
       s2t: 'Online booking', s2d: 'Booking link with automatic reminders to cut no-shows.',
@@ -663,8 +672,44 @@
     document.querySelectorAll('a.wa').forEach(function(a){ a.href = WA + encodeURIComponent(T[L][a.getAttribute('data-msg')]); });
     document.getElementById('lang').textContent = L === 'en' ? 'PT' : 'EN';
   }
+  /* frase de serviços: digitação das tarefas que tomam o tempo do dono */
+  var GIRA = {
+    pt: ['configurando...', 'monitorando...', 'tentando entender...', 'criando...', 'pesquisando...', 'configurando perfil no Google...', 'postando nas redes...', 'correndo atrás de cliente sumido...', 'tentando entender o site...'],
+    en: ['setting things up...', 'monitoring...', 'trying to figure it out...', 'creating...', 'researching...', 'setting up a Google profile...', 'posting on social media...', 'chasing customers who went quiet...', 'trying to understand the website...']
+  };
+  var digita = document.getElementById('digita');
+  var dg = { i: 0, n: 0, apagando: false, t: null, visivel: false };
+  function passo() {
+    var lista = GIRA[L], w = lista[dg.i % lista.length];
+    if (!dg.apagando) {
+      dg.n++;
+      digita.textContent = w.slice(0, dg.n);
+      if (dg.n >= w.length) { dg.apagando = true; dg.t = setTimeout(passo, 1600); return; }
+      dg.t = setTimeout(passo, 55 + Math.random() * 45);
+    } else {
+      dg.n--;
+      digita.textContent = w.slice(0, dg.n);
+      if (dg.n <= 0) { dg.apagando = false; dg.i++; dg.t = setTimeout(passo, 350); return; }
+      dg.t = setTimeout(passo, 28);
+    }
+  }
+  function reiniciaDigita() {
+    clearTimeout(dg.t); dg.i = 0; dg.n = 0; dg.apagando = false;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { digita.textContent = GIRA[L][0]; return; }
+    digita.textContent = '';
+    if (dg.visivel) passo();
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      dg.visivel = es[0].isIntersecting;
+      clearTimeout(dg.t);
+      if (dg.visivel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) passo();
+    }).observe(digita.parentNode);
+  } else { dg.visivel = true; }
+
   aplica();
-  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); atualiza(); });
+  reiniciaDigita();
+  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); reiniciaDigita(); atualiza(); });
 
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
