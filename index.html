@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aberto Digital | Presença digital para o seu negócio</title>
+<meta name="description" content="A Aberto Digital cria a presença do seu negócio online: Google Business, site, redes sociais, chatbot no WhatsApp e muito mais. Arujá, SP.">
+<meta property="og:title" content="Aberto Digital | Sua presença online é o nosso negócio">
+<meta property="og:description" content="Google Business, site, redes sociais, chatbot no WhatsApp e muito mais para pequenos negócios.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abertodigital.com/">
+<meta name="theme-color" content="#101A2C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='24' fill='%231E3050'/%3E%3Cpath d='M24 74V46a24 24 0 0 1 48 0V74Z' fill='%23FFB020'/%3E%3Cpath d='M33 74V46.5a15 15 0 0 1 30 0V74Z' fill='%232F6FED'/%3E%3Cpath d='M33 74V39.5L51 32.5V68.5Z' fill='%231E3050'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101A2C; --navy:#1E3050; --slate:#384358;
+    --ambar:#FFB020; --ceu:#2F6FED; --pessego:#FFA586;
+    --papel:#F6F7F9; --texto:#101A2C; --secundario:#5B6678;
+    --muted:#AEB6C6; --linha-clara:#D5DAE3;
+    --display:"Archivo",system-ui,sans-serif;
+    --corpo:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--corpo);color:var(--texto);background:var(--papel);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* cabeçalho com a logo oficial */
+  header{position:sticky;top:0;z-index:40;background:rgba(16,26,44,.92);backdrop-filter:blur(10px);color:var(--papel)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:14px}
+  .marca{display:block;flex-shrink:0;line-height:0}
+  .logo{height:34px;width:auto;display:block}
+  .nav nav{display:flex;gap:24px}
+  .nav nav a{font-size:.94rem;color:var(--muted);text-decoration:none}
+  .nav nav a:hover{color:var(--papel)}
+  .direita{display:flex;align-items:center;gap:10px}
+  .idioma{background:transparent;color:var(--papel);border:1px solid var(--slate);border-radius:999px;padding:8px 13px;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+  .idioma:hover{background:var(--navy)}
+  .botao{display:inline-flex;align-items:center;gap:8px;background:var(--ambar);color:var(--ink);font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;transition:background .2s;white-space:nowrap}
+  .botao:hover{background:#ffc04d}
+  .botao.fantasma{background:transparent;color:var(--papel);box-shadow:inset 0 0 0 1px var(--slate)}
+  .botao.fantasma:hover{background:var(--navy)}
+
+  /* abertura: a marca abre e você entra; a frase cresce no arco escuro */
+  .abertura{position:relative;z-index:1;height:185vh;background:var(--ink);margin-top:-70px}
+  .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+  .arco-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .ab-frase{position:absolute;height:0;transform:translateX(-50%);text-align:center;font-family:var(--display);font-stretch:72%;font-weight:850;line-height:1;letter-spacing:-.015em;color:var(--papel);pointer-events:none}
+  .ab-frase span{position:absolute;left:0;right:0;top:0;opacity:0;transform:translateY(-50%);will-change:transform,opacity}
+  .ab-frase em{font-style:normal;color:var(--ambar)}
+  .ab-vao{position:absolute;overflow:hidden;pointer-events:none}
+  .frase-wm{display:block;width:100%;height:auto;margin:0 auto}
+  .ab-hero{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;padding:calc(70px + 9vh) 0 56px;color:var(--papel);opacity:0;pointer-events:none}
+  .ab-hero.ativo{pointer-events:auto}
+  .ab-hero h1{font-family:var(--display);font-weight:850;font-stretch:70%;font-size:clamp(2.6rem,7vw,6rem);line-height:.94;letter-spacing:-.02em;max-width:900px}
+  .ab-hero h1 .linha2{color:var(--ambar)}
+  .ab-hero .apoio{color:var(--muted);font-size:1.12rem;max-width:580px;margin-top:24px}
+  .wm-inline{display:inline-block;height:1.05em;width:5.97em;vertical-align:-.24em}
+  .ab-hero .acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .ab-hero .prova{margin-top:36px;display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
+  .ab-hero .prova b{display:block;color:var(--papel);font-weight:700;font-size:1rem}
+  .ab-hero .prova div{max-width:300px}
+
+  /* demonstração do WhatsApp */
+  .demo{background:var(--ink);color:var(--papel);padding:16px 0 110px;position:relative;z-index:2;overflow:hidden}
+  #campo{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .demo-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .demo h2{color:var(--papel)}
+  .demo p{color:var(--muted);max-width:440px;margin-top:20px;font-size:1.05rem}
+
+  .palco{justify-self:center;width:min(340px,100%)}
+  .exemplo{display:inline-block;font-size:.74rem;color:var(--muted);margin-bottom:12px;border-bottom:1px dashed var(--slate);padding-bottom:2px}
+  .celular{background:var(--ink);border:10px solid var(--navy);border-radius:42px;padding:18px 14px 22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+  .celular .cab{display:flex;align-items:center;gap:10px;color:var(--papel);font-size:.9rem;font-weight:600;padding:4px 6px 14px;border-bottom:1px solid var(--slate);margin-bottom:14px}
+  .celular .av{width:34px;height:34px;border-radius:50%;background:var(--ambar);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.8rem}
+  .celular .cab small{display:block;color:var(--muted);font-weight:400;font-size:.76rem}
+  .chat{display:flex;flex-direction:column;gap:10px;min-height:340px}
+  .bolha{max-width:82%;padding:10px 13px;border-radius:16px;font-size:.92rem;line-height:1.4}
+  .bolha.cliente{align-self:flex-start;background:var(--slate);color:var(--papel);border-bottom-left-radius:4px}
+  .bolha.bot{align-self:flex-end;background:var(--ceu);color:#fff;border-bottom-right-radius:4px}
+  .bolha.dono{align-self:flex-end;background:var(--navy);color:var(--papel);box-shadow:inset 0 0 0 1px var(--ambar);border-bottom-right-radius:4px}
+  .bolha .hora{display:block;font-size:.68rem;opacity:.65;margin-top:4px;text-align:right}
+  .etiqueta-bot{display:inline-block;font-size:.7rem;font-weight:700;background:var(--ambar);color:var(--ink);padding:2px 8px;border-radius:999px;margin-bottom:6px}
+  .chat.anima .bolha{opacity:0;transform:translateY(8px);animation:entra .5s ease forwards}
+  .chat.anima .bolha:nth-child(1){animation-delay:.1s}
+  .chat.anima .bolha:nth-child(2){animation-delay:.8s}
+  .chat.anima .bolha:nth-child(3){animation-delay:1.6s}
+  .chat.anima .bolha:nth-child(4){animation-delay:2.4s}
+  .chat.anima .bolha:nth-child(5){animation-delay:3.2s}
+  .chat.espera .bolha{opacity:0}
+  @keyframes entra{to{opacity:1;transform:none}}
+
+  /* seções */
+  section{padding:104px 0}
+  .faixa{background:var(--navy);color:var(--papel)}
+  .cabeca{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+  h2{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:clamp(2.2rem,5vw,3.9rem);line-height:.98;letter-spacing:-.015em;max-width:720px}
+  .cabeca p{color:var(--secundario);max-width:380px}
+  .faixa .cabeca p{color:var(--muted)}
+  h3{font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.01em;margin-bottom:6px}
+  p{color:var(--secundario)}
+  .faixa p{color:var(--muted)}
+
+  .grupos{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
+  .grupo{border-top:2px solid var(--ink);padding:26px 0 40px}
+  .grupo h3{font-family:var(--display);font-stretch:76%;font-size:1.9rem;font-weight:800;margin-bottom:20px;color:var(--ink)}
+  .grupo:nth-child(2) h3{color:var(--ceu)}
+  .grupo ul{list-style:none;display:grid;gap:0}
+  .grupo li{padding:16px 0;border-top:1px solid var(--linha-clara)}
+  .grupo li:first-child{border-top:0}
+  .grupo li strong{display:block;color:var(--texto);font-weight:650;font-size:1rem}
+  .grupo li span{color:var(--secundario);font-size:.94rem}
+  .base{margin-top:8px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--linha-clara);border-radius:14px;overflow:hidden;background:#fff}
+  .base div{padding:22px 20px;border-left:1px solid var(--linha-clara)}
+  .base div:first-child{border-left:0}
+  .base b{display:block;font-family:var(--display);font-weight:750;font-size:1rem;margin-bottom:4px}
+  .base span{font-size:.88rem;color:var(--secundario)}
+
+  .escada{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end}
+  .pacote{background:var(--ink);color:var(--papel);border:1px solid var(--slate);border-radius:6px;padding:34px 30px 30px}
+  .pacote.um{min-height:430px}
+  .pacote.dois{min-height:490px;background:#24395F;border-color:var(--ceu);box-shadow:8px 8px 0 var(--ambar)}
+  .pacote.tres{min-height:560px;background:linear-gradient(165deg,#1E3050 0%,#0C1424 100%);border-color:var(--ceu)}
+  .pacote p,.pacote li{color:var(--muted)}
+  .pacote .nome{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:2.2rem;letter-spacing:-.01em;color:var(--papel)}
+  .pacote .valor{font-family:var(--display);font-weight:800;font-size:2.3rem;letter-spacing:-.03em;margin:16px 0 2px;color:var(--papel)}
+  .pacote .valor small{font-size:.95rem;font-weight:500;color:var(--muted)}
+  .pacote .setup{font-size:.92rem;margin-bottom:22px}
+  .pacote ul{list-style:none;display:grid;gap:10px;margin-bottom:30px}
+  .pacote li{font-size:.95rem;padding-left:22px;position:relative}
+  .pacote li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--ambar)}
+  .pacote .botao{width:100%;justify-content:center}
+  .pacote .botao.fantasma{color:var(--papel);box-shadow:inset 0 0 0 1px var(--slate)}
+  .modulos{margin-top:40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:24px 0;border-top:1px solid var(--slate);border-bottom:1px solid var(--slate)}
+  .modulos p{max-width:620px}
+
+  .fluxo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+  .fluxo div{padding:30px 30px 0 0}
+  .fluxo div+div{padding-left:30px;border-left:1px solid var(--linha-clara)}
+  .fluxo .passo{font-family:var(--display);font-weight:800;font-stretch:70%;font-size:5rem;letter-spacing:-.03em;color:var(--ceu);line-height:1}
+  .fluxo h3{margin-top:18px}
+
+  .auditoria{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .folha{background:var(--papel);color:var(--texto);border-radius:6px;padding:34px;box-shadow:12px 12px 0 var(--ambar);transform:rotate(-1.2deg)}
+  .folha h4{font-family:var(--display);font-weight:800;font-stretch:76%;font-size:1.6rem;margin-bottom:14px;color:var(--ink)}
+  .folha .linha{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--linha-clara);font-size:.92rem;color:var(--texto)}
+  .folha .linha em{font-style:normal;color:#B5452A;font-weight:650}
+  .folha .linha em.ok{color:#1F7A4D}
+
+  .cad{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+  .cad form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cad label{display:grid;gap:6px;font-size:.92rem;font-weight:600;color:var(--texto)}
+  .cad .largo{grid-column:1/-1}
+  .cad input,.cad select{font:inherit;font-size:1rem;font-weight:400;color:var(--texto);background:#fff;border:1.5px solid #C5CCD8;border-radius:10px;padding:13px 14px;width:100%}
+  .cad select{appearance:auto}
+  .cad input::placeholder{color:#8A93A3}
+  .cad input:hover,.cad select:hover{border-color:#9AA4B5}
+  .cad input:focus,.cad select:focus{outline:3px solid var(--ambar);outline-offset:2px;border-color:var(--navy)}
+  .cad .check{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;font-weight:400;color:var(--secundario)}
+  .cad .check input{width:auto;margin-top:3px;accent-color:var(--ambar)}
+  .cad button{grid-column:1/-1;padding:16px;font:inherit;font-weight:700;border:0;border-radius:999px;background:var(--ambar);color:var(--ink);cursor:pointer}
+  .cad button:hover{background:#ffc04d}
+  .cad .nota{grid-column:1/-1;font-size:.85rem;color:var(--secundario)}
+  .ok-msg{display:none;grid-column:1/-1;background:var(--ambar);color:var(--ink);padding:14px;border-radius:10px;font-weight:600}
+  .ok-msg.mostra{display:block}
+
+  .contato{background:var(--ambar);color:var(--ink)}
+  .contato h2{color:var(--ink)}
+  .contato p{color:#3A3322}
+  .contato .cabeca{margin-bottom:24px}
+  .contato .acoes{display:flex;gap:12px;flex-wrap:wrap}
+  .contato .botao{background:var(--ink);color:var(--papel)}
+  .contato .botao:hover{background:var(--navy)}
+  .contato .botao.fantasma{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+  footer{background:var(--ink);color:var(--muted);padding:30px 0;font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .logo{height:28px}
+
+  @media (max-width:900px){
+    .demo-grid,.auditoria,.cad{grid-template-columns:1fr}
+    .grupos{grid-template-columns:1fr;gap:0}
+    .base{grid-template-columns:1fr 1fr}
+    .base div:nth-child(3){border-left:0}
+    .base div:nth-child(n+3){border-top:1px solid var(--linha-clara)}
+    .escada{grid-template-columns:1fr}
+    .pacote.um,.pacote.dois,.pacote.tres{min-height:0}
+    .pacote.dois{box-shadow:none}
+    .fluxo{grid-template-columns:1fr}
+    .fluxo div+div{padding-left:0;border-left:0;border-top:1px solid var(--linha-clara);margin-top:24px}
+    .nav nav{display:none}
+    section{padding:72px 0}
+    .demo{padding:8px 0 80px}
+    #campo{opacity:.22}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 18px}
+    .nav{height:60px;gap:8px}
+    .abertura{margin-top:-60px}
+    .ab-hero{padding:calc(60px + 7vh) 0 40px}
+    .logo{height:27px}
+    .direita{gap:6px}
+    .direita .botao{padding:9px 13px;font-size:.84rem}
+    .idioma{padding:7px 10px;font-size:.78rem}
+    .ab-hero h1{font-size:clamp(2.3rem,11vw,3rem)}
+    .ab-hero .apoio{font-size:1rem;margin-top:18px}
+    .ab-hero .acoes{margin-top:22px}
+    .ab-hero .prova{margin-top:24px;gap:18px;font-size:.86rem}
+    .folha{padding:24px;box-shadow:8px 8px 0 var(--ambar)}
+    .modulos{flex-direction:column;align-items:flex-start}
+    .modulos .botao{width:100%;justify-content:center}
+  }
+  @media (max-height:640px) and (max-width:560px){ .ab-hero .prova{display:none} }
+
+  /* sem animação: mostra a hero direto */
+  .abertura.estatica{display:none}
+  .abertura.estatica + .ab-hero{margin-top:0;opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+
+<!-- logo oficial, em grupos reutilizáveis sem distorção -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="g-icone" transform="scale(0.5833333333333334)">
+      <rect width="96" height="96" rx="24" fill="#1E3050"/>
+      <path d="M24 74V46a24 24 0 0 1 48 0V74Z" fill="#FFB020"/>
+      <path d="M33 74V46.5a15 15 0 0 1 30 0V74Z" fill="#2F6FED"/>
+      <path d="M33 74V39.5L51 32.5V68.5Z" fill="#1E3050"/>
+    </g>
+    <g id="g-wm">
+      <path fill="#F6F7F9" d="M81.173828125 43.38671875C84.654296875 43.38671875 86.609375 42.01171875 87.8125 39.798828125H87.8984375V43.0H94.0859375V27.6171875C94.0859375 22.76171875 90.51953125 19.83984375 84.310546875 19.83984375C78.080078125 19.83984375 74.384765625 22.8046875 74.10546875 27.48828125H80.056640625C80.20703125 25.748046875 81.75390625 24.544921875 84.1171875 24.544921875C86.4375 24.544921875 87.833984375 25.705078125 87.833984375 27.380859375V27.53125C87.833984375 28.9921875 86.373046875 29.185546875 82.2265625 29.59375C77.5 30.0234375 73.375 31.484375 73.375 36.59765625C73.375 41.130859375 76.640625 43.38671875 81.173828125 43.38671875ZM82.935546875 38.982421875C80.80859375 38.982421875 79.43359375 38.037109375 79.43359375 36.42578125C79.43359375 34.62109375 81.15234375 33.783203125 83.322265625 33.4609375C85.36328125 33.138671875 87.146484375 32.837890625 87.876953125 32.4296875V34.70703125C87.876953125 37.15625 85.986328125 38.982421875 82.935546875 38.982421875ZM111.152734375 43.47265625C117.082421875 43.47265625 120.97109375 38.74609375 120.97109375 31.634765625C120.97109375 24.673828125 116.996484375 19.83984375 111.195703125 19.83984375C108.25234375 19.83984375 105.975 21.0 104.5140625 23.44921875H104.492578125V10.98828125H98.1546875V43.0H104.406640625V39.51953125H104.428125C105.738671875 42.162109375 108.16640625 43.47265625 111.152734375 43.47265625ZM109.519921875 38.31640625C106.31875 38.31640625 104.191796875 35.6953125 104.191796875 31.634765625C104.191796875 27.595703125 106.31875 24.953125 109.519921875 24.953125C112.5921875 24.953125 114.590234375 27.380859375 114.590234375 31.634765625C114.590234375 35.888671875 112.5921875 38.31640625 109.519921875 38.31640625ZM134.40703125 43.515625C139.90703125 43.515625 144.28984375 40.37890625 145.127734375 35.8671875H139.3484375C138.768359375 37.62890625 137.07109375 38.767578125 134.600390625 38.767578125C131.2703125 38.767578125 129.33671875 36.59765625 129.229296875 33.24609375H145.3640625V31.548828125C145.3640625 24.630859375 140.873828125 19.796875 134.1921875 19.796875C127.68242187499999 19.796875 123.06328124999999 24.759765625 123.06328124999999 31.677734375C123.06328124999999 38.57421875 127.53203124999999 43.515625 134.40703125 43.515625ZM129.272265625 29.20703125C129.616015625 26.37109375 131.48515625 24.609375 134.32109375 24.609375C137.178515625 24.609375 139.069140625 26.37109375 139.39140625 29.20703125ZM148.35859374999998 43.0H154.69648437499998V30.7109375C154.69648437499998 27.294921875 156.60859374999998 25.490234375 159.20820312499998 25.490234375C160.28242187499998 25.490234375 161.46406249999998 25.576171875 161.93671874999998 25.59765625V20.205078125C161.42109374999998 20.18359375 160.79804687499998 20.162109375 160.06757812499998 20.162109375C157.08124999999998 20.162109375 155.36249999999998 21.451171875 154.52460937499998 24.1796875H154.46015624999998V20.3125H148.35859374999998ZM177.41367187499998 20.3125H172.77304687499998V14.125H166.43515624999998V20.3125H162.52499999999998V25.275390625H166.43515624999998V36.984375C166.43515624999998 41.109375 168.73398437499998 43.0 173.71835937499998 43.0H177.41367187499998V38.037109375H174.98593749999998C173.26718749999998 38.037109375 172.77304687499998 37.54296875 172.77304687499998 35.99609375V25.275390625H177.41367187499998ZM190.72070312499997 43.515625C197.61718749999997 43.515625 202.25781249999997 38.7890625 202.25781249999997 31.677734375C202.25781249999997 24.56640625 197.61718749999997 19.796875 190.72070312499997 19.796875C183.84570312499997 19.796875 179.20507812499997 24.56640625 179.20507812499997 31.677734375C179.20507812499997 38.7890625 183.84570312499997 43.515625 190.72070312499997 43.515625ZM190.72070312499997 38.380859375C187.64843749999997 38.380859375 185.58593749999997 35.888671875 185.58593749999997 31.677734375C185.58593749999997 27.4453125 187.66992187499997 24.931640625 190.72070312499997 24.931640625C193.79296874999997 24.931640625 195.87695312499997 27.4453125 195.87695312499997 31.677734375C195.87695312499997 35.888671875 193.81445312499997 38.380859375 190.72070312499997 38.380859375Z"/>
+      <path fill="#FFB020" d="M224.96757812499996 43.451171875C227.93242187499996 43.451171875 230.46757812499996 42.18359375 231.99296874999996 39.541015625H232.03593749999996V43.0H236.48320312499996V10.98828125H231.94999999999996V23.599609375H231.90703124999996C230.44609374999996 21.0859375 227.88945312499996 19.861328125 224.94609374999996 19.861328125C219.08085937499996 19.861328125 215.12773437499996 24.65234375 215.12773437499996 31.65625C215.12773437499996 38.681640625 219.05937499999996 43.451171875 224.96757812499996 43.451171875ZM225.89140624999996 39.541015625C222.23906249999996 39.541015625 219.72539062499996 36.76953125 219.72539062499996 31.65625C219.72539062499996 26.521484375 222.23906249999996 23.75 225.89140624999996 23.75C229.75859374999996 23.75 232.25078124999996 26.88671875 232.25078124999996 31.65625C232.25078124999996 36.42578125 229.75859374999996 39.541015625 225.89140624999996 39.541015625ZM241.19648437499995 43.0H245.72968749999995V20.3125H241.19648437499995ZM243.45234374999995 16.40234375C245.06367187499995 16.40234375 246.33124999999995 15.177734375 246.33124999999995 13.630859375C246.33124999999995 12.0625 245.06367187499995 10.837890625 243.45234374999995 10.837890625C241.84101562499995 10.837890625 240.59492187499995 12.0625 240.59492187499995 13.630859375C240.59492187499995 15.177734375 241.84101562499995 16.40234375 243.45234374999995 16.40234375ZM260.347265625 52.28125C266.062109375 52.28125 270.68125 49.57421875 270.68125 42.69921875V20.3125H266.2125V23.771484375H266.191015625C264.665625 21.064453125 262.0875 19.861328125 259.144140625 19.861328125C253.27890624999995 19.861328125 249.32578124999995 24.65234375 249.32578124999995 31.591796875C249.32578124999995 38.509765625 253.25742187499995 43.30078125 259.165625 43.30078125C262.151953125 43.30078125 264.601171875 42.076171875 266.16953125 39.43359375H266.191015625V42.87109375C266.191015625 46.544921875 263.999609375 48.5859375 260.347265625 48.5859375C257.597265625 48.5859375 255.55624999999995 47.447265625 254.97617187499995 45.255859375H250.44296874999995C251.04453124999995 49.703125 254.78281249999995 52.28125 260.347265625 52.28125ZM260.089453125 39.412109375C256.437109375 39.412109375 253.92343749999995 36.662109375 253.92343749999995 31.5703125C253.92343749999995 26.478515625 256.437109375 23.728515625 260.089453125 23.728515625C263.956640625 23.728515625 266.448828125 26.822265625 266.448828125 31.5703125C266.448828125 36.318359375 263.956640625 39.412109375 260.089453125 39.412109375ZM275.39453124999994 43.0H279.92773437499994V20.3125H275.39453124999994ZM277.65039062499994 16.40234375C279.26171874999994 16.40234375 280.52929687499994 15.177734375 280.52929687499994 13.630859375C280.52929687499994 12.0625 279.26171874999994 10.837890625 277.65039062499994 10.837890625C276.03906249999994 10.837890625 274.79296874999994 12.0625 274.79296874999994 13.630859375C274.79296874999994 15.177734375 276.03906249999994 16.40234375 277.65039062499994 16.40234375ZM295.57656249999997 20.3125H290.97890624999997V14.125H286.42421874999997V20.3125H282.42812499999997V24.05078125H286.42421874999997V37.5859375C286.42421874999997 41.23828125 288.46523437499997 43.0 292.71914062499997 43.0H295.57656249999997V39.26171875H293.36367187499997C291.55898437499997 39.26171875 290.97890624999997 38.681640625 290.97890624999997 37.005859375V24.05078125H295.57656249999997ZM305.682421875 43.365234375C309.592578125 43.365234375 311.440234375 41.603515625 312.385546875 39.77734375H312.471484375V43.0H316.940234375V27.4453125C316.940234375 22.826171875 313.52421875 19.861328125 307.93828125 19.861328125C302.26640625 19.861328125 298.592578125 22.912109375 298.377734375 27.23046875H302.825C302.996875 25.146484375 304.9734375 23.578125 307.873828125 23.578125C310.752734375 23.578125 312.45 25.16796875 312.45 27.359375V27.552734375C312.45 29.20703125 311.03203125 29.1640625 306.778125 29.6796875C302.158984375 30.216796875 297.819140625 31.333984375 297.819140625 36.51171875C297.819140625 41.044921875 301.170703125 43.365234375 305.682421875 43.365234375ZM306.60625 39.712890625C303.963671875 39.712890625 302.330859375 38.552734375 302.330859375 36.59765625C302.330859375 34.298828125 304.565234375 33.41796875 307.0359375 33.052734375C309.4421875 32.708984375 311.8484375 32.34375 312.471484375 31.849609375V34.513671875C312.471484375 37.306640625 310.60234375 39.712890625 306.60625 39.712890625ZM326.18671875 10.98828125H321.653515625V43.0H326.18671875Z"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="marca" href="#topo" aria-label="Aberto Digital">
+      <svg class="logo" viewBox="0 0 330 56" aria-hidden="true"><use href="#g-icone"/><use href="#g-wm"/></svg>
+    </a>
+    <nav>
+      <a href="#servicos" data-i18n="nav1"></a>
+      <a href="#pacotes" data-i18n="nav2"></a>
+      <a href="#processo" data-i18n="nav3"></a>
+      <a href="#cadastro" data-i18n="nav4"></a>
+    </nav>
+    <div class="direita">
+      <button class="idioma" id="lang" type="button" aria-label="Switch language / Trocar idioma">EN</button>
+      <a class="botao wa" data-msg="msgTopo" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+
+  <div class="abertura" id="abertura">
+    <div class="stage" id="stage">
+      <svg class="arco-svg" id="arcoSvg" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path d="M24 74V46a24 24 0 0 1 48 0V74Z" fill="#FFB020"/>
+        <path d="M33 74V46.5a15 15 0 0 1 30 0V74Z" fill="#2F6FED"/>
+        <path id="escuro" d="M39.4 74V49.6a8.6 8.6 0 0 1 17.2 0V74Z" fill="#101A2C" opacity="0"/>
+        <path id="porta" d="M33 74V39.5L51 32.5V68.5Z" fill="#101A2C"/>
+      </svg>
+      <div class="ab-vao" id="abVao"><p class="ab-frase" id="abFrase"><span><svg class="frase-wm" viewBox="72 9 256 45" role="img" aria-label="aberto digital"><use href="#g-wm"/></svg></span><span data-i18n="i2"></span><span data-i18n="i3"></span></p></div>
+    </div>
+  </div>
+
+  <div class="ab-hero" id="abHero">
+    <div class="wrap">
+      <h1 data-i18n="h1"></h1>
+      <p class="apoio" data-i18n="apoio"></p>
+      <div class="acoes">
+        <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnA"></a>
+        <a class="botao fantasma" href="#pacotes" data-i18n="btnP"></a>
+      </div>
+      <div class="prova">
+        <div><b data-i18n="pr1t"></b><span data-i18n="pr1d"></span></div>
+        <div><b data-i18n="pr2t"></b><span data-i18n="pr2d"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <canvas id="campo" aria-hidden="true"></canvas>
+    <div class="wrap demo-grid">
+      <div>
+        <h2 data-i18n="hDemo"></h2>
+        <p data-i18n="pDemo"></p>
+      </div>
+      <div class="palco">
+        <span class="exemplo" data-i18n="exemplo"></span>
+        <div class="celular">
+          <div class="cab"><span class="av">AD</span><div><span data-i18n="cabT"></span><small data-i18n="cabS"></small></div></div>
+          <div class="chat espera" id="chat">
+            <div class="bolha cliente"><span data-i18n="c1"></span><span class="hora">09:12</span></div>
+            <div class="bolha bot"><span class="etiqueta-bot">IA</span><br><span data-i18n="c2"></span><span class="hora">09:12</span></div>
+            <div class="bolha cliente"><span data-i18n="c3"></span><span class="hora">09:13</span></div>
+            <div class="bolha bot"><span class="etiqueta-bot">IA</span><br><span data-i18n="c4"></span><span class="hora">09:13</span></div>
+            <div class="bolha dono"><span data-i18n="c5"></span><span class="hora">09:14</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="cabeca">
+        <h2 data-i18n="hServ"></h2>
+        <p data-i18n="pServ"></p>
+      </div>
+      <div class="grupos">
+        <div class="grupo">
+          <h3 data-i18n="g1"></h3>
+          <ul>
+            <li><strong data-i18n="s1t"></strong><span data-i18n="s1d"></span></li>
+            <li><strong data-i18n="s2t"></strong><span data-i18n="s2d"></span></li>
+            <li><strong data-i18n="s3t"></strong><span data-i18n="s3d"></span></li>
+          </ul>
+        </div>
+        <div class="grupo">
+          <h3 data-i18n="g2"></h3>
+          <ul>
+            <li><strong data-i18n="s4t"></strong><span data-i18n="s4d"></span></li>
+            <li><strong data-i18n="s5t"></strong><span data-i18n="s5d"></span></li>
+            <li><strong data-i18n="s6t"></strong><span data-i18n="s6d"></span></li>
+            <li><strong data-i18n="s7t"></strong><span data-i18n="s7d"></span></li>
+          </ul>
+        </div>
+        <div class="grupo">
+          <h3 data-i18n="g3"></h3>
+          <ul>
+            <li><strong data-i18n="s8t"></strong><span data-i18n="s8d"></span></li>
+            <li><strong data-i18n="s9t"></strong><span data-i18n="s9d"></span></li>
+          </ul>
+        </div>
+        <div class="grupo">
+          <h3 data-i18n="g4"></h3>
+          <ul>
+            <li><strong data-i18n="s10t"></strong><span data-i18n="s10d"></span></li>
+            <li><strong data-i18n="s11t"></strong><span data-i18n="s11d"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="base">
+        <div><b data-i18n="b1t"></b><span data-i18n="b1d"></span></div>
+        <div><b data-i18n="b2t"></b><span data-i18n="b2d"></span></div>
+        <div><b data-i18n="b3t"></b><span data-i18n="b3d"></span></div>
+        <div><b data-i18n="b4t"></b><span data-i18n="b4d"></span></div>
+        <div><b data-i18n="b5t"></b><span data-i18n="b5d"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pacotes" class="faixa">
+    <div class="wrap">
+      <div class="cabeca">
+        <h2 data-i18n="hPac"></h2>
+        <p data-i18n="pPac"></p>
+      </div>
+      <div class="escada">
+        <div class="pacote um">
+          <div class="nome">Start</div>
+          <div class="valor" data-i18n="v1"></div>
+          <div class="setup" data-i18n="setup"></div>
+          <ul><li data-i18n="f1a"></li><li data-i18n="f1b"></li><li data-i18n="f1c"></li></ul>
+          <a class="botao fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="btn1"></a>
+        </div>
+        <div class="pacote dois">
+          <div class="nome" data-i18n="nome2"></div>
+          <div class="valor" data-i18n="v2"></div>
+          <div class="setup" data-i18n="setup"></div>
+          <ul><li data-i18n="f2a"></li><li data-i18n="f2b"></li><li data-i18n="f2c"></li></ul>
+          <a class="botao wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="btn2"></a>
+        </div>
+        <div class="pacote tres">
+          <div class="nome" data-i18n="nome3"></div>
+          <div class="valor" data-i18n="v3"></div>
+          <div class="setup" data-i18n="setup"></div>
+          <ul><li data-i18n="f3a"></li><li data-i18n="f3b"></li><li data-i18n="f3c"></li></ul>
+          <a class="botao wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="btn3"></a>
+        </div>
+      </div>
+      <div class="modulos">
+        <p data-i18n="pMod"></p>
+        <a class="botao fantasma wa" data-msg="msgMod" target="_blank" rel="noopener" data-i18n="btnMod"></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo">
+    <div class="wrap">
+      <div class="cabeca"><h2 data-i18n="hProc"></h2></div>
+      <div class="fluxo">
+        <div><div class="passo">1</div><h3 data-i18n="st1t"></h3><p data-i18n="st1d"></p></div>
+        <div><div class="passo">2</div><h3 data-i18n="st2t"></h3><p data-i18n="st2d"></p></div>
+        <div><div class="passo">3</div><h3 data-i18n="st3t"></h3><p data-i18n="st3d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faixa">
+    <div class="wrap auditoria">
+      <div>
+        <h2 data-i18n="hAud"></h2>
+        <p style="margin-top:22px;max-width:480px" data-i18n="pAud"></p>
+        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnAud"></a>
+        </div>
+      </div>
+      <div>
+        <span class="exemplo" data-i18n="exAud"></span>
+        <div class="folha" aria-hidden="true">
+          <h4 data-i18n="auTit"></h4>
+          <div class="linha"><span data-i18n="au1"></span><em data-i18n="auFalta"></em></div>
+          <div class="linha"><span data-i18n="au2"></span><em data-i18n="auFalta"></em></div>
+          <div class="linha"><span data-i18n="au3"></span><em data-i18n="auFalta"></em></div>
+          <div class="linha"><span data-i18n="au4"></span><em class="ok" data-i18n="auOk"></em></div>
+          <div class="linha"><span data-i18n="au5"></span><em data-i18n="auFalta"></em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cadastro">
+    <div class="wrap cad">
+      <div>
+        <h2 data-i18n="hForm"></h2>
+        <p style="margin-top:22px;max-width:420px" data-i18n="pForm"></p>
+      </div>
+      <form id="cadForm" autocomplete="on">
+        <label><span data-i18n="fNome"></span><input name="nome" type="text" required data-ph="phNome" autocomplete="name"></label>
+        <label><span data-i18n="fNeg"></span><input name="negocio" type="text" required data-ph="phNeg"></label>
+        <label><span data-i18n="fRamo"></span>
+          <select name="ramo" required>
+            <option value="" disabled selected data-i18n="ro0"></option>
+            <option data-i18n="ro1"></option><option data-i18n="ro2"></option><option data-i18n="ro3"></option><option data-i18n="ro4"></option>
+          </select>
+        </label>
+        <label><span data-i18n="fCid"></span><input name="cidade" type="text" required data-ph="phCid"></label>
+        <label class="largo"><span data-i18n="fZap"></span><input name="zap" type="tel" required data-ph="phZap" autocomplete="tel"></label>
+        <label class="largo"><span data-i18n="fNeed"></span>
+          <select name="need" required>
+            <option value="" disabled selected data-i18n="no0"></option>
+            <option data-i18n="no1"></option><option data-i18n="no2"></option><option data-i18n="no3"></option><option data-i18n="no4"></option><option data-i18n="no5"></option>
+          </select>
+        </label>
+        <label class="check largo"><input type="checkbox" name="consent" required><span data-i18n="fCons"></span></label>
+        <button type="submit" data-i18n="fEnv"></button>
+        <p class="nota" data-i18n="fNota"></p>
+        <div class="ok-msg" id="okMsg" data-i18n="fOk"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="contato" id="contato">
+    <div class="wrap">
+      <div class="cabeca">
+        <h2 data-i18n="hCont"></h2>
+        <p data-i18n="pCont"></p>
+      </div>
+      <div class="acoes">
+        <a class="botao wa" data-msg="msgCont" target="_blank" rel="noopener" data-i18n="btnCont"></a>
+        <a class="botao fantasma" href="https://instagram.com/aberto.digital" target="_blank" rel="noopener">@aberto.digital</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 330 56" role="img" aria-label="Aberto Digital"><use href="#g-icone"/><use href="#g-wm"/></svg>
+    <span data-i18n="foot1"></span>
+    <span>WhatsApp (11) 99123-3627</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var WM = '<svg class="wm-inline" viewBox="72 9 256 45" role="img" aria-label="aberto digital"><use href="#g-wm"/></svg>';
+  var T = {
+    pt: {
+      i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
+      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Como funciona', nav4: 'Cadastro',
+      h1: 'Quando o cliente pergunta, <span class="linha2">alguém responde.</span>',
+      apoio: 'A ' + WM + ' cria a presença do seu negócio online com ferramentas de ponta. Você cuida do atendimento, a gente cuida do resto: Google Business, site, redes sociais, chatbot e muito mais!',
+      btnA: 'Pedir auditoria gratuita', btnP: 'Ver pacotes',
+      pr1t: 'Arujá e região', pr1d: 'atendimento presencial e remoto',
+      pr2t: 'Sem complicação', pr2d: 'nada de sistema novo para aprender, apenas o básico bem feito, focado na experiência do seu cliente',
+      hDemo: 'O cliente pergunta. A IA responde na hora.',
+      pDemo: 'Horário, preço e agendamento resolvidos no WhatsApp. Você só entra na conversa quando precisa.',
+      exemplo: 'Exemplo ilustrativo de conversa',
+      cabT: 'Atendimento da loja', cabS: 'respondendo agora',
+      c1: 'Oi, vocês abrem domingo?',
+      c2: 'Abrimos de terça a domingo, das 9h às 18h. Quer já agendar um horário?',
+      c3: 'Quanto fica a troca de óleo?',
+      c4: 'Sai a partir de R$ 189, com filtro incluído. Passo para o Rogério confirmar o horário?',
+      c5: 'Sim, pode mandar pra mim. Agendado para sábado às 10h.',
+      hServ: 'Tudo para o seu negócio ser encontrado e lembrado mais facilmente, respondendo a todos com qualidade e agilidade.',
+      pServ: 'Você escolhe o que faz sentido agora. Começa pela base e adiciona o resto quando quiser.',
+      g1: 'Atender', g2: 'Vender de novo', g3: 'Mostrar', g4: 'Controlar',
+      s1t: 'Chatbot de WhatsApp com IA', s1d: 'Responde horário, preço e endereço, pré-agenda e avisa você só do que importa.',
+      s2t: 'Agendamento online', s2d: 'Link de agenda com lembrete automático, para diminuir faltas.',
+      s3t: 'Respostas às avaliações do Google', s3d: 'A IA escreve a sugestão e você aprova antes de publicar.',
+      s4t: 'Cardápio ou catálogo com QR Code', s4d: 'Para restaurantes, padarias e lojas, sem depender de impressão.',
+      s5t: 'Pós-venda que pede avaliação', s5d: 'Mensagem no WhatsApp depois da compra, com link direto para o Google.',
+      s6t: 'Reativação de clientes antigos', s6d: 'Mensagem personalizada só para quem aceitou receber, dentro da LGPD.',
+      s7t: 'Página de oferta sazonal', s7d: 'Para Dia das Mães, Black Friday e Natal, pronta em poucos dias.',
+      s8t: 'Calendário mensal de conteúdo', s8d: 'Posts, legendas e roteiros de Reels, com data de publicação definida.',
+      s9t: 'Fotos e vídeos curtos com IA', s9d: 'Edição, legendas e cortes para Instagram e TikTok.',
+      s10t: 'Painel simples de resultados', s10d: 'Ligações, rotas e mensagens vindas do seu perfil no Google, num só lugar.',
+      s11t: 'Rotina administrativa automática', s11d: 'Orçamento, recibo e controle de caixa em planilha, sem papel.',
+      b1t: 'Perfil no Google', b1d: 'Aparece no Maps e na busca',
+      b2t: 'Site de 1 página', b2d: 'Rápido no celular, com botão de WhatsApp',
+      b3t: 'WhatsApp Business', b3d: 'Catálogo e respostas rápidas prontos',
+      b4t: 'Identidade visual', b4d: 'Logo e cores para usar em tudo',
+      b5t: 'Auditoria gratuita', b5d: 'PDF de 1 página com o que falta',
+      hPac: 'Três pontos de partida. Todos com entrega configurada.',
+      pPac: 'Valores de referência, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
+      nome2: 'Presença', nome3: 'Completo',
+      v1: 'R$ 650 <small>+ R$ 49/mês</small>', v2: 'R$ 850 <small>+ R$ 49/mês</small>', v3: 'R$ 1.500 <small>+ R$ 150/mês</small>',
+      setup: 'Setup a partir de referência e mensalidade confirmada por escrito',
+      f1a: 'Perfil no Google otimizado', f1b: 'Site de 1 página', f1c: 'Domínio no 1º ano',
+      f2a: 'Tudo do Start', f2b: 'Logo e identidade visual', f2c: 'WhatsApp Business com catálogo e respostas rápidas',
+      f3a: 'Tudo do Presença', f3b: 'Chatbot de IA no WhatsApp', f3c: '1 mês de acompanhamento e relatório simples',
+      btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo',
+      pMod: 'Quer só um módulo, como agendamento ou respostas no Google? Ele pode entrar em qualquer pacote, com valor sob consulta.',
+      btnMod: 'Perguntar sobre módulos',
+      hProc: 'Da primeira conversa ao primeiro contato no WhatsApp.',
+      st1t: 'Você conta o negócio', st1d: 'Uma conversa rápida no WhatsApp sobre o que você vende, onde atende e o que está travando.',
+      st2t: 'A gente monta e você aprova', st2d: 'Perfil, site e WhatsApp são montados. Nada vai ao ar sem a sua aprovação.',
+      st3t: 'Entregue e acompanhado', st3d: 'Você recebe tudo configurado, com um passo a passo de uso. Depois seguimos com a manutenção.',
+      hAud: 'Antes de contratar, você recebe uma auditoria de graça.',
+      pAud: 'Olhamos o seu Google, o seu site e o seu WhatsApp e mandamos um PDF de 1 página com o que está deixando clientes escaparem. Sem compromisso.',
+      btnAud: 'Pedir minha auditoria', exAud: 'Exemplo ilustrativo de auditoria',
+      auTit: 'Auditoria da loja', au1: 'Perfil no Google com fotos', au2: 'Horário de funcionamento', au3: 'Resposta às avaliações', au4: 'Botão de WhatsApp no site', au5: 'Agenda ou pedido online',
+      auFalta: 'Falta', auOk: 'Ok',
+      hForm: 'Deixe seus dados e falamos com você.',
+      pForm: 'Leva menos de 1 minuto. Sem senha e sem baixar nada. Ao enviar, abrimos seu WhatsApp com os dados prontos.',
+      fNome: 'Seu nome', fNeg: 'Nome do negócio', fRamo: 'Tipo de negócio', fCid: 'Cidade e estado', fZap: 'WhatsApp com DDD', fNeed: 'O que você precisa agora?',
+      phNome: 'Ex.: Maria Silva', phNeg: 'Ex.: Padaria Central', phCid: 'Arujá, SP', phZap: '(11) 90000-0000',
+      ro0: 'Escolha...', ro1: 'Restaurante ou lanchonete', ro2: 'Loja ou varejo', ro3: 'Serviços (oficina, salão, clínica)', ro4: 'Outro',
+      no0: 'Escolha...', no1: 'Aparecer no Google', no2: 'Ter um site', no3: 'Responder clientes no WhatsApp', no4: 'Conteúdo para redes', no5: 'Ainda não sei',
+      fCons: 'Concordo em receber contato da Aberto Digital pelo WhatsApp sobre a minha solicitação.',
+      fEnv: 'Enviar pelo WhatsApp',
+      fNota: 'Seus dados não ficam guardados em outro lugar: vão direto para a conversa no WhatsApp.',
+      fOk: 'Pronto! Seu WhatsApp abriu com os dados preenchidos. Só enviar a mensagem.',
+      mIntro: 'Oi! Vim pelo site da Aberto Digital.', mNome: 'Nome', mNeg: 'Negócio', mRamo: 'Ramo', mCid: 'Cidade', mZap: 'WhatsApp', mNeed: 'Preciso de',
+      hCont: 'Quer que a sua loja responda enquanto você atende?',
+      pCont: 'Chama no WhatsApp. Respondo rápido, sem script de vendas.',
+      btnCont: 'Chamar no WhatsApp',
+      foot1: '© 2026 Aberto Digital · Arujá, SP',
+      msgTopo: 'Oi! Vim pelo site da Aberto Digital.',
+      msgAud: 'Oi! Quero uma auditoria gratuita.',
+      msgP1: 'Oi! Quero o pacote Start.',
+      msgP2: 'Oi! Quero o pacote Presença.',
+      msgP3: 'Oi! Quero o pacote Completo.',
+      msgMod: 'Oi! Quero saber sobre os módulos.',
+      msgCont: 'Oi! Vim pelo site da Aberto Digital.'
+    },
+    en: {
+      i2: 'Your online presence', i3: 'is our <em>business!</em>',
+      nav1: 'Services', nav2: 'Packages', nav3: 'How it works', nav4: 'Sign up',
+      h1: 'When customers ask, <span class="linha2">someone answers.</span>',
+      apoio: WM + ' builds your business\'s online presence with cutting-edge tools. You handle the customers, we handle the rest: Google Business, website, social media, chatbot and much more!',
+      btnA: 'Get a free audit', btnP: 'See packages',
+      pr1t: 'Brazil and remote', pr1d: 'in person and remote',
+      pr2t: 'No hassle', pr2d: 'no new system to learn, just the basics done right, focused on your customer\'s experience',
+      hDemo: 'The customer asks. AI answers right away.',
+      pDemo: 'Hours, prices and booking handled on WhatsApp. You only step into the chat when needed.',
+      exemplo: 'Illustrative conversation example',
+      cabT: 'Store support', cabS: 'replying now',
+      c1: 'Hi, are you open on Sunday?',
+      c2: 'We are open Tuesday to Sunday, 9am to 6pm. Want to book a time?',
+      c3: 'How much is an oil change?',
+      c4: 'Starts at a fixed price, filter included. Want me to have Rogério confirm a time?',
+      c5: 'Yes, send it to me. Booked for Saturday at 10am.',
+      hServ: 'Everything your business needs to be found and remembered more easily, answering everyone with quality and speed.',
+      pServ: 'Pick what makes sense now. Start with the basics and add the rest when you want.',
+      g1: 'Answer', g2: 'Sell again', g3: 'Show up', g4: 'Stay in control',
+      s1t: 'AI chatbot on WhatsApp', s1d: 'Answers hours, prices and address, pre-books visits and only pings you when it matters.',
+      s2t: 'Online booking', s2d: 'Booking link with automatic reminders to cut no-shows.',
+      s3t: 'Replies to Google reviews', s3d: 'AI drafts the reply and you approve it before it posts.',
+      s4t: 'Menu or catalog with QR code', s4d: 'For restaurants, bakeries and shops, no reprinting needed.',
+      s5t: 'Post-sale review requests', s5d: 'A WhatsApp message after purchase, with a direct link to Google.',
+      s6t: 'Winning back past customers', s6d: 'Personal messages only to people who opted in, consent-based and compliant with messaging rules.',
+      s7t: 'Seasonal offer page', s7d: 'For Mother\'s Day, Black Friday and Christmas, ready in a few days.',
+      s8t: 'Monthly content calendar', s8d: 'Posts, captions and Reels scripts with set publishing dates.',
+      s9t: 'AI photos and short videos', s9d: 'Editing, captions and cuts for Instagram and TikTok.',
+      s10t: 'Simple results dashboard', s10d: 'Calls, directions and messages from your Google profile, in one place.',
+      s11t: 'Automated admin routine', s11d: 'Quotes, receipts and cash tracking in a spreadsheet, no paper.',
+      b1t: 'Google profile', b1d: 'Shows up in Maps and search',
+      b2t: 'One-page website', b2d: 'Fast on mobile, with a WhatsApp button',
+      b3t: 'WhatsApp Business', b3d: 'Catalog and quick replies ready',
+      b4t: 'Visual identity', b4d: 'Logo and colors for everything',
+      b5t: 'Free audit', b5d: 'One-page PDF of what is missing',
+      hPac: 'Three starting points. Every one comes fully set up.',
+      pPac: 'Pricing depends on your business. The final proposal comes in writing before any payment.',
+      nome2: 'Presence', nome3: 'Complete',
+      v1: 'Quote <small>on request</small>', v2: 'Quote <small>on request</small>', v3: 'Quote <small>on request</small>',
+      setup: 'Setup and monthly plan confirmed in writing',
+      f1a: 'Optimized Google profile', f1b: 'One-page website', f1c: 'Domain for year one',
+      f2a: 'Everything in Start', f2b: 'Logo and visual identity', f2c: 'WhatsApp Business with catalog and quick replies',
+      f3a: 'Everything in Presence', f3b: 'AI chatbot on WhatsApp', f3c: '1 month of follow-up and a simple report',
+      btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete',
+      pMod: 'Only need one module, like booking or Google review replies? It can be added to any package, quoted on request.',
+      btnMod: 'Ask about modules',
+      hProc: 'From the first chat to the first customer message on WhatsApp.',
+      st1t: 'You tell us about your business', st1d: 'A quick WhatsApp chat about what you sell, where you serve and what is holding you back.',
+      st2t: 'We build it and you approve', st2d: 'Profile, website and WhatsApp get built. Nothing goes live without your approval.',
+      st3t: 'Delivered and supported', st3d: 'You get everything set up, with a how-to guide. Maintenance continues after that.',
+      hAud: 'Before you hire us, you get a free audit.',
+      pAud: 'We review your Google profile, website and WhatsApp and send a one-page PDF with what is costing you customers. No commitment.',
+      btnAud: 'Request my audit', exAud: 'Illustrative audit example',
+      auTit: 'Store audit', au1: 'Google profile with photos', au2: 'Opening hours', au3: 'Replies to reviews', au4: 'WhatsApp button on the website', au5: 'Online booking or ordering',
+      auFalta: 'Missing', auOk: 'OK',
+      hForm: 'Leave your details and we will reach out.',
+      pForm: 'Takes under a minute. No password and no app to download. Sending opens WhatsApp with your details filled in.',
+      fNome: 'Your name', fNeg: 'Business name', fRamo: 'Type of business', fCid: 'City and state', fZap: 'WhatsApp number', fNeed: 'What do you need most right now?',
+      phNome: 'e.g. Maria Silva', phNeg: 'e.g. Central Bakery', phCid: 'Austin, TX', phZap: '(512) 555-0100',
+      ro0: 'Choose...', ro1: 'Restaurant or café', ro2: 'Shop or retail', ro3: 'Services (auto shop, salon, clinic)', ro4: 'Other',
+      no0: 'Choose...', no1: 'Show up on Google', no2: 'Get a website', no3: 'Answer customers on WhatsApp', no4: 'Content for social media', no5: 'Not sure yet',
+      fCons: 'I agree to be contacted by Aberto Digital about my request by WhatsApp.',
+      fEnv: 'Send via WhatsApp',
+      fNota: 'We do not store your details anywhere else: they go straight into the WhatsApp chat.',
+      fOk: 'Done! WhatsApp opened with your details filled in. Just send the message.',
+      mIntro: 'Hi! I came from the Aberto Digital website.', mNome: 'Name', mNeg: 'Business', mRamo: 'Type', mCid: 'City', mZap: 'WhatsApp', mNeed: 'I need',
+      hCont: 'Want your business to answer while you work?',
+      pCont: 'Message us on WhatsApp. We reply fast, no sales script.',
+      btnCont: 'Chat on WhatsApp',
+      foot1: '© 2026 Aberto Digital · Arujá, SP, Brazil',
+      msgTopo: 'Hi! I came from the Aberto Digital website.',
+      msgAud: 'Hi! I would like a free audit.',
+      msgP1: 'Hi! I would like the Start package.',
+      msgP2: 'Hi! I would like the Presence package.',
+      msgP3: 'Hi! I would like the Complete package.',
+      msgMod: 'Hi! I would like to know about modules.',
+      msgCont: 'Hi! I came from the Aberto Digital website.'
+    }
+  };
+  var WA = 'https://wa.me/5511991233627?text=';
+  var L = (function(){
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'pt') return q;
+    return /^en/i.test(navigator.language || '') ? 'en' : 'pt';
+  })();
+
+  function aplica() {
+    document.documentElement.lang = L === 'en' ? 'en' : 'pt-BR';
+    document.querySelectorAll('[data-i18n]').forEach(function(e){ e.innerHTML = T[L][e.getAttribute('data-i18n')]; });
+    document.querySelectorAll('[data-ph]').forEach(function(e){ e.placeholder = T[L][e.getAttribute('data-ph')]; });
+    document.querySelectorAll('a.wa').forEach(function(a){ a.href = WA + encodeURIComponent(T[L][a.getAttribute('data-msg')]); });
+    document.getElementById('lang').textContent = L === 'en' ? 'PT' : 'EN';
+  }
+  aplica();
+  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); atualiza(); });
+
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* abertura controlada pelo scroll: a câmera do SVG (viewBox) se aproxima da marca,
+     a porta abre, a frase nasce dentro do vão e a hero assume quando o arco some */
+  var abertura = document.getElementById('abertura');
+  var stage = document.getElementById('stage');
+  var svg = document.getElementById('arcoSvg');
+  var porta = document.getElementById('porta');
+  var escuro = document.getElementById('escuro');
+  var frase = document.getElementById('abFrase');
+  var heroTxt = document.getElementById('abHero');
+  function clamp(v){ return Math.max(0, Math.min(1, v)); }
+  function suave(t){ return t * t * (3 - 2 * t); }
+  function impacto(t){ var c1 = 2.2, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); }
+  var vao = document.getElementById('abVao');
+  var trechos = frase.querySelectorAll('span');
+  var janelas = [[0.2, 0.42], [0.42, 0.62], [0.62, 0.82]];
+  var mult = [1.6, 1.12, 1.18];
+
+  if (reduz) abertura.classList.add('estatica');
+
+  function atualiza() {
+    if (reduz) return;
+    var W = stage.clientWidth, H = stage.clientHeight;
+    var total = abertura.offsetHeight - H;
+    var p = total > 0 ? clamp(-abertura.getBoundingClientRect().top / total) : 1;
+
+    var s0 = Math.min(0.74 * W / 48, 0.6 * H / 52);
+    var s1 = Math.max(1.3 * W / 17.2, 1.35 * H / 24.4);
+    var q = suave(clamp((p - 0.04) / 0.8));
+    var sc = s0 * Math.pow(s1 / s0, q);
+    var cx = 48, cy = 50 + (62 - 50) * q;
+    var vw = W / sc, vh = H / sc, vx = cx - vw / 2, vy = cy - vh / 2;
+    svg.setAttribute('viewBox', vx.toFixed(4) + ' ' + vy.toFixed(4) + ' ' + vw.toFixed(4) + ' ' + vh.toFixed(4));
+
+    var a = suave(clamp((p - 0.01) / 0.18));
+    porta.setAttribute('transform', 'translate(33 0) scale(' + (1 - 0.97 * a).toFixed(4) + ' 1) translate(-33 0)');
+    escuro.setAttribute('opacity', suave(clamp((p - 0.04) / 0.14)).toFixed(3));
+
+    var largura = Math.min(17.2 * sc * 0.84, W * 0.88, 980);
+    var fonte = largura / 11;
+    frase.style.width = largura + 'px';
+    var vL = (39.4 - vx) * sc, vT = (41 - vy) * sc, vW = 17.2 * sc, vH = 33 * sc;
+    vao.style.left = vL + 'px'; vao.style.top = vT + 'px';
+    vao.style.width = vW + 'px'; vao.style.height = vH + 'px';
+    vao.style.borderRadius = (8.6 * sc) + 'px ' + (8.6 * sc) + 'px 0 0';
+    frase.style.left = (vW / 2) + 'px';
+    frase.style.top = (Math.min((59 - vy) * sc, H * 0.52) - vT) + 'px';
+    for (var k = 0; k < trechos.length; k++) {
+      var j = janelas[k], t = (p - j[0]) / (j[1] - j[0]);
+      var tin = clamp(t / 0.3);
+      var tout = k === trechos.length - 1 ? clamp((p - 0.8) / 0.05) : clamp((t - 0.8) / 0.2);
+      var op = clamp(tin * 2.5) * (1 - tout);
+      var esc = (1 + 0.75 * (1 - impacto(tin))) * (1 - 0.15 * tout);
+      var el = trechos[k];
+      el.style.fontSize = Math.min(fonte * mult[k], 128) + 'px';
+      el.style.opacity = op.toFixed(3);
+      el.style.transform = 'translateY(-50%) scale(' + esc.toFixed(4) + ')';
+    }
+
+    var h = clamp((p - 0.8) / 0.13);
+    heroTxt.style.opacity = h.toFixed(3);
+    heroTxt.classList.toggle('ativo', h > 0.6);
+  }
+  var pendente = false;
+  window.addEventListener('scroll', function(){
+    if (!pendente) { pendente = true; requestAnimationFrame(function(){ pendente = false; atualiza(); }); }
+  }, {passive: true});
+  window.addEventListener('resize', atualiza);
+  atualiza();
+
+  var chat = document.getElementById('chat');
+  if (reduz || !('IntersectionObserver' in window)) { chat.classList.remove('espera'); }
+  else {
+    new IntersectionObserver(function(es, ob){
+      es.forEach(function(e){ if (e.isIntersecting) { chat.classList.remove('espera'); chat.classList.add('anima'); ob.disconnect(); } });
+    }, {threshold: 0.35}).observe(chat);
+  }
+
+  document.getElementById('cadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, t = T[L];
+    var msg = t.mIntro + '\n' +
+      t.mNome + ': ' + f.elements.nome.value + '\n' +
+      t.mNeg + ': ' + f.elements.negocio.value + '\n' +
+      t.mRamo + ': ' + f.elements.ramo.selectedOptions[0].textContent + '\n' +
+      t.mCid + ': ' + f.elements.cidade.value + '\n' +
+      t.mZap + ': ' + f.elements.zap.value + '\n' +
+      t.mNeed + ': ' + f.elements.need.selectedOptions[0].textContent;
+    window.open(WA + encodeURIComponent(msg), '_blank', 'noopener');
+    document.getElementById('okMsg').classList.add('mostra');
+  });
+
+  var demo = document.querySelector('.demo');
+  var c = document.getElementById('campo');
+  var ctx = c.getContext('2d');
+  var cores = ['#FFB020','#2F6FED','#FFA586','#AEB6C6','#F6F7F9'];
+  var N = 280, pts = [];
+  for (var i = 0; i < N; i++) {
+    var y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), t2 = i * 2.399963;
+    pts.push({x: Math.cos(t2) * r, y: y, z: Math.sin(t2) * r, c: cores[i % cores.length]});
+  }
+  var w, hh, dpr, gx, gy, R, ang = 0;
+  function ajusta() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = demo.clientWidth; hh = demo.clientHeight;
+    c.width = w * dpr; c.height = hh * dpr;
+    c.style.width = w + 'px'; c.style.height = hh + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (w < 900) { gx = w * 0.82; gy = hh * 0.12; R = Math.min(w, hh) * 0.24; }
+    else { gx = w * 0.72; gy = hh * 0.5; R = Math.min(w, hh) * 0.34; }
+  }
+  function desenha() {
+    ctx.clearRect(0, 0, w, hh);
+    var ca = Math.cos(ang), sa = Math.sin(ang), tilt = 0.35, ct = Math.cos(tilt), st = Math.sin(tilt);
+    var arr = pts.map(function(p) {
+      var x = p.x * ca + p.z * sa, z = -p.x * sa + p.z * ca;
+      var yy = p.y * ct - z * st; z = p.y * st + z * ct;
+      return {x: x, y: yy, z: z, c: p.c};
+    }).sort(function(a, b){ return a.z - b.z; });
+    for (var k = 0; k < arr.length; k++) {
+      var p = arr[k], f = (p.z + 1) / 2;
+      ctx.globalAlpha = 0.15 + f * 0.85;
+      ctx.fillStyle = p.c;
+      ctx.beginPath();
+      ctx.arc(gx + p.x * R, gy + p.y * R, 0.8 + f * 2.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  function loop() { ang += 0.0035; desenha(); requestAnimationFrame(loop); }
+  ajusta();
+  window.addEventListener('resize', function(){ ajusta(); desenha(); });
+  if (reduz) desenha(); else loop();
+})();
+</script>
+
+</body>
+</html>
