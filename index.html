@@ -132,16 +132,34 @@
   .base b{display:block;font-family:var(--display);font-weight:750;font-size:1rem;margin-bottom:4px}
   .base span{font-size:.88rem;color:var(--secundario)}
 
-  .escada{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end}
+  .escada{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
+  .pacote{padding:30px 24px 26px}
   .pacote{background:var(--ink);color:var(--papel);border:1px solid var(--slate);border-radius:6px;padding:34px 30px 30px}
   .pacote.um{min-height:430px}
   .pacote.dois{min-height:490px;background:#24395F;border-color:var(--ceu);box-shadow:8px 8px 0 var(--ambar)}
-  .pacote.tres{min-height:560px;background:linear-gradient(165deg,#1E3050 0%,#0C1424 100%);border-color:var(--ceu)}
+  .pacote.tres{min-height:540px;background:linear-gradient(165deg,#1E3050 0%,#0C1424 100%);border-color:var(--ceu)}
+  .pacote.quatro{min-height:600px;background:linear-gradient(165deg,#24395F 0%,#0C1424 100%);border-color:var(--ambar)}
+  .pacote .tag{display:inline-block;margin-top:8px;font-size:.78rem;font-weight:650;color:var(--ambar)}
+  .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:10px}
+  .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+  .planos button span{color:var(--ambar);font-weight:700}
+  .planos button.ativo{background:var(--papel);color:var(--ink)}
+  .planos button.ativo span{color:#B56F00}
+  .planos button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+  .plano-nota{color:var(--muted);font-size:.92rem;margin-bottom:28px;min-height:1.4em}
+  .mods{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:18px 0 6px}
+  .mods li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
+  .mods li b{color:var(--papel);font-weight:650}
+  .mods li span{white-space:nowrap;color:var(--papel)}
   .pacote p,.pacote li{color:var(--muted)}
-  .pacote .nome{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:2.2rem;letter-spacing:-.01em;color:var(--papel)}
-  .pacote .valor{font-family:var(--display);font-weight:800;font-size:2.3rem;letter-spacing:-.03em;margin:16px 0 2px;color:var(--papel)}
-  .pacote .valor small{font-size:.95rem;font-weight:500;color:var(--muted)}
+  .pacote .nome{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:2rem;letter-spacing:-.01em;color:var(--papel)}
+  .pacote .valor{font-family:var(--display);font-weight:800;font-size:2.1rem;letter-spacing:-.03em;margin:16px 0 2px;color:var(--papel)}
+  .pacote .valor small{display:block;margin-top:4px;font-size:.98rem;font-weight:500;color:var(--muted)}
   .pacote .setup{font-size:.92rem;margin-bottom:22px}
+  .pacote .setup:empty{display:none}
+  .pacote .valor{margin-bottom:22px}
+  .pacote .valor small.mes{color:var(--papel);font-weight:650;font-size:1.05rem}
+  .pacote .valor s{color:var(--muted);font-weight:500;margin-left:4px}
   .pacote ul{list-style:none;display:grid;gap:10px;margin-bottom:30px}
   .pacote li{font-size:.95rem;padding-left:22px;position:relative}
   .pacote li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--ambar)}
@@ -149,6 +167,8 @@
   .pacote .botao.fantasma{color:var(--papel);box-shadow:inset 0 0 0 1px var(--slate)}
   .modulos{margin-top:40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:24px 0;border-top:1px solid var(--slate);border-bottom:1px solid var(--slate)}
   .modulos p{max-width:620px}
+  .modulos > div{flex:1 1 100%}
+  .modulos h3{font-family:var(--display);font-weight:750;font-size:1.25rem;color:var(--papel);margin-bottom:6px}
 
   .fluxo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
   .fluxo div{padding:30px 30px 0 0}
@@ -200,7 +220,9 @@
     .base div:nth-child(3){border-left:0}
     .base div:nth-child(n+3){border-top:1px solid var(--linha-clara)}
     .escada{grid-template-columns:1fr}
-    .pacote.um,.pacote.dois,.pacote.tres{min-height:0}
+    .pacote.um,.pacote.dois,.pacote.tres,.pacote.quatro{min-height:0}
+    .mods{grid-template-columns:1fr}
+    .planos button{padding:9px 12px}
     .pacote.dois{box-shadow:none}
     .fluxo{grid-template-columns:1fr}
     .fluxo div+div{padding-left:0;border-left:0;border-top:1px solid var(--linha-clara);margin-top:24px}
@@ -376,31 +398,48 @@
         <h2 data-i18n="hPac"></h2>
         <p data-i18n="pPac"></p>
       </div>
+      <div class="planos" role="group" aria-label="Plano">
+        <button type="button" data-plano="0" class="ativo" data-i18n="pl0"></button>
+        <button type="button" data-plano="1" data-i18n="pl1"></button>
+        <button type="button" data-plano="2" data-i18n="pl2"></button>
+      </div>
+      <p class="plano-nota" id="planoNota" aria-live="polite"></p>
       <div class="escada">
         <div class="pacote um">
           <div class="nome">Start</div>
-          <div class="valor" data-i18n="v1"></div>
+          <div class="valor" data-pac="0"></div>
           <div class="setup" data-i18n="setup"></div>
           <ul><li data-i18n="f1a"></li><li data-i18n="f1b"></li><li data-i18n="f1c"></li></ul>
           <a class="botao fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="btn1"></a>
         </div>
         <div class="pacote dois">
           <div class="nome" data-i18n="nome2"></div>
-          <div class="valor" data-i18n="v2"></div>
+          <div class="valor" data-pac="1"></div>
           <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f2a"></li><li data-i18n="f2b"></li><li data-i18n="f2c"></li></ul>
+          <ul><li data-i18n="f2a"></li><li data-i18n="f2b"></li><li data-i18n="f2c"></li><li data-i18n="f2d"></li></ul>
           <a class="botao wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="btn2"></a>
         </div>
         <div class="pacote tres">
           <div class="nome" data-i18n="nome3"></div>
-          <div class="valor" data-i18n="v3"></div>
+          <div class="valor" data-pac="2"></div>
           <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f3a"></li><li data-i18n="f3b"></li><li data-i18n="f3c"></li></ul>
+          <ul><li data-i18n="f3a"></li><li data-i18n="f3b"></li><li data-i18n="f3c"></li><li data-i18n="f3d"></li></ul>
           <a class="botao wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="btn3"></a>
+        </div>
+        <div class="pacote quatro">
+          <div class="nome">Enterprise</div>
+          <div class="valor" data-pac="3"></div>
+          <div class="setup" data-i18n="setup"></div>
+          <ul><li data-i18n="f4a"></li><li data-i18n="f4b"></li><li data-i18n="f4c"></li><li data-i18n="f4d"></li></ul>
+          <a class="botao wa" data-msg="msgP4" target="_blank" rel="noopener" data-i18n="btn4"></a>
         </div>
       </div>
       <div class="modulos">
-        <p data-i18n="pMod"></p>
+        <div>
+          <h3 data-i18n="hMod"></h3>
+          <p data-i18n="pMod"></p>
+          <ul class="mods" id="mods"></ul>
+        </div>
         <a class="botao fantasma wa" data-msg="msgMod" target="_blank" rel="noopener" data-i18n="btnMod"></a>
       </div>
     </div>
@@ -519,7 +558,7 @@
       hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
       pServ: 'Tudo para o seu negócio ser encontrado e lembrado mais facilmente, respondendo a todos com qualidade e agilidade. Você começa pela base e adiciona o resto quando quiser.',
       g1: 'Atender', g2: 'Vender de novo', g3: 'Mostrar', g4: 'Controlar',
-      s1t: 'Chatbot de WhatsApp com IA', s1d: 'Responde horário, preço e endereço, pré-agenda e avisa você só do que importa.',
+      s1t: 'Chatbot de menu no WhatsApp', s1d: 'Um menu de opções responde as perguntas frequentes e separa os curiosos dos interessados.',
       s2t: 'Agendamento online', s2d: 'Link de agenda com lembrete automático, para diminuir faltas.',
       s3t: 'Respostas às avaliações do Google', s3d: 'A IA escreve a sugestão e você aprova antes de publicar.',
       s4t: 'Cardápio ou catálogo com QR Code', s4d: 'Para restaurantes, padarias e lojas, sem depender de impressão.',
@@ -535,16 +574,19 @@
       b3t: 'WhatsApp Business', b3d: 'Catálogo e respostas rápidas prontos',
       b4t: 'Identidade visual', b4d: 'Logo e cores para usar em tudo',
       b5t: 'Auditoria gratuita', b5d: 'PDF de 1 página com o que falta',
-      hPac: 'Três pontos de partida. Todos com entrega configurada.',
-      pPac: 'Valores de referência, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
+      hPac: 'Quatro pontos de partida. Todos com entrega configurada.',
+      pPac: 'Valores de lançamento, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
+      pl0: 'Mensal', pl1: '6 meses <span>−15%</span>', pl2: '12 meses <span>−30%</span>',
+      pn0: 'Sem fidelidade. Cancele com 30 dias de aviso.', pn1: 'Mensalidade com 15% de desconto, com prazo mínimo de 6 meses.', pn2: 'Mensalidade com 30% de desconto, com prazo mínimo de 12 meses.',
       nome2: 'Presença', nome3: 'Completo',
-      v1: 'R$ 650 <small>+ R$ 49/mês</small>', v2: 'R$ 850 <small>+ R$ 49/mês</small>', v3: 'R$ 1.500 <small>+ R$ 150/mês</small>',
-      setup: 'Setup a partir de referência e mensalidade confirmada por escrito',
-      f1a: 'Perfil no Google otimizado', f1b: 'Site de 1 página', f1c: 'Domínio no 1º ano',
-      f2a: 'Tudo do Start', f2b: 'Logo e identidade visual', f2c: 'WhatsApp Business com catálogo e respostas rápidas',
-      f3a: 'Tudo do Presença', f3b: 'Chatbot de IA no WhatsApp', f3c: '1 mês de acompanhamento e relatório simples',
-      btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo',
-      pMod: 'Quer só um módulo, como agendamento ou respostas no Google? Ele pode entrar em qualquer pacote, com valor sob consulta.',
+      setup: '',
+      f1a: 'Perfil no Google otimizado e verificado', f1b: 'Site de 1 página com botão de WhatsApp', f1c: 'Domínio no 1º ano, hospedagem e 1 alteração por mês',
+      f2a: 'Tudo do Start', f2b: 'Logo e identidade visual', f2c: 'WhatsApp Business com catálogo e respostas rápidas', f2d: '1º mês de acompanhamento e relatório mensal do Google',
+      f3a: 'Tudo do Presença', f3b: 'AbertoCore: conversas e clientes num só lugar', f3c: 'Chatbot de menu que faz a triagem no WhatsApp', f3d: 'Assistente de IA que sugere respostas e lembra os retornos',
+      f4a: 'Tudo do Completo', f4b: 'Instagram, Facebook e e-mail na mesma caixa', f4c: 'Atendimento com IA 24h que responde, qualifica e agenda', f4d: 'CRM completo, usuários ilimitados e e-mail com o seu domínio',
+      btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo', btn4: 'Quero o Enterprise',
+      hMod: 'Módulos avulsos',
+      pMod: 'Entram em qualquer pacote, quando você precisar.',
       btnMod: 'Perguntar sobre módulos',
       hProc: 'Da primeira conversa ao primeiro contato no WhatsApp.',
       st1t: 'Você conta o negócio', st1d: 'Uma conversa rápida no WhatsApp sobre o que você vende, onde atende e o que está travando.',
@@ -575,6 +617,7 @@
       msgP1: 'Oi! Quero o pacote Start.',
       msgP2: 'Oi! Quero o pacote Presença.',
       msgP3: 'Oi! Quero o pacote Completo.',
+      msgP4: 'Oi! Quero conhecer o pacote Enterprise.',
       msgMod: 'Oi! Quero saber sobre os módulos.',
       msgCont: 'Oi! Vim pelo site da abertodigital.'
     },
@@ -599,7 +642,7 @@
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
       pServ: 'Everything your business needs to be found and remembered more easily, answering everyone with quality and speed. Start with the basics and add the rest when you want.',
       g1: 'Answer', g2: 'Sell again', g3: 'Show up', g4: 'Stay in control',
-      s1t: 'AI chatbot on WhatsApp', s1d: 'Answers hours, prices and address, pre-books visits and only pings you when it matters.',
+      s1t: 'Menu chatbot on WhatsApp', s1d: 'A simple options menu answers common questions and separates browsers from buyers.',
       s2t: 'Online booking', s2d: 'Booking link with automatic reminders to cut no-shows.',
       s3t: 'Replies to Google reviews', s3d: 'AI drafts the reply and you approve it before it posts.',
       s4t: 'Menu or catalog with QR code', s4d: 'For restaurants, bakeries and shops, no reprinting needed.',
@@ -615,16 +658,19 @@
       b3t: 'WhatsApp Business', b3d: 'Catalog and quick replies ready',
       b4t: 'Visual identity', b4d: 'Logo and colors for everything',
       b5t: 'Free audit', b5d: 'One-page PDF of what is missing',
-      hPac: 'Three starting points. Every one comes fully set up.',
-      pPac: 'Pricing depends on your business. The final proposal comes in writing before any payment.',
+      hPac: 'Four starting points. Every one comes fully set up.',
+      pPac: 'Prices for the US are quoted in dollars. You get a written proposal before paying anything.',
+      pl0: 'Monthly', pl1: '6 months <span>−15%</span>', pl2: '12 months <span>−30%</span>',
+      pn0: 'No contract. Cancel with 30 days notice.', pn1: '15% off the monthly fee with a 6-month minimum.', pn2: '30% off the monthly fee with a 12-month minimum.',
       nome2: 'Presence', nome3: 'Complete',
-      v1: 'Quote <small>on request</small>', v2: 'Quote <small>on request</small>', v3: 'Quote <small>on request</small>',
       setup: 'Setup and monthly plan confirmed in writing',
-      f1a: 'Optimized Google profile', f1b: 'One-page website', f1c: 'Domain for year one',
-      f2a: 'Everything in Start', f2b: 'Logo and visual identity', f2c: 'WhatsApp Business with catalog and quick replies',
-      f3a: 'Everything in Presence', f3b: 'AI chatbot on WhatsApp', f3c: '1 month of follow-up and a simple report',
-      btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete',
-      pMod: 'Only need one module, like booking or Google review replies? It can be added to any package, quoted on request.',
+      f1a: 'Google Business Profile optimized and verified', f1b: 'One-page website with a WhatsApp button', f1c: 'Domain for the first year, hosting and 1 change a month',
+      f2a: 'Everything in Start', f2b: 'Logo and visual identity', f2c: 'WhatsApp Business with catalog and quick replies', f2d: 'First month of follow-up and a monthly Google report',
+      f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that drafts replies and reminds you to follow up',
+      f4a: 'Everything in Complete', f4b: 'Instagram, Facebook and email in one inbox', f4c: '24/7 AI service that answers, qualifies and books', f4d: 'Full CRM, unlimited users and email on your domain',
+      btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete', btn4: 'Choose Enterprise',
+      hMod: 'Add-on modules',
+      pMod: 'Add them to any package, whenever you need them.',
       btnMod: 'Ask about modules',
       hProc: 'From the first chat to the first customer message on WhatsApp.',
       st1t: 'You tell us about your business', st1d: 'A quick WhatsApp chat about what you sell, where you serve and what is holding you back.',
@@ -655,6 +701,7 @@
       msgP1: 'Hi! I would like the Start package.',
       msgP2: 'Hi! I would like the Presence package.',
       msgP3: 'Hi! I would like the Complete package.',
+      msgP4: 'Hi! I would like to learn about the Enterprise package.',
       msgMod: 'Hi! I would like to know about modules.',
       msgCont: 'Hi! I came from the abertodigital website.'
     }
@@ -708,9 +755,36 @@
     }).observe(digita.parentNode);
   } else { dg.visivel = true; }
 
+  /* preços: implantação + mensalidade; o plano dá desconto só na mensalidade */
+  var PRECOS = [[650, 49], [990, 99], [1900, 249], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 0;
+  var MODS = [
+    ['Chatbot de menu (triagem)', 'Menu chatbot', 'R$ 600 + R$ 199/mês'],
+    ['Gestão mensal do perfil no Google', 'Monthly Google profile management', 'R$ 149/mês'],
+    ['Respostas às avaliações do Google', 'Google review replies', 'R$ 79/mês'],
+    ['Pós-venda que pede avaliação', 'Post-sale review request', 'R$ 200'],
+    ['Instagram profissional', 'Professional Instagram setup', 'R$ 290'],
+    ['Calendário mensal de conteúdo', 'Monthly content calendar', 'R$ 390/mês'],
+    ['Fotos e vídeos curtos com IA', 'Photos and short videos with AI', 'R$ 290 por sessão'],
+    ['Agendamento online', 'Online booking', 'R$ 250'],
+    ['Cardápio ou catálogo com QR Code', 'Menu or catalog with QR code', 'R$ 350']
+  ];
+  function reais(v){ return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
+  function precos(){
+    document.querySelectorAll('[data-pac]').forEach(function(e){
+      var p = PRECOS[+e.getAttribute('data-pac')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
+      e.innerHTML = L === 'en' ? 'Quote <small>on request</small>' : reais(p[0]) + ' <small>de implantação</small><small class="mes">+ ' + reais(m) + '/mês' + (planoSel ? ' <s>' + reais(p[1]) + '</s>' : '') + '</small>';
+    });
+    document.querySelectorAll('[data-plano]').forEach(function(b){ var on = +b.getAttribute('data-plano') === planoSel; b.classList.toggle('ativo', on); b.setAttribute('aria-pressed', on); });
+    document.querySelector('.planos').hidden = L === 'en';
+    document.getElementById('planoNota').textContent = L === 'en' ? '' : T[L]['pn' + planoSel];
+    document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? 'on request' : m[2]) + '</span></li>'; }).join('');
+  }
+  document.querySelectorAll('[data-plano]').forEach(function(b){ b.addEventListener('click', function(){ planoSel = +b.getAttribute('data-plano'); precos(); }); });
+
   aplica();
+  precos();
   reiniciaDigita();
-  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); reiniciaDigita(); atualiza(); });
+  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); precos(); reiniciaDigita(); atualiza(); });
 
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
