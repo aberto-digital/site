@@ -337,6 +337,41 @@
   footer a:hover,footer a:focus-visible{color:#fff;text-decoration:underline}
   footer .logo{height:28px}
 
+
+  /* chat do site */
+  .ch-abre{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:10px;border:0;cursor:pointer;background:var(--ambar);color:var(--ink);font:700 .95rem var(--corpo);padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 12px 30px -10px rgba(16,26,44,.6)}
+  .ch-abre svg{width:24px;height:24px;flex:none}
+  .ch-abre .bolha-n{position:absolute;top:-4px;right:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--pessego);color:var(--ink);font-size:.72rem;font-weight:800;display:none;place-items:center}
+  .ch-abre.tem .bolha-n{display:grid}
+  .ch-abre:focus-visible,.ch-caixa button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+  .ch-caixa{position:fixed;right:20px;bottom:20px;z-index:61;width:min(380px,calc(100vw - 24px));height:min(600px,calc(100vh - 40px));height:min(600px,calc(100dvh - 40px));display:none;flex-direction:column;background:#fff;color:var(--texto);border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -20px rgba(16,26,44,.55)}
+  .ch-caixa.aberta{display:flex}
+  .ch-topo{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;background:var(--ink);color:var(--papel)}
+  .ch-topo .ch-logo{width:38px;height:38px;border-radius:11px;background:var(--navy);display:grid;place-items:center;flex:none}
+  .ch-topo b{display:block;font-size:1rem}.ch-topo small{display:block;color:var(--muted);font-size:.8rem}
+  .ch-topo button{margin-left:auto;background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;border-radius:8px}
+  .ch-topo button svg{width:20px;height:20px;display:block}
+  .ch-msgs{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:8px;background:var(--papel)}
+  .ch-m{max-width:84%;padding:9px 12px;border-radius:14px;font-size:.92rem;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere}
+  .ch-m.eq{align-self:flex-start;background:#fff;border:1px solid var(--linha-clara);border-bottom-left-radius:4px}
+  .ch-m.cli{align-self:flex-end;background:var(--ceu);color:#fff;border-bottom-right-radius:4px}
+  .ch-m.pend{opacity:.6}
+  .ch-ini{display:grid;gap:8px;margin-top:4px}
+  .ch-ini input,.ch-pe textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--linha-clara);border-radius:12px;padding:10px 12px;background:#fff;color:var(--texto)}
+  .ch-ini small{color:var(--secundario);font-size:.78rem}
+  .ch-pe{display:flex;gap:8px;align-items:flex-end;padding:10px;border-top:1px solid var(--linha-clara);background:#fff}
+  .ch-pe textarea{resize:none;max-height:120px;min-height:44px}
+  .ch-pe button{flex:none;width:44px;height:44px;border-radius:12px;border:0;background:var(--ambar);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+  .ch-pe button svg{width:20px;height:20px}
+  .ch-pe button:disabled{opacity:.5;cursor:default}
+  .ch-rodape{padding:0 12px 10px;background:#fff;font-size:.78rem;color:var(--secundario);text-align:center}
+  .ch-rodape a{color:var(--ceu);font-weight:600}
+  .ch-erro{align-self:center;font-size:.8rem;color:#B3261E;background:#FDECEA;border-radius:8px;padding:6px 10px}
+  @media (max-width:560px){
+    .ch-abre{right:14px;bottom:14px;padding:13px}.ch-abre span.txt{display:none}
+    .ch-caixa{right:0;bottom:0;width:100vw;height:100vh;height:100dvh;border-radius:0}
+  }
+  @media print{.ch-abre,.ch-caixa{display:none!important}}
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
     .core-grid{grid-template-areas:"passos" "palco" "apoio" "cta";row-gap:24px}
@@ -676,6 +711,7 @@
             <option data-i18n="no1"></option><option data-i18n="no2"></option><option data-i18n="no3"></option><option data-i18n="no4"></option><option data-i18n="no5"></option>
           </select>
         </label>
+        <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <label class="check largo"><input type="checkbox" name="consent" required><span data-i18n="fCons"></span></label>
         <button type="submit" data-i18n="fEnv"></button>
         <p class="nota" data-i18n="fNota"></p>
@@ -709,6 +745,13 @@
   </div>
 </footer>
 
+<button class="ch-abre" id="chAbre" type="button" aria-controls="chCaixa" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span class="txt" data-i18n="chAbre"></span><span class="bolha-n" id="chN"></span></button>
+<div class="ch-caixa" id="chCaixa" role="dialog" aria-labelledby="chTit">
+  <div class="ch-topo"><span class="ch-logo"><svg viewBox="0 0 96 96" width="24" height="24" aria-hidden="true"><path d="M33 74V46.5a15 15 0 0 1 30 0V74Z" fill="#FFB020"/><path d="M39.4 74V49.6a8.6 8.6 0 0 1 17.2 0V74Z" fill="#1E3050"/></svg></span><div><b id="chTit">abertodigital</b><small data-i18n="chSub"></small></div><button type="button" id="chFecha" data-i18n-aria="chFecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="ch-msgs" id="chMsgs" aria-live="polite"></div>
+  <form class="ch-pe" id="chForm"><textarea id="chTxt" rows="1" maxlength="1000" required data-ph="chPh"></textarea><button type="submit" id="chEnvia" data-i18n-aria="chEnviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2-7z"/></svg></button></form>
+  <div class="ch-rodape"><span data-i18n="chPref"></span> <a class="wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="chZap"></a></div>
+</div>
 <script>
 (function(){
   var WM = '<svg class="wm-inline" viewBox="72 9 246 45" role="img" aria-label="abertodigital"><use href="#g-wm"/></svg>';
@@ -802,7 +845,8 @@
       no0: 'Escolha...', no1: 'Aparecer no Google', no2: 'Ter um site', no3: 'Responder clientes no WhatsApp', no4: 'Conteúdo para redes', no5: 'Ainda não sei',
       fCons: 'Concordo em receber contato da abertodigital pelo WhatsApp sobre a minha solicitação.',
       fEnv: 'Enviar pelo WhatsApp',
-      fNota: 'Seus dados não ficam guardados em outro lugar: vão direto para a conversa no WhatsApp.',
+      fNota: 'Seus dados vão para o nosso sistema de atendimento e para a conversa no WhatsApp. Não compartilhamos com ninguém.',
+      chAbre: 'Fale com a gente', chSub: 'Respondemos em horário comercial', chFecha: 'Fechar conversa', chEnviar: 'Enviar', chPh: 'Escreva sua mensagem…', chPref: 'Prefere WhatsApp?', chZap: 'Abrir conversa', chOla: 'Oi! 👋 Conte o que você precisa e a gente responde por aqui mesmo.', chNome: 'Seu nome (opcional)', chZapPh: 'WhatsApp com DDD (opcional)', chPriv: 'Se deixar o WhatsApp, podemos te chamar lá. Veja a política de privacidade no rodapé.', chFalha: 'Não conseguimos enviar agora. Tente de novo ou fale pelo WhatsApp.',
       fOk: 'Pronto! Seu WhatsApp abriu com os dados preenchidos. Só enviar a mensagem.',
       mIntro: 'Oi! Vim pelo site da abertodigital.', mNome: 'Nome', mNeg: 'Negócio', mRamo: 'Ramo', mCid: 'Cidade', mZap: 'WhatsApp', mNeed: 'Preciso de',
       hCont: 'Quer que a sua loja responda enquanto você atende?',
@@ -907,7 +951,8 @@
       no0: 'Choose...', no1: 'Show up on Google', no2: 'Get a website', no3: 'Answer customers on WhatsApp', no4: 'Content for social media', no5: 'Not sure yet',
       fCons: 'I agree to be contacted by abertodigital about my request by WhatsApp.',
       fEnv: 'Send via WhatsApp',
-      fNota: 'We do not store your details anywhere else: they go straight into the WhatsApp chat.',
+      fNota: 'Your details go to our customer service system and into the WhatsApp chat. We never share them.',
+      chAbre: 'Chat with us', chSub: 'We reply during business hours (Brazil)', chFecha: 'Close chat', chEnviar: 'Send', chPh: 'Type your message…', chPref: 'Prefer WhatsApp?', chZap: 'Open chat', chOla: 'Hi! 👋 Tell us what you need and we will reply right here.', chNome: 'Your name (optional)', chZapPh: 'WhatsApp number (optional)', chPriv: 'If you leave your WhatsApp, we can reach you there. See our privacy policy in the footer.', chFalha: 'We could not send it right now. Try again or reach us on WhatsApp.',
       fOk: 'Done! WhatsApp opened with your details filled in. Just send the message.',
       mIntro: 'Hi! I came from the abertodigital website.', mNome: 'Name', mNeg: 'Business', mRamo: 'Type', mCid: 'City', mZap: 'WhatsApp', mNeed: 'I need',
       hCont: 'Want your business to answer while you work?',
@@ -935,6 +980,7 @@
     document.documentElement.lang = L === 'en' ? 'en' : 'pt-BR';
     document.querySelectorAll('[data-i18n]').forEach(function(e){ e.innerHTML = T[L][e.getAttribute('data-i18n')]; });
     document.querySelectorAll('[data-ph]').forEach(function(e){ e.placeholder = T[L][e.getAttribute('data-ph')]; });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(e){ e.setAttribute('aria-label', T[L][e.getAttribute('data-i18n-aria')]); });
     document.querySelectorAll('a.wa').forEach(function(a){ a.href = WA + encodeURIComponent(T[L][a.getAttribute('data-msg')]); });
     document.getElementById('lang').textContent = L === 'en' ? 'PT' : 'EN';
   }
@@ -1088,7 +1134,89 @@
       t.mNeed + ': ' + f.elements.need.selectedOptions[0].textContent;
     window.open(WA + encodeURIComponent(msg), '_blank', 'noopener');
     document.getElementById('okMsg').classList.add('mostra');
+    var API = /^(127\.0\.0\.1|localhost)$/.test(location.hostname) ? 'http://127.0.0.1:8099' : 'https://api.abertodigital.com';
+    try {
+      fetch(API + '/api/site/lead', {method: 'POST', keepalive: true, headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        chave: 'abertodigital', nome: f.elements.nome.value, negocio: f.elements.negocio.value,
+        tipo: f.elements.ramo.selectedOptions[0].textContent, cidade: f.elements.cidade.value, whatsapp: f.elements.zap.value,
+        precisa: f.elements.need.selectedOptions[0].textContent, consentimento: f.elements.consent.checked, site_url: (f.elements.site_url || {}).value || ''
+      })}).catch(function(){});
+    } catch (err) {}
   });
+
+
+  /* chat do site: a conversa cai no AbertoCore e a equipe responde por lá */
+  (function(){
+    var API = /^(127\.0\.0\.1|localhost)$/.test(location.hostname) ? 'http://127.0.0.1:8099' : 'https://api.abertodigital.com';
+    var CHAVE = 'abertodigital', LS = 'ad-chat';
+    var abre = document.getElementById('chAbre'), cx = document.getElementById('chCaixa'), box = document.getElementById('chMsgs');
+    var form = document.getElementById('chForm'), ta = document.getElementById('chTxt'), bt = document.getElementById('chEnvia'), nEl = document.getElementById('chN');
+    var st = {}; try { st = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) {}
+    var msgs = [], timer = 0, aberta = false, erro = '';
+    function guarda(){ try { localStorage.setItem(LS, JSON.stringify(st)); } catch (e) {} }
+    function tx(k){ return T[L][k] || T.pt[k] || ''; }
+    function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function req(metodo, caminho, corpo){
+      return fetch(API + caminho, {method: metodo, headers: corpo ? {'Content-Type': 'application/json'} : {}, body: corpo ? JSON.stringify(corpo) : undefined})
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok) { var e = new Error(j.message || 'erro'); e.status = r.status; throw e; } return j; }); });
+    }
+    function desenha(){
+      var h = '';
+      if (!st.sessao) {
+        h += '<div class="ch-m eq">' + esc(tx('chOla')) + '</div>' +
+          '<div class="ch-ini"><input id="chNome" maxlength="80" autocomplete="name" placeholder="' + esc(tx('chNome')) + '" value="' + esc(st.nome || '') + '">' +
+          '<input id="chZapI" type="tel" maxlength="20" autocomplete="tel" placeholder="' + esc(tx('chZapPh')) + '" value="' + esc(st.zap || '') + '">' +
+          '<small>' + esc(tx('chPriv')) + '</small></div>';
+      }
+      msgs.forEach(function(m){ h += '<div class="ch-m ' + (m.de === 'cli' ? 'cli' : 'eq') + (m.pend ? ' pend' : '') + '">' + esc(m.txt) + '</div>'; });
+      if (erro) h += '<div class="ch-erro">' + esc(erro) + '</div>';
+      box.innerHTML = h; box.scrollTop = box.scrollHeight;
+    }
+    function naoLidas(){
+      var vistos = st.visto || 0, n = 0;
+      msgs.forEach(function(m){ if (m.de !== 'cli' && m.ts > vistos) n++; });
+      nEl.textContent = n; abre.classList.toggle('tem', n > 0 && !aberta);
+    }
+    function aplica(lista){
+      var antes = msgs.length; msgs = lista || [];
+      if (aberta) { st.visto = msgs.reduce(function(x, m){ return Math.max(x, m.ts || 0); }, st.visto || 0); guarda(); }
+      if (aberta && (msgs.length !== antes || erro)) { erro = ''; desenha(); }
+      naoLidas();
+    }
+    function busca(){
+      if (!st.sessao) return;
+      req('GET', '/api/site/chat?chave=' + CHAVE + '&sessao=' + encodeURIComponent(st.sessao)).then(function(j){ aplica(j.msgs); })
+        .catch(function(e){ if (e.status === 404) { st = {nome: st.nome, zap: st.zap}; guarda(); msgs = []; if (aberta) desenha(); } });
+    }
+    function agenda(){ clearInterval(timer); if (st.sessao) timer = setInterval(function(){ if (!document.hidden) busca(); }, aberta ? 4000 : 30000); }
+    function abrir(){
+      aberta = true; cx.classList.add('aberta'); abre.hidden = true; abre.setAttribute('aria-expanded', 'true');
+      desenha(); busca(); agenda(); setTimeout(function(){ (document.getElementById('chNome') && !st.nome ? document.getElementById('chNome') : ta).focus(); }, 50);
+      st.visto = msgs.reduce(function(x, m){ return Math.max(x, m.ts || 0); }, st.visto || 0); guarda(); naoLidas();
+    }
+    function fechar(){ aberta = false; cx.classList.remove('aberta'); abre.hidden = false; abre.setAttribute('aria-expanded', 'false'); agenda(); abre.focus(); }
+    abre.addEventListener('click', abrir);
+    document.getElementById('chFecha').addEventListener('click', fechar);
+    cx.addEventListener('keydown', function(e){ if (e.key === 'Escape') fechar(); });
+    ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit')); } });
+    ta.addEventListener('input', function(){ ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 120) + 'px'; });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var t = ta.value.trim(); if (!t || bt.disabled) return;
+      var p;
+      if (!st.sessao) {
+        var nm = document.getElementById('chNome'), zp = document.getElementById('chZapI');
+        st.nome = nm ? nm.value.trim() : ''; st.zap = zp ? zp.value.trim() : ''; guarda();
+        p = req('POST', '/api/site/chat/iniciar', {chave: CHAVE, nome: st.nome, whatsapp: st.zap, txt: t}).then(function(j){ st.sessao = j.sessao; guarda(); return j; });
+      } else {
+        p = req('POST', '/api/site/chat/enviar', {chave: CHAVE, sessao: st.sessao, txt: t});
+      }
+      msgs.push({de: 'cli', txt: t, ts: Date.now(), pend: true}); erro = ''; ta.value = ''; ta.style.height = ''; bt.disabled = true; desenha();
+      p.then(function(j){ bt.disabled = false; aplica(j.msgs); desenha(); agenda(); })
+       .catch(function(err){ bt.disabled = false; msgs = msgs.filter(function(m){ return !m.pend; }); ta.value = t; erro = err.status ? err.message : tx('chFalha'); desenha(); });
+    });
+    if (st.sessao) { busca(); agenda(); }
+  })();
 
   var demo = document.querySelector('.demo');
   var c = document.getElementById('campo');
