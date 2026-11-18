@@ -118,21 +118,95 @@
   p{color:var(--secundario)}
   .faixa p{color:var(--muted)}
 
-  .grupos{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
-  .grupo{border-top:2px solid var(--ink);padding:26px 0 40px}
-  .grupo h3{font-family:var(--display);font-stretch:76%;font-size:1.9rem;font-weight:800;margin-bottom:20px;color:var(--ink)}
-  .grupo:nth-child(2) h3{color:var(--ceu)}
-  .grupo ul{list-style:none;display:grid;gap:0}
-  .grupo li{padding:16px 0;border-top:1px solid var(--linha-clara)}
-  .grupo li:first-child{border-top:0}
-  .grupo li strong{display:block;color:var(--texto);font-weight:650;font-size:1rem}
-  .grupo li span{color:var(--secundario);font-size:.94rem}
-  .base{margin-top:8px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--linha-clara);border-radius:14px;overflow:hidden;background:#fff}
-  .base div{padding:22px 20px;border-left:1px solid var(--linha-clara)}
-  .base div:first-child{border-left:0}
-  .base b{display:block;font-family:var(--display);font-weight:750;font-size:1rem;margin-bottom:4px}
-  .base span{font-size:.88rem;color:var(--secundario)}
+  /* 4 etapas (as mesmas áreas da auditoria) */
+  .etapas{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px}
+  .etapa{border-top:2px solid var(--ink);padding:24px 0 44px;display:flex;flex-direction:column}
+  .et-top{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+  .et-n{font-family:var(--display);font-weight:850;font-stretch:72%;font-size:1.25rem;color:var(--ceu)}
+  .etapa h3{font-family:var(--display);font-stretch:76%;font-size:1.9rem;font-weight:800;margin:0;color:var(--ink)}
+  .etapa .dor{font-size:1.08rem;color:var(--texto);font-weight:550;margin-bottom:14px;max-width:440px}
+  .etapa ul{list-style:none;margin-bottom:18px}
+  .etapa li{padding:9px 0 9px 18px;border-top:1px solid var(--linha-clara);color:var(--secundario);font-size:.95rem;position:relative}
+  .etapa li::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:2px;background:var(--ambar)}
+  .selo{align-self:flex-start;margin-top:auto;font-size:.86rem;font-weight:700;color:var(--ceu);text-decoration:none;border:1px solid #C9D8FB;background:#EEF3FF;border-radius:999px;padding:6px 13px}
+  .selo:hover{background:#E0EAFF}
+  .ponte{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:#fff;border:1px solid var(--linha-clara);border-radius:16px;padding:22px 26px}
+  .ponte p{color:var(--texto);font-weight:600;font-size:1.05rem;max-width:620px}
+  .botao.escuro{background:var(--ink);color:var(--papel)}.botao.escuro:hover{background:var(--navy)}
+  .pacote.realce{outline:3px solid var(--ambar);outline-offset:4px;transition:outline-color .4s}
 
+  /* vitrine AbertoCore */
+  .core{background:#fff;border-top:1px solid var(--linha-clara)}
+  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
+  .passos-core{list-style:none;margin-top:30px;display:grid;gap:10px;counter-reset:pc}
+  .passos-core button{counter-increment:pc;display:grid;grid-template-columns:34px 1fr;column-gap:12px;text-align:left;width:100%;background:none;border:1px solid transparent;border-radius:14px;padding:14px 16px;font:inherit;color:inherit;cursor:pointer}
+  .passos-core button::before{content:counter(pc);grid-row:span 2;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;background:var(--papel);color:var(--secundario)}
+  .passos-core button b{font-family:var(--display);font-weight:750;font-size:1.08rem;color:var(--ink)}
+  .passos-core button span{color:var(--secundario);font-size:.94rem}
+  .passos-core button[aria-pressed="true"]{background:var(--papel);border-color:var(--linha-clara)}
+  .passos-core button[aria-pressed="true"]::before{background:var(--ambar);color:var(--ink)}
+  .core-nota{margin-top:18px;font-size:.9rem}
+  .exemplo.escuro{color:var(--secundario);border-bottom-color:var(--linha-clara)}
+  .tel-core{padding:14px 12px 18px}
+  .core-topo{display:flex;align-items:center;gap:8px;color:var(--papel);font-family:var(--display);font-weight:800;font-stretch:85%;padding:2px 6px 12px;border-bottom:1px solid var(--slate);margin-bottom:12px}
+  .core-topo i{width:8px;height:8px;border-radius:50%;background:#1F9D55;margin-left:2px}
+  .core-logo{width:22px;height:22px;border-radius:6px;background:var(--navy);position:relative;flex:none;display:inline-block}
+  .core-logo::after{content:"";position:absolute;left:5px;right:5px;bottom:4px;top:5px;border:3px solid var(--ambar);border-bottom:0;border-radius:8px 8px 0 0}
+  .cenas{position:relative;height:360px}
+  .cena{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;pointer-events:none}
+  .cena.ativa{opacity:1;transform:none}
+  .ac-item{display:flex;align-items:center;gap:10px;background:#18263F;border-radius:12px;padding:10px;color:var(--papel)}
+  .ac-item div{flex:1;min-width:0}.ac-item b{display:block;font-size:.88rem}.ac-item small{display:block;color:var(--muted);font-size:.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ac-item em{font-style:normal;font-size:.7rem;font-weight:800;background:var(--ceu);color:#fff;border-radius:999px;padding:1px 7px}
+  .ac-av{width:32px;height:32px;border-radius:50%;background:var(--pessego);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:.8rem;flex:none}
+  .ac-av.ia{background:var(--ambar);font-size:.7rem}
+  .ac-bal{max-width:86%;padding:9px 12px;border-radius:14px;font-size:.84rem;line-height:1.4;color:var(--papel)}
+  .ac-bal.cli{align-self:flex-start;background:var(--slate);border-bottom-left-radius:4px}
+  .ac-bal.bot{align-self:flex-end;background:var(--ceu);border-bottom-right-radius:4px}
+  .ac-bal.toque{align-self:flex-end;background:#2B4A8F}
+  .ac-bal.resumo{align-self:stretch;max-width:none;background:#18263F;border-left:3px solid var(--ambar);white-space:pre-line}
+  .ac-tag{display:block;font-size:.66rem;font-weight:800;color:var(--ink);background:var(--ambar);border-radius:999px;padding:1px 7px;width:max-content;margin-bottom:5px}
+  .ac-tag.azul{background:#C9D6F5}
+  .ac-bts{display:grid;gap:5px;margin-top:8px}
+  .ac-bts span{background:#fff;color:var(--ceu);font-weight:700;text-align:center;border-radius:8px;padding:5px;font-size:.78rem}
+  .ac-funil{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .ac-funil .col{background:#18263F;border-radius:10px;padding:8px 6px;min-height:200px}
+  .ac-funil small{display:block;color:var(--muted);font-size:.66rem;font-weight:700;margin-bottom:8px;line-height:1.2}
+  .ac-funil .card{border-radius:8px;padding:7px;font-size:.72rem;color:var(--papel);background:var(--slate)}
+  .ac-funil .card.fantasma{height:44px;opacity:.35}
+  .ac-funil .card b{display:block}.ac-funil .card span{display:block;color:var(--muted)}.ac-funil .card em{font-style:normal;font-weight:800;color:var(--ambar)}
+  .cena.ativa .card.move{animation:anda 1.2s .3s both cubic-bezier(.2,.8,.2,1)}
+  @keyframes anda{from{transform:translateX(-200%);opacity:.4}to{transform:none;opacity:1}}
+  .ac-nota{font-size:.78rem;color:var(--ink);background:#FFE4A8;border-radius:10px;padding:8px 10px}
+  @media (prefers-reduced-motion: reduce){.cena{transition:none}.cena.ativa .card.move{animation:none}}
+
+  /* auditoria: modelo do PDF */
+  .auditoria{grid-template-areas:"texto modelo" "cta modelo";align-items:start}
+  .au-texto{grid-area:texto}.au-modelo{grid-area:modelo}.au-cta{grid-area:cta;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .au-cta{align-self:start}
+  .au-cta span{color:var(--muted);font-size:.9rem}
+  .au-lista{list-style:none;margin-top:22px;display:grid;gap:10px}
+  .au-lista li{position:relative;padding-left:24px;color:var(--papel)}
+  .au-lista li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:3px;background:var(--ambar)}
+  .pdf{background:#fff;color:var(--texto);border-radius:6px;padding:26px 26px 22px;box-shadow:12px 12px 0 var(--ambar);transform:rotate(-1.2deg);font-size:.86rem}
+  .pdf-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+  .pdf-logo{display:flex;align-items:center;gap:7px;font-family:var(--display);font-weight:800;font-stretch:85%;font-size:1rem}
+  .pdf-logo b{color:var(--ambar)}
+  .pdf-meta{text-align:right;font-size:.72rem;color:var(--secundario);white-space:pre-line}
+  .pdf-nome{font-family:var(--display);font-weight:850;font-stretch:76%;font-size:1.6rem;line-height:1.05;color:var(--ink)}
+  .pdf-cid{color:var(--secundario);font-size:.8rem}
+  .pdf-nota{text-align:center;margin:6px auto 4px;max-width:220px}.pdf-nota svg{width:100%;display:block}
+  .pdf-nivel{font-weight:800;color:#E08A00;font-size:.85rem}
+  .pdf-areas{display:grid;gap:7px;margin:12px 0 14px}
+  .pdf-areas div{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:.78rem;font-weight:650}
+  .pdf-areas i{grid-column:1/-1;height:7px;border-radius:4px;background:#EDF0F5;overflow:hidden}.pdf-areas s{display:block;height:100%}
+  .pdf-sub{font-family:var(--display);font-weight:800;font-size:.95rem;margin-bottom:6px;color:var(--ink)}
+  .pdf-perdas{list-style:none;display:grid;gap:6px}
+  .pdf-perdas li{background:#FFF8EC;border-left:3px solid #E08A00;border-radius:6px;padding:7px 9px;font-size:.78rem;font-weight:600;color:var(--texto)}
+  .pdf-perdas li.alta{background:#FBF3F3;border-left-color:#D64545}
+  .pdf-rec{margin-top:12px;border:2px solid var(--ceu);border-radius:10px;padding:9px 12px;background:#F5F8FF;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--secundario)}
+  .pdf-rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
   .escada{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
   .pacote{padding:30px 24px 26px}
   .pacote{background:var(--ink);color:var(--papel);border:1px solid var(--slate);border-radius:6px;padding:34px 30px 30px}
@@ -178,11 +252,6 @@
   .fluxo h3{margin-top:18px}
 
   .auditoria{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .folha{background:var(--papel);color:var(--texto);border-radius:6px;padding:34px;box-shadow:12px 12px 0 var(--ambar);transform:rotate(-1.2deg)}
-  .folha h4{font-family:var(--display);font-weight:800;font-stretch:76%;font-size:1.6rem;margin-bottom:14px;color:var(--ink)}
-  .folha .linha{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--linha-clara);font-size:.92rem;color:var(--texto)}
-  .folha .linha em{font-style:normal;color:#B5452A;font-weight:650}
-  .folha .linha em.ok{color:#1F7A4D}
 
   .cad{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
   .cad form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -217,11 +286,9 @@
   footer .logo{height:28px}
 
   @media (max-width:900px){
-    .demo-grid,.auditoria,.cad{grid-template-columns:1fr}
-    .grupos{grid-template-columns:1fr;gap:0}
-    .base{grid-template-columns:1fr 1fr}
-    .base div:nth-child(3){border-left:0}
-    .base div:nth-child(n+3){border-top:1px solid var(--linha-clara)}
+    .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
+    .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
+    .etapas{grid-template-columns:1fr}
     .escada{grid-template-columns:1fr}
     .pacote.um,.pacote.dois,.pacote.tres,.pacote.quatro{min-height:0}
     .mods{grid-template-columns:1fr}
@@ -247,7 +314,9 @@
     .ab-hero .apoio{font-size:1rem;margin-top:18px}
     .ab-hero .acoes{margin-top:22px}
     .ab-hero .prova{margin-top:24px;gap:18px;font-size:.86rem}
-    .folha{padding:24px;box-shadow:8px 8px 0 var(--ambar)}
+    .pdf{padding:20px 18px 18px;box-shadow:8px 8px 0 var(--ambar)}
+    .ponte{padding:18px}.ponte .botao{width:100%;justify-content:center}
+    .au-cta .botao{width:100%;justify-content:center}
     .modulos{flex-direction:column;align-items:flex-start}
     .modulos .botao{width:100%;justify-content:center}
   }
@@ -352,45 +421,74 @@
         <h2 class="tempo"><span class="fixo" data-i18n="hServ"></span><span class="gira" aria-hidden="true"><span id="digita"></span><span class="cursor"></span></span><span class="so-leitor" data-i18n="hServLeitor"></span></h2>
         <p data-i18n="pServ"></p>
       </div>
-      <div class="grupos">
-        <div class="grupo">
-          <h3 data-i18n="g1"></h3>
-          <ul>
-            <li><strong data-i18n="s1t"></strong><span data-i18n="s1d"></span></li>
-            <li><strong data-i18n="s2t"></strong><span data-i18n="s2d"></span></li>
-            <li><strong data-i18n="s3t"></strong><span data-i18n="s3d"></span></li>
-          </ul>
-        </div>
-        <div class="grupo">
-          <h3 data-i18n="g2"></h3>
-          <ul>
-            <li><strong data-i18n="s4t"></strong><span data-i18n="s4d"></span></li>
-            <li><strong data-i18n="s5t"></strong><span data-i18n="s5d"></span></li>
-            <li><strong data-i18n="s6t"></strong><span data-i18n="s6d"></span></li>
-            <li><strong data-i18n="s7t"></strong><span data-i18n="s7d"></span></li>
-          </ul>
-        </div>
-        <div class="grupo">
-          <h3 data-i18n="g3"></h3>
-          <ul>
-            <li><strong data-i18n="s8t"></strong><span data-i18n="s8d"></span></li>
-            <li><strong data-i18n="s9t"></strong><span data-i18n="s9d"></span></li>
-          </ul>
-        </div>
-        <div class="grupo">
-          <h3 data-i18n="g4"></h3>
-          <ul>
-            <li><strong data-i18n="s10t"></strong><span data-i18n="s10d"></span></li>
-            <li><strong data-i18n="s11t"></strong><span data-i18n="s11d"></span></li>
-          </ul>
-        </div>
+      <div class="etapas">
+        <article class="etapa">
+          <div class="et-top"><span class="et-n">1</span><h3 data-i18n="e1t"></h3></div>
+          <p class="dor" data-i18n="e1d"></p>
+          <ul><li data-i18n="e1a"></li><li data-i18n="e1b"></li><li data-i18n="e1c"></li></ul>
+          <a class="selo" href="#pacotes" data-pacote="0" data-i18n="e1s"></a>
+        </article>
+        <article class="etapa">
+          <div class="et-top"><span class="et-n">2</span><h3 data-i18n="e2t"></h3></div>
+          <p class="dor" data-i18n="e2d"></p>
+          <ul><li data-i18n="e2a"></li><li data-i18n="e2b"></li><li data-i18n="e2c"></li></ul>
+          <a class="selo" href="#pacotes" data-pacote="1" data-i18n="e2s"></a>
+        </article>
+        <article class="etapa">
+          <div class="et-top"><span class="et-n">3</span><h3 data-i18n="e3t"></h3></div>
+          <p class="dor" data-i18n="e3d"></p>
+          <ul><li data-i18n="e3a"></li><li data-i18n="e3b"></li><li data-i18n="e3c"></li></ul>
+          <a class="selo" href="#pacotes" data-pacote="2" data-i18n="e3s"></a>
+        </article>
+        <article class="etapa">
+          <div class="et-top"><span class="et-n">4</span><h3 data-i18n="e4t"></h3></div>
+          <p class="dor" data-i18n="e4d"></p>
+          <ul><li data-i18n="e4a"></li><li data-i18n="e4b"></li><li data-i18n="e4c"></li></ul>
+          <a class="selo" href="#pacotes" data-pacote="2" data-i18n="e4s"></a>
+        </article>
       </div>
-      <div class="base">
-        <div><b data-i18n="b1t"></b><span data-i18n="b1d"></span></div>
-        <div><b data-i18n="b2t"></b><span data-i18n="b2d"></span></div>
-        <div><b data-i18n="b3t"></b><span data-i18n="b3d"></span></div>
-        <div><b data-i18n="b4t"></b><span data-i18n="b4d"></span></div>
-        <div><b data-i18n="b5t"></b><span data-i18n="b5d"></span></div>
+      <div class="ponte"><p data-i18n="ponteT"></p><a class="botao escuro" href="#auditoria" data-i18n="ponteB"></a></div>
+    </div>
+  </section>
+
+  <section id="abertocore" class="core">
+    <div class="wrap core-grid">
+      <div>
+        <h2 data-i18n="hCore"></h2>
+        <p class="core-p" data-i18n="pCore"></p>
+        <ol class="passos-core" id="passosCore">
+          <li><button type="button" data-cena="0" aria-pressed="true"><b data-i18n="k1t"></b><span data-i18n="k1d"></span></button></li>
+          <li><button type="button" data-cena="1" aria-pressed="false"><b data-i18n="k2t"></b><span data-i18n="k2d"></span></button></li>
+          <li><button type="button" data-cena="2" aria-pressed="false"><b data-i18n="k3t"></b><span data-i18n="k3d"></span></button></li>
+        </ol>
+        <p class="core-nota" data-i18n="kNota"></p>
+      </div>
+      <div class="palco">
+        <span class="exemplo escuro" data-i18n="exCore"></span>
+        <div class="celular tel-core" aria-hidden="true">
+          <div class="core-topo"><span class="core-logo"></span>AbertoCore<i></i></div>
+          <div class="cenas" id="cenas">
+            <div class="cena ativa">
+              <div class="ac-item novo"><span class="ac-av">M</span><div><b>Marcos</b><small data-i18n="kc1"></small></div><em>1</em></div>
+              <div class="ac-bal cli" data-i18n="kc1"></div>
+              <div class="ac-bal bot"><span class="ac-tag">Chatbot</span><span data-i18n="kc2"></span>
+                <div class="ac-bts"><span data-i18n="kb1"></span><span data-i18n="kb2"></span><span data-i18n="kb3"></span></div></div>
+              <div class="ac-bal cli toque" data-i18n="kb1"></div>
+            </div>
+            <div class="cena">
+              <div class="ac-funil">
+                <div class="col"><small data-i18n="kf1"></small><div class="card fantasma"></div></div>
+                <div class="col"><small data-i18n="kf2"></small><div class="card fantasma"></div></div>
+                <div class="col"><small data-i18n="kf3"></small><div class="card move"><b>Marcos</b><span data-i18n="kc3"></span><em data-i18n="kval"></em></div></div>
+              </div>
+              <div class="ac-nota" data-i18n="kc4"></div>
+            </div>
+            <div class="cena">
+              <div class="ac-item ia"><span class="ac-av ia">IA</span><div><b data-i18n="kia"></b><small>18:00</small></div><em>1</em></div>
+              <div class="ac-bal resumo"><span class="ac-tag azul" data-i18n="kres"></span><span data-i18n="kc5"></span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -459,26 +557,34 @@
     </div>
   </section>
 
-  <section class="faixa">
+  <section class="faixa" id="auditoria">
     <div class="wrap auditoria">
-      <div>
+      <div class="au-texto">
         <h2 data-i18n="hAud"></h2>
         <p style="margin-top:22px;max-width:480px" data-i18n="pAud"></p>
-        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnAud"></a>
-        </div>
+        <ul class="au-lista"><li data-i18n="aL1"></li><li data-i18n="aL2"></li><li data-i18n="aL3"></li></ul>
       </div>
-      <div>
+      <div class="au-modelo">
         <span class="exemplo" data-i18n="exAud"></span>
-        <div class="folha" aria-hidden="true">
-          <h4 data-i18n="auTit"></h4>
-          <div class="linha"><span data-i18n="au1"></span><em data-i18n="auFalta"></em></div>
-          <div class="linha"><span data-i18n="au2"></span><em data-i18n="auFalta"></em></div>
-          <div class="linha"><span data-i18n="au3"></span><em data-i18n="auFalta"></em></div>
-          <div class="linha"><span data-i18n="au4"></span><em class="ok" data-i18n="auOk"></em></div>
-          <div class="linha"><span data-i18n="au5"></span><em data-i18n="auFalta"></em></div>
+        <div class="pdf" aria-hidden="true">
+          <div class="pdf-cab"><span class="pdf-logo"><span class="core-logo"></span><span>aberto<b>digital</b></span></span><span class="pdf-meta" data-i18n="pdfMeta"></span></div>
+          <div class="pdf-nome">Auto Center Lima</div><div class="pdf-cid" data-i18n="pdfCid"></div>
+          <div class="pdf-nota">
+            <svg viewBox="0 0 220 124"><path d="M20 112a90 90 0 0 1 180 0" fill="none" stroke="#EDF0F5" stroke-width="18" stroke-linecap="round"/><path d="M20 112a90 90 0 0 1 180 0" fill="none" stroke="#E08A00" stroke-width="18" stroke-linecap="round" pathLength="100" stroke-dasharray="52 100"/><text x="110" y="96" text-anchor="middle" font-family="Archivo,system-ui" font-weight="800" font-size="44" fill="#101A2C">52</text><text x="110" y="116" text-anchor="middle" font-size="11" fill="#5B6678" data-i18n="de100"></text></svg>
+            <div class="pdf-nivel" data-i18n="pdfNivel"></div>
+          </div>
+          <div class="pdf-areas">
+            <div><span data-i18n="ar1"></span><b>70</b><i><s style="width:70%;background:#1F9D55"></s></i></div>
+            <div><span data-i18n="ar2"></span><b>45</b><i><s style="width:45%;background:#E08A00"></s></i></div>
+            <div><span data-i18n="ar3"></span><b>30</b><i><s style="width:30%;background:#D64545"></s></i></div>
+            <div><span data-i18n="ar4"></span><b>60</b><i><s style="width:60%;background:#E08A00"></s></i></div>
+          </div>
+          <div class="pdf-sub" data-i18n="pdfPerde"></div>
+          <ul class="pdf-perdas"><li class="alta" data-i18n="pd1"></li><li class="alta" data-i18n="pd2"></li><li data-i18n="pd3"></li></ul>
+          <div class="pdf-rec"><span data-i18n="pdfRec"></span><b data-i18n="nome3"></b></div>
         </div>
       </div>
+      <div class="au-cta"><a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnAud"></a><span data-i18n="aCta"></span></div>
     </div>
   </section>
 
@@ -559,26 +665,34 @@
       c3: 'Quanto fica a troca de óleo?',
       c4: 'Sai a partir de R$ 189, com filtro incluído. Passo para o Rogério confirmar o horário?',
       c5: 'Sim, pode mandar pra mim. Agendado para sábado às 10h.',
+      pServ: 'Até comprar de você, o cliente passa por 4 etapas. Em cada uma, um ponto fraco custa venda. A gente cuida das quatro, e você começa pela que mais dói.',
+      e1t: 'Ser encontrado', e1d: 'Quem busca "mecânica em Arujá" precisa achar você primeiro, não o concorrente.',
+      e1a: 'Perfil no Google completo, verificado e com fotos', e1b: 'Site de 1 página rápido no celular, com botão de WhatsApp', e1c: 'Gestão mensal do perfil: posts, fotos novas e horários de feriado',
+      e1s: 'Incluído a partir do Start',
+      e2t: 'Ser escolhido', e2d: 'Nota, fotos e respostas decidem entre você e o vizinho.',
+      e2a: 'Logo e identidade visual para usar em tudo', e2b: 'Respostas às avaliações escritas com IA, revisadas antes de publicar', e2c: 'Pós-venda que pede avaliação e Instagram profissional',
+      e2s: 'Incluído a partir do Presença',
+      e3t: 'Atender rápido', e3d: 'Quem responde primeiro fecha. Cliente que espera vai embora.',
+      e3a: 'WhatsApp Business com catálogo, saudação e respostas rápidas', e3b: 'Chatbot com botões que responde e separa quem quer orçamento', e3c: 'AbertoCore: todas as conversas e clientes num lugar só',
+      e3s: 'Incluído a partir do Completo',
+      e4t: 'Vender de novo', e4d: 'Quem já comprou é o cliente mais barato de conquistar de novo.',
+      e4a: 'Funil com lembrete de retorno para nenhum orçamento ficar parado', e4b: 'Resumo do dia e aviso de cliente sem resposta, feitos pela IA', e4c: 'Conteúdo mensal e cardápio ou catálogo com QR Code',
+      e4s: 'Incluído a partir do Completo',
+      ponteT: 'Não sabe em qual etapa está perdendo cliente? A auditoria gratuita mostra, com nota de 0 a 100.',
+      ponteB: 'Ver como é a auditoria',
+      hCore: 'Tudo chega num lugar só.',
+      pCore: 'O AbertoCore é o nosso sistema de atendimento. Vem nos pacotes Completo e Enterprise, já configurado com as perguntas e os preços do seu negócio.',
+      k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
+      k2t: 'O card anda sozinho no funil', k2d: 'A IA lê a conversa, anota o que o cliente quer, o valor e quando retornar.',
+      k3t: 'Às 18h chega o resumo do dia', k3d: 'Quantas conversas, quanto está em negociação e quem precisa de você.',
+      kNota: 'Funciona no celular e no computador, com os mesmos dados nos dois.', exCore: 'Exemplo ilustrativo do AbertoCore',
+      kc1: 'Oi! Quanto fica a revisão do Onix?', kc2: 'Olá! Aqui é o Auto Center Lima. Como podemos ajudar?',
+      kb1: 'Orçamento', kb2: 'Horário e endereço', kb3: 'Falar com uma pessoa',
+      kf1: 'Novo contato', kf2: 'Qualificado', kf3: 'Proposta enviada', kc3: 'Revisão do Onix',
+      kc4: 'IA atualizou o card: valor R$ 450, retorno na sexta.', kia: 'Assistente AbertoCore', kres: 'Resumo do dia',
+      kc5: '14 conversas, 3 orçamentos (R$ 2.300).\nPrecisam de você: Marcos aguarda o horário da revisão.\nAmanhã: 2 retornos combinados.',
       hServ: WM + ' é para quem não quer perder tempo',
       hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
-      pServ: 'Tudo para o seu negócio ser encontrado e lembrado mais facilmente, respondendo a todos com qualidade e agilidade. Você começa pela base e adiciona o resto quando quiser.',
-      g1: 'Atender', g2: 'Vender de novo', g3: 'Mostrar', g4: 'Controlar',
-      s1t: 'Chatbot de menu no WhatsApp', s1d: 'Um menu de opções responde as perguntas frequentes e separa os curiosos dos interessados.',
-      s2t: 'Agendamento online', s2d: 'Link de agenda com lembrete automático, para diminuir faltas.',
-      s3t: 'Respostas às avaliações do Google', s3d: 'A IA escreve a sugestão e você aprova antes de publicar.',
-      s4t: 'Cardápio ou catálogo com QR Code', s4d: 'Para restaurantes, padarias e lojas, sem depender de impressão.',
-      s5t: 'Pós-venda que pede avaliação', s5d: 'Mensagem no WhatsApp depois da compra, com link direto para o Google.',
-      s6t: 'Reativação de clientes antigos', s6d: 'Mensagem personalizada só para quem aceitou receber, dentro da LGPD.',
-      s7t: 'Página de oferta sazonal', s7d: 'Para Dia das Mães, Black Friday e Natal, pronta em poucos dias.',
-      s8t: 'Calendário mensal de conteúdo', s8d: 'Posts, legendas e roteiros de Reels, com data de publicação definida.',
-      s9t: 'Fotos e vídeos curtos com IA', s9d: 'Edição, legendas e cortes para Instagram e TikTok.',
-      s10t: 'Painel simples de resultados', s10d: 'Ligações, rotas e mensagens vindas do seu perfil no Google, num só lugar.',
-      s11t: 'Rotina administrativa automática', s11d: 'Orçamento, recibo e controle de caixa em planilha, sem papel.',
-      b1t: 'Perfil no Google', b1d: 'Aparece no Maps e na busca',
-      b2t: 'Site de 1 página', b2d: 'Rápido no celular, com botão de WhatsApp',
-      b3t: 'WhatsApp Business', b3d: 'Catálogo e respostas rápidas prontos',
-      b4t: 'Identidade visual', b4d: 'Logo e cores para usar em tudo',
-      b5t: 'Auditoria gratuita', b5d: 'PDF de 1 página com o que falta',
       hPac: 'Quatro pontos de partida. Todos com entrega configurada.',
       pPac: 'Valores de lançamento, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
       pl0: 'Mensal', pl1: '6 meses <span>−15%</span>', pl2: '12 meses <span>−30%</span>',
@@ -587,7 +701,7 @@
       setup: '',
       f1a: 'Perfil no Google otimizado e verificado', f1b: 'Site de 1 página com botão de WhatsApp', f1c: 'Domínio no 1º ano, hospedagem e 1 alteração por mês',
       f2a: 'Tudo do Start', f2b: 'Logo e identidade visual', f2c: 'WhatsApp Business com catálogo e respostas rápidas', f2d: '1º mês de acompanhamento e relatório mensal do Google',
-      f3a: 'Tudo do Presença', f3b: 'AbertoCore: conversas e clientes num só lugar', f3c: 'Chatbot de menu que faz a triagem no WhatsApp', f3d: 'Assistente de IA que sugere respostas e lembra os retornos',
+      f3a: 'Tudo do Presença', f3b: 'AbertoCore: conversas e clientes num só lugar', f3c: 'Chatbot de menu que faz a triagem no WhatsApp', f3d: 'Assistente de IA que organiza os clientes e manda o resumo do dia',
       f4a: 'Tudo do Completo', f4b: 'Instagram, Facebook e e-mail na mesma caixa', f4c: 'Atendimento com IA 24h que responde, qualifica e agenda', f4d: 'CRM completo, usuários ilimitados e e-mail com o seu domínio',
       btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo', btn4: 'Quero o Enterprise',
       hMod: 'Módulos avulsos',
@@ -599,9 +713,13 @@
       st3t: 'Entregue e acompanhado', st3d: 'Você recebe tudo configurado, com um passo a passo de uso. Depois seguimos com a manutenção.',
       hAud: 'Antes de contratar, você recebe uma auditoria de graça.',
       pAud: 'Olhamos o seu Google, o seu site e o seu WhatsApp e mandamos um PDF de 1 página com o que está deixando clientes escaparem. Sem compromisso.',
-      btnAud: 'Pedir minha auditoria', exAud: 'Exemplo ilustrativo de auditoria',
-      auTit: 'Auditoria da loja', au1: 'Perfil no Google com fotos', au2: 'Horário de funcionamento', au3: 'Resposta às avaliações', au4: 'Botão de WhatsApp no site', au5: 'Agenda ou pedido online',
-      auFalta: 'Falta', auOk: 'Ok',
+      btnAud: 'Pedir minha auditoria', exAud: 'Modelo do PDF que você recebe',
+      aL1: 'Nota de 0 a 100 nas 4 etapas: ser encontrado, ser escolhido, atender e vender de novo', aL2: 'O que está fazendo você perder cliente hoje, em linguagem simples', aL3: 'Comparação com o seu principal concorrente e o pacote que resolve',
+      aCta: 'Você recebe pelo WhatsApp, sem compromisso.',
+      pdfMeta: 'Auditoria de presença digital\n18/11/2026', pdfCid: 'Oficina mecânica · Arujá/SP', pdfNivel: 'Pode melhorar',
+      ar1: 'Ser encontrado', ar2: 'Confiança e reputação', ar3: 'Atendimento', ar4: 'Redes sociais',
+      pdfPerde: 'O que está perdendo hoje', pd1: 'Mensagens no WhatsApp ficam horas sem resposta', pd2: 'Avaliações ruins sem resposta afastam clientes', pd3: 'Instagram parado desde agosto',
+      pdfRec: 'Pacote recomendado', de100: 'de 100', kval: 'R$ 450',
       hForm: 'Deixe seus dados e falamos com você.',
       pForm: 'Leva menos de 1 minuto. Sem senha e sem baixar nada. Ao enviar, abrimos seu WhatsApp com os dados prontos.',
       fNome: 'Seu nome', fNeg: 'Nome do negócio', fRamo: 'Tipo de negócio', fCid: 'Cidade e estado', fZap: 'WhatsApp com DDD', fNeed: 'O que você precisa agora?',
@@ -643,26 +761,34 @@
       c3: 'How much is an oil change?',
       c4: 'Starts at a fixed price, filter included. Want me to have Rogério confirm a time?',
       c5: 'Yes, send it to me. Booked for Saturday at 10am.',
+      pServ: 'Before buying from you, a customer goes through 4 stages. A weak spot in any of them costs you sales. We take care of all four, and you start with the one that hurts most.',
+      e1t: 'Get found', e1d: 'Someone searching for "mechanic near me" needs to find you first, not the competitor.',
+      e1a: 'Complete, verified Google profile with photos', e1b: 'One-page website, fast on mobile, with a WhatsApp button', e1c: 'Monthly profile care: posts, new photos and holiday hours',
+      e1s: 'Included from Start',
+      e2t: 'Get chosen', e2d: 'Rating, photos and replies decide between you and the shop next door.',
+      e2a: 'Logo and visual identity for everything', e2b: 'AI-written review replies, checked before they post', e2c: 'Post-sale review requests and a professional Instagram',
+      e2s: 'Included from Presence',
+      e3t: 'Answer fast', e3d: 'Whoever answers first closes the sale. Customers who wait walk away.',
+      e3a: 'WhatsApp Business with catalog, greeting and quick replies', e3b: 'Button chatbot that answers and spots who wants a quote', e3c: 'AbertoCore: every chat and customer in one place',
+      e3s: 'Included from Complete',
+      e4t: 'Sell again', e4d: 'Past customers are the cheapest ones to win again.',
+      e4a: 'Pipeline with follow-up reminders so no quote goes cold', e4b: 'Daily summary and no-reply alerts written by AI', e4c: 'Monthly content and a QR code menu or catalog',
+      e4s: 'Included from Complete',
+      ponteT: 'Not sure which stage is costing you customers? The free audit shows it, with a score from 0 to 100.',
+      ponteB: 'See what the audit looks like',
+      hCore: 'Everything lands in one place.',
+      pCore: 'AbertoCore is our customer service system. It comes with the Complete and Enterprise packages, already set up with your business questions and prices.',
+      k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
+      k2t: 'The card moves by itself', k2d: 'AI reads the chat and notes what the customer wants, the value and when to follow up.',
+      k3t: 'At 6pm the daily summary arrives', k3d: 'How many chats, how much is in negotiation and who needs you.',
+      kNota: 'Works on phone and computer, with the same data on both.', exCore: 'Illustrative AbertoCore example',
+      kc1: 'Hi! How much is a service for my car?', kc2: 'Hello! This is Lima Auto Center. How can we help?',
+      kb1: 'Get a quote', kb2: 'Hours and address', kb3: 'Talk to a person',
+      kf1: 'New contact', kf2: 'Qualified', kf3: 'Proposal sent', kc3: 'Car service',
+      kc4: 'AI updated the card: value $450, follow up on Friday.', kia: 'AbertoCore Assistant', kres: 'Daily summary',
+      kc5: '14 chats, 3 quotes ($2,300).\nNeed you: Marcos is waiting for a service time.\nTomorrow: 2 follow-ups scheduled.',
       hServ: WM + ' is for people who don\'t want to waste time',
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
-      pServ: 'Everything your business needs to be found and remembered more easily, answering everyone with quality and speed. Start with the basics and add the rest when you want.',
-      g1: 'Answer', g2: 'Sell again', g3: 'Show up', g4: 'Stay in control',
-      s1t: 'Menu chatbot on WhatsApp', s1d: 'A simple options menu answers common questions and separates browsers from buyers.',
-      s2t: 'Online booking', s2d: 'Booking link with automatic reminders to cut no-shows.',
-      s3t: 'Replies to Google reviews', s3d: 'AI drafts the reply and you approve it before it posts.',
-      s4t: 'Menu or catalog with QR code', s4d: 'For restaurants, bakeries and shops, no reprinting needed.',
-      s5t: 'Post-sale review requests', s5d: 'A WhatsApp message after purchase, with a direct link to Google.',
-      s6t: 'Winning back past customers', s6d: 'Personal messages only to people who opted in, consent-based and compliant with messaging rules.',
-      s7t: 'Seasonal offer page', s7d: 'For Mother\'s Day, Black Friday and Christmas, ready in a few days.',
-      s8t: 'Monthly content calendar', s8d: 'Posts, captions and Reels scripts with set publishing dates.',
-      s9t: 'AI photos and short videos', s9d: 'Editing, captions and cuts for Instagram and TikTok.',
-      s10t: 'Simple results dashboard', s10d: 'Calls, directions and messages from your Google profile, in one place.',
-      s11t: 'Automated admin routine', s11d: 'Quotes, receipts and cash tracking in a spreadsheet, no paper.',
-      b1t: 'Google profile', b1d: 'Shows up in Maps and search',
-      b2t: 'One-page website', b2d: 'Fast on mobile, with a WhatsApp button',
-      b3t: 'WhatsApp Business', b3d: 'Catalog and quick replies ready',
-      b4t: 'Visual identity', b4d: 'Logo and colors for everything',
-      b5t: 'Free audit', b5d: 'One-page PDF of what is missing',
       hPac: 'Four starting points. Every one comes fully set up.',
       pPac: 'Prices for the US are quoted in dollars. You get a written proposal before paying anything.',
       pl0: 'Monthly', pl1: '6 months <span>−15%</span>', pl2: '12 months <span>−30%</span>',
@@ -671,7 +797,7 @@
       setup: 'Setup and monthly plan confirmed in writing',
       f1a: 'Google Business Profile optimized and verified', f1b: 'One-page website with a WhatsApp button', f1c: 'Domain for the first year, hosting and 1 change a month',
       f2a: 'Everything in Start', f2b: 'Logo and visual identity', f2c: 'WhatsApp Business with catalog and quick replies', f2d: 'First month of follow-up and a monthly Google report',
-      f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that drafts replies and reminds you to follow up',
+      f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that organizes customers and sends a daily summary',
       f4a: 'Everything in Complete', f4b: 'Instagram, Facebook and email in one inbox', f4c: '24/7 AI service that answers, qualifies and books', f4d: 'Full CRM, unlimited users and email on your domain',
       btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete', btn4: 'Choose Enterprise',
       hMod: 'Add-on modules',
@@ -683,9 +809,13 @@
       st3t: 'Delivered and supported', st3d: 'You get everything set up, with a how-to guide. Maintenance continues after that.',
       hAud: 'Before you hire us, you get a free audit.',
       pAud: 'We review your Google profile, website and WhatsApp and send a one-page PDF with what is costing you customers. No commitment.',
-      btnAud: 'Request my audit', exAud: 'Illustrative audit example',
-      auTit: 'Store audit', au1: 'Google profile with photos', au2: 'Opening hours', au3: 'Replies to reviews', au4: 'WhatsApp button on the website', au5: 'Online booking or ordering',
-      auFalta: 'Missing', auOk: 'OK',
+      btnAud: 'Request my audit', exAud: 'Sample of the PDF you receive',
+      aL1: 'A score from 0 to 100 across 4 stages: get found, get chosen, answer and sell again', aL2: 'What is costing you customers today, in plain language', aL3: 'A comparison with your main competitor and the package that fixes it',
+      aCta: 'Sent over WhatsApp, no commitment.',
+      pdfMeta: 'Digital presence audit\n11/18/2026', pdfCid: 'Auto repair shop · Arujá, Brazil', pdfNivel: 'Room to improve',
+      ar1: 'Get found', ar2: 'Trust and reputation', ar3: 'Customer service', ar4: 'Social media',
+      pdfPerde: 'What it is losing today', pd1: 'WhatsApp messages wait hours for a reply', pd2: 'Unanswered bad reviews push customers away', pd3: 'Instagram inactive since August',
+      pdfRec: 'Recommended package', de100: 'out of 100', kval: '$450',
       hForm: 'Leave your details and we will reach out.',
       pForm: 'Takes under a minute. No password and no app to download. Sending opens WhatsApp with your details filled in.',
       fNome: 'Your name', fNeg: 'Business name', fRamo: 'Type of business', fCid: 'City and state', fZap: 'WhatsApp number', fNeed: 'What do you need most right now?',
@@ -926,6 +1056,33 @@
   window.addEventListener('resize', function(){ ajusta(); desenha(); });
   if (reduz) desenha(); else loop();
 })();
+
+  /* selo da etapa: rola até Pacotes e destaca o pacote */
+  document.querySelectorAll('.selo[data-pacote]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var alvo = document.querySelectorAll('.escada .pacote')[+a.getAttribute('data-pacote')];
+      if (!alvo) return;
+      document.querySelectorAll('.pacote.realce').forEach(function(x){ x.classList.remove('realce'); });
+      setTimeout(function(){ alvo.classList.add('realce'); setTimeout(function(){ alvo.classList.remove('realce'); }, 2600); }, 500);
+    });
+  });
+
+  /* vitrine do AbertoCore: 3 cenas que se revezam enquanto a seção está visível */
+  (function(){
+    var cenas = document.querySelectorAll('#cenas .cena'), bts = document.querySelectorAll('#passosCore button');
+    if (!cenas.length) return;
+    var atualC = 0, timer = null, parado = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function mostra(i){
+      atualC = i;
+      cenas.forEach(function(c, k){ c.classList.toggle('ativa', k === i); });
+      bts.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i); });
+    }
+    function roda(){ clearInterval(timer); if (!parado) timer = setInterval(function(){ mostra((atualC + 1) % cenas.length); }, 4200); }
+    bts.forEach(function(b, k){ b.addEventListener('click', function(){ mostra(k); roda(); }); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) roda(); else clearInterval(timer); }); }, {threshold:.3}).observe(document.getElementById('abertocore'));
+    }
+  })();
 </script>
 
 </body>
