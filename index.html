@@ -236,9 +236,9 @@
   .tab-pac.en tr.pr{display:none}
   .tab-pac tr.prazo td{color:var(--papel);font-size:.85rem;font-weight:650}
   .tab-pac tfoot td,.tab-pac tfoot th{border-bottom:0;padding:16px 8px 18px}
-  .tab-pac [data-c="2"]{background-color:rgba(47,111,237,.10)}
-  .tab-pac tr.nomes th[data-c="2"]{box-shadow:inset 0 3px 0 var(--ceu)}
-  .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-1 [data-c="1"],.tab-pac.realce-2 [data-c="2"],.tab-pac.realce-3 [data-c="3"]{background-color:rgba(255,176,32,.22);transition:background-color .4s}
+  .tab-pac [data-c="1"]{background-color:rgba(47,111,237,.10)}
+  .tab-pac tr.nomes th[data-c="1"]{box-shadow:inset 0 3px 0 var(--ceu)}
+  .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-1 [data-c="1"],.tab-pac.realce-2 [data-c="2"]{background-color:rgba(255,176,32,.22);transition:background-color .4s}
   .botao.mini{padding:9px 10px;font-size:.88rem;width:100%;justify-content:center}
   .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:10px}
   .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
@@ -485,13 +485,13 @@
           <div class="et-top"><span class="et-n">3</span><h3 data-i18n="e3t"></h3></div>
           <p class="dor" data-i18n="e3d"></p>
           <ul><li data-i18n="e3a"></li><li data-i18n="e3b"></li><li data-i18n="e3c"></li></ul>
-          <a class="selo" href="#pacotes" data-pacote="2" data-i18n="e3s"></a>
+          <a class="selo" href="#pacotes" data-pacote="1" data-i18n="e3s"></a>
         </article>
         <article class="etapa">
           <div class="et-top"><span class="et-n">4</span><h3 data-i18n="e4t"></h3></div>
           <p class="dor" data-i18n="e4d"></p>
           <ul><li data-i18n="e4a"></li><li data-i18n="e4b"></li><li data-i18n="e4c"></li></ul>
-          <a class="selo" href="#pacotes" data-pacote="2" data-i18n="e4s"></a>
+          <a class="selo" href="#pacotes" data-pacote="1" data-i18n="e4s"></a>
         </article>
       </div>
       <div class="ponte"><p data-i18n="ponteT"></p><a class="botao escuro" href="#auditoria" data-i18n="ponteB"></a></div>
@@ -514,43 +514,43 @@
         <table class="tab-pac">
           <caption class="so-leitor" id="compTit" data-i18n="tCap"></caption>
           <thead>
-            <tr class="nomes"><th scope="col" class="b"></th><th scope="col" data-c="0">Start</th><th scope="col" data-c="1" data-i18n="nomeP"></th><th scope="col" data-c="2" data-i18n="nomeC"></th><th scope="col" data-c="3" data-i18n="nomeE"></th></tr>
-            <tr class="pr"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td><td data-c="3" data-impl="3"></td></tr>
-            <tr class="pr"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td><td data-c="3" data-mes="3"></td></tr>
+            <tr class="nomes"><th scope="col" class="b"></th><th scope="col" data-c="0">Start</th><th scope="col" data-c="1"><span data-i18n="nomeP"></span></th><th scope="col" data-c="2"><span data-i18n="nomeC"></span></th></tr>
+            <tr class="pr"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
+            <tr class="pr"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
           </thead>
           <tbody>
-            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e1t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t1"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t2"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t3"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e1t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t1"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t2"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t3"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e2t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t4"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t5"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t6"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e2t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t4"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t5"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t6"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e3t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t7"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t8"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="txt" data-i18n="tUsa"></td><td data-c="3" class="txt" data-i18n="tUsb"></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t9"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t10"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t11"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e3t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t7"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t8"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="txt" data-i18n="tUsa"></td><td data-c="2" class="txt" data-i18n="tUsb"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t9"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t10"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t11"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e4t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t12"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t13"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t14"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t15"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t16"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e4t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t12"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t13"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t14"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t15"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t16"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td><td data-c="3" data-i18n="tPz3"></td></tr>
+            <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td></tr>
           </tbody>
           <tfoot>
-            <tr><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="3"><a class="botao mini wa" data-msg="msgP4" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
+            <tr><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
           </tfoot>
         </table>
       </div>
@@ -600,7 +600,7 @@
           </div>
           <div class="pdf-sub" data-i18n="pdfPerde"></div>
           <ul class="pdf-perdas"><li class="alta" data-i18n="pd1"></li><li class="alta" data-i18n="pd2"></li><li data-i18n="pd3"></li></ul>
-          <div class="pdf-rec"><span data-i18n="pdfRec"></span><b data-i18n="nome3"></b></div>
+          <div class="pdf-rec"><span data-i18n="pdfRec"></span><b data-i18n="nome2"></b></div>
         </div>
       </div>
       <div class="au-cta"><a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnAud"></a><span data-i18n="aCta"></span></div>
@@ -693,14 +693,14 @@
       e2s: 'Incluído a partir do Presença',
       e3t: 'Atender rápido', e3d: 'Quem responde primeiro fecha. Cliente que espera vai embora.',
       e3a: 'WhatsApp Business com catálogo, saudação e respostas rápidas', e3b: 'Chatbot com botões que responde e separa quem quer orçamento', e3c: 'AbertoCore: todas as conversas e clientes num lugar só',
-      e3s: 'Incluído a partir do Completo',
+      e3s: 'Incluído a partir do Presença',
       e4t: 'Vender de novo', e4d: 'Quem já comprou é o cliente mais barato de conquistar de novo.',
       e4a: 'Funil com lembrete de retorno para nenhum orçamento ficar parado', e4b: 'Resumo do dia e aviso de cliente sem resposta, feitos pela IA', e4c: 'Conteúdo mensal e cardápio ou catálogo com QR Code',
-      e4s: 'Incluído a partir do Completo',
+      e4s: 'Incluído a partir do Presença',
       ponteT: 'Não sabe em qual etapa está perdendo cliente? A auditoria gratuita mostra, com nota de 0 a 100.',
       ponteB: 'Ver como é a auditoria',
       hCore: 'O cliente pergunta. O AbertoCore responde na hora.',
-      pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem nos pacotes Completo e Enterprise, já configurado para o seu negócio.',
+      pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem a partir do pacote Presença, já configurado para o seu negócio.',
       k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
       k2t: 'A IA organiza seus clientes', k2d: 'Separa quem pediu orçamento, quem já comprou e quem precisa de retorno, sem você anotar nada.',
       k3t: 'Às 18h, o resumo do dia', k3d: 'Numa mensagem só: como foi o dia e quem está esperando por você.',
@@ -712,7 +712,7 @@
       kc5: '14 conversas, 3 orçamentos (R$ 2.300).\nPrecisam de você: Marcos aguarda o horário da revisão.\nAmanhã: 2 retornos combinados.',
       hServ: WM + ' é para quem não quer perder tempo',
       hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
-      hPac: 'Quatro pontos de partida. Todos com entrega configurada.',
+      hPac: 'Três pontos de partida. Todos com entrega configurada.',
       pPac: 'Valores de lançamento, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
       pl0: 'Mensal', pl1: '6 meses <span>−15%</span>', pl2: '12 meses <span>−30%</span>',
       pn0: 'Sem fidelidade. Cancele com 30 dias de aviso.', pn1: 'Mensalidade com 15% de desconto, com prazo mínimo de 6 meses.', pn2: 'Mensalidade com 30% de desconto, com prazo mínimo de 12 meses.',
@@ -729,7 +729,7 @@
       t7: 'WhatsApp Business com catálogo e respostas rápidas', t8: 'AbertoCore: conversas e clientes num só lugar', tUsa: 'até 2 usuários', tUsb: 'sem limite',
       t9: 'Chatbot de menu com botões', t10: 'IA que atende sozinha 24h, qualifica e agenda', t11: 'Instagram, Facebook e e-mail na mesma caixa',
       t12: 'Funil e agenda com lembrete de retorno', t13: 'Assistente de IA interno e resumo do dia', t14: 'Agendamento online', t15: 'E-mail com o seu domínio', t16: 'Painel de resultados e ajustes sob medida',
-      tPrazo: 'Prazo de entrega (dias úteis)', tPz0: '7', tPz1: '10', tPz2: '15', tPz3: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pre&shy;sença', nomeC: 'Com&shy;pleto',
+      tPrazo: 'Prazo de entrega (dias úteis)', tPz0: '7', tPz1: '15', tPz2: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pre&shy;sença', nomeC: 'Com&shy;pleto',
       hMod: 'Módulos avulsos',
       pMod: 'Entram em qualquer pacote, quando você precisar. O valor vai na sua proposta.',
       btnMod: 'Perguntar sobre módulos',
@@ -796,14 +796,14 @@
       e2s: 'Included from Presence',
       e3t: 'Answer fast', e3d: 'Whoever answers first closes the sale. Customers who wait walk away.',
       e3a: 'WhatsApp Business with catalog, greeting and quick replies', e3b: 'Button chatbot that answers and spots who wants a quote', e3c: 'AbertoCore: every chat and customer in one place',
-      e3s: 'Included from Complete',
+      e3s: 'Included from Presence',
       e4t: 'Sell again', e4d: 'Past customers are the cheapest ones to win again.',
       e4a: 'Pipeline with follow-up reminders so no quote goes cold', e4b: 'Daily summary and no-reply alerts written by AI', e4c: 'Monthly content and a QR code menu or catalog',
-      e4s: 'Included from Complete',
+      e4s: 'Included from Presence',
       ponteT: 'Not sure which stage is costing you customers? The free audit shows it, with a score from 0 to 100.',
       ponteB: 'See what the audit looks like',
       hCore: 'The customer asks. AbertoCore answers right away.',
-      pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes with the Complete and Enterprise packages, set up for your business.',
+      pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes from the Presence package up, set up for your business.',
       k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
       k2t: 'AI keeps your customers organized', k2d: 'It sorts who asked for a quote, who already bought and who needs a follow-up, without you writing anything down.',
       k3t: 'At 6pm, your daily summary', k3d: 'One message: how the day went and who is waiting for you.',
@@ -815,7 +815,7 @@
       kc5: '14 chats, 3 quotes ($2,300).\nNeed you: Marcos is waiting for a service time.\nTomorrow: 2 follow-ups scheduled.',
       hServ: WM + ' is for people who don\'t want to waste time',
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
-      hPac: 'Four starting points. Every one comes fully set up.',
+      hPac: 'Three starting points. Every one comes fully set up.',
       pPac: 'Prices for the US are quoted in dollars. You get a written proposal before paying anything.',
       pl0: 'Monthly', pl1: '6 months <span>−15%</span>', pl2: '12 months <span>−30%</span>',
       pn0: 'No contract. Cancel with 30 days notice.', pn1: '15% off the monthly fee with a 6-month minimum.', pn2: '30% off the monthly fee with a 12-month minimum.',
@@ -832,7 +832,7 @@
       t7: 'WhatsApp Business with catalog and quick replies', t8: 'AbertoCore: chats and customers in one place', tUsa: 'up to 2 users', tUsb: 'unlimited',
       t9: 'Menu chatbot with buttons', t10: 'AI that answers 24/7, qualifies and books', t11: 'Instagram, Facebook and email in one inbox',
       t12: 'Pipeline and follow-up reminders', t13: 'Internal AI assistant and daily summary', t14: 'Online booking', t15: 'Email on your own domain', t16: 'Results dashboard and custom tweaks',
-      tPrazo: 'Delivery (business days)', tPz0: '7', tPz1: '10', tPz2: '15', tPz3: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pres&shy;ence', nomeC: 'Com&shy;plete',
+      tPrazo: 'Delivery (business days)', tPz0: '7', tPz1: '15', tPz2: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pres&shy;ence', nomeC: 'Com&shy;plete',
       hMod: 'Add-on modules',
       pMod: 'Add them to any package, whenever you need them. Pricing comes in your proposal.',
       btnMod: 'Ask about modules',
@@ -924,9 +924,9 @@
   } else { dg.visivel = true; }
 
   /* preços: implantação + mensalidade; o plano dá desconto só na mensalidade */
-  var PRECOS = [[650, 49], [990, 99], [1900, 249], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 0;
+  var PRECOS = [[650, 49], [1650, 150], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 0;
   var MODS = [
-    ['Chatbot de menu', 'Menu chatbot', 'Triagem com botões no WhatsApp, para quem tem Start ou Presença', 'Button triage on WhatsApp, for Start or Presence'],
+    ['Chatbot de menu', 'Menu chatbot', 'Triagem com botões no WhatsApp, para quem tem o Start', 'Button triage on WhatsApp, for Start customers'],
     ['Gestão mensal do perfil no Google', 'Monthly Google profile care', 'Posts, fotos novas, horários de feriado e respostas', 'Posts, new photos, holiday hours and replies'],
     ['Respostas às avaliações do Google', 'Google review replies', 'A IA sugere, revisamos e publicamos em até 48h', 'AI drafts, we review and post within 48h'],
     ['Pós-venda que pede avaliação', 'Post-sale review requests', 'Mensagem pronta, QR Code e cartão de balcão', 'Ready message, QR code and counter card'],
@@ -1090,7 +1090,7 @@
     a.addEventListener('click', function(){
       var t = document.querySelector('.tab-pac'), k = 'realce-' + a.getAttribute('data-pacote');
       if (!t) return;
-      t.classList.remove('realce-0', 'realce-1', 'realce-2', 'realce-3');
+      t.classList.remove('realce-0', 'realce-1', 'realce-2');
       setTimeout(function(){ t.classList.add(k); setTimeout(function(){ t.classList.remove(k); }, 2800); }, 500);
     });
   });
