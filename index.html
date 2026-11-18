@@ -133,7 +133,6 @@
   .ponte{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:#fff;border:1px solid var(--linha-clara);border-radius:16px;padding:22px 26px}
   .ponte p{color:var(--texto);font-weight:600;font-size:1.05rem;max-width:620px}
   .botao.escuro{background:var(--ink);color:var(--papel)}.botao.escuro:hover{background:var(--navy)}
-  .pacote.realce{outline:3px solid var(--ambar);outline-offset:4px;transition:outline-color .4s}
 
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
@@ -207,14 +206,29 @@
   .pdf-perdas li.alta{background:#FBF3F3;border-left-color:#D64545}
   .pdf-rec{margin-top:12px;border:2px solid var(--ceu);border-radius:10px;padding:9px 12px;background:#F5F8FF;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--secundario)}
   .pdf-rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
-  .escada{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end}
-  .pacote{padding:30px 24px 26px}
-  .pacote{background:var(--ink);color:var(--papel);border:1px solid var(--slate);border-radius:6px;padding:34px 30px 30px}
-  .pacote.um{min-height:430px}
-  .pacote.dois{min-height:490px;background:#24395F;border-color:var(--ceu);box-shadow:8px 8px 0 var(--ambar)}
-  .pacote.tres{min-height:540px;background:linear-gradient(165deg,#1E3050 0%,#0C1424 100%);border-color:var(--ceu)}
-  .pacote.quatro{min-height:600px;background:linear-gradient(165deg,#24395F 0%,#0C1424 100%);border-color:var(--ambar)}
-  .pacote .tag{display:inline-block;margin-top:8px;font-size:.78rem;font-weight:650;color:var(--ambar)}
+  /* comparativo de pacotes */
+  .comp{background:var(--ink);border:1px solid var(--slate);border-radius:14px;overflow:visible}
+  .tab-pac{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:.95rem}
+  .tab-pac th,.tab-pac td{padding:11px 10px;text-align:center;border-bottom:1px solid #22324F;vertical-align:middle}
+  .tab-pac .b{text-align:left;width:40%;color:var(--papel);font-weight:500}
+  .tab-pac thead th,.tab-pac thead td{position:sticky;background:var(--ink);z-index:2}
+  .tab-pac tr.nomes th{top:70px;font-family:var(--display);font-weight:800;font-stretch:76%;font-size:1.3rem;color:var(--papel);padding-top:18px;border-bottom:0}
+  .tab-pac tr.nomes th:first-child{border-top-left-radius:14px}.tab-pac tr.nomes th:last-child{border-top-right-radius:14px}
+  .tab-pac tr.pr th,.tab-pac tr.pr td{position:static;font-size:.9rem}
+  .tab-pac tr.pr td{font-family:var(--display);font-weight:800;color:var(--papel);font-size:1.15rem;white-space:nowrap}
+  .tab-pac tr.pr td s{display:block;font-family:var(--corpo);font-weight:500;font-size:.75rem;color:var(--muted)}
+  .tab-pac tr.pr th{color:var(--muted)}
+  .tab-pac tr.grp th{text-align:left;background:#18263F;color:var(--ambar);font-family:var(--display);font-weight:800;font-size:.95rem;padding:9px 10px}
+  .tab-pac td.sim{color:var(--ambar);font-weight:800;font-size:1.1rem}
+  .tab-pac td.nao{color:#3B4B68}
+  .tab-pac td.txt{color:var(--papel);font-size:.82rem;font-weight:650}
+  .tab-pac.en tr.pr{display:none}
+  .tab-pac tr.prazo td{color:var(--papel);font-size:.85rem;font-weight:650}
+  .tab-pac tfoot td,.tab-pac tfoot th{border-bottom:0;padding:16px 8px 18px}
+  .tab-pac [data-c="2"]{background-color:rgba(47,111,237,.10)}
+  .tab-pac tr.nomes th[data-c="2"]{box-shadow:inset 0 3px 0 var(--ceu)}
+  .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-1 [data-c="1"],.tab-pac.realce-2 [data-c="2"],.tab-pac.realce-3 [data-c="3"]{background-color:rgba(255,176,32,.22);transition:background-color .4s}
+  .botao.mini{padding:9px 10px;font-size:.88rem;width:100%;justify-content:center}
   .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:10px}
   .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
   .planos button span{color:var(--ambar);font-weight:700}
@@ -223,23 +237,9 @@
   .planos button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
   .plano-nota{color:var(--muted);font-size:.92rem;margin-bottom:28px;min-height:1.4em}
   .mods{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:18px 0 6px}
-  .mods li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
+  .mods li{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
   .mods li b{color:var(--papel);font-weight:650}
-  .mods li span{white-space:nowrap;color:var(--papel)}
-  .pacote p,.pacote li{color:var(--muted)}
-  .pacote .nome{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:2rem;letter-spacing:-.01em;color:var(--papel)}
-  .pacote .valor{font-family:var(--display);font-weight:800;font-size:2.1rem;letter-spacing:-.03em;margin:16px 0 2px;color:var(--papel)}
-  .pacote .valor small{display:block;margin-top:4px;font-size:.98rem;font-weight:500;color:var(--muted)}
-  .pacote .setup{font-size:.92rem;margin-bottom:22px}
-  .pacote .setup:empty{display:none}
-  .pacote .valor{margin-bottom:22px}
-  .pacote .valor small.mes{color:var(--papel);font-weight:650;font-size:1.05rem}
-  .pacote .valor s{color:var(--muted);font-weight:500;margin-left:4px}
-  .pacote ul{list-style:none;display:grid;gap:10px;margin-bottom:30px}
-  .pacote li{font-size:.95rem;padding-left:22px;position:relative}
-  .pacote li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--ambar)}
-  .pacote .botao{width:100%;justify-content:center}
-  .pacote .botao.fantasma{color:var(--papel);box-shadow:inset 0 0 0 1px var(--slate)}
+  .mods li span{color:var(--muted);font-size:.9rem}
   .modulos{margin-top:40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding:24px 0;border-top:1px solid var(--slate);border-bottom:1px solid var(--slate)}
   .modulos p{max-width:620px}
   .modulos > div{flex:1 1 100%}
@@ -289,11 +289,18 @@
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
     .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
     .etapas{grid-template-columns:1fr}
-    .escada{grid-template-columns:1fr}
-    .pacote.um,.pacote.dois,.pacote.tres,.pacote.quatro{min-height:0}
     .mods{grid-template-columns:1fr}
     .planos button{padding:9px 12px}
-    .pacote.dois{box-shadow:none}
+    .tab-pac{font-size:.8rem}
+    .tab-pac th,.tab-pac td{padding:9px 4px}
+    .tab-pac .b{width:37%;padding-left:10px}
+    .tab-pac tr.nomes th{font-size:.8rem;letter-spacing:-.01em;padding-top:12px;hyphens:manual;overflow-wrap:normal;line-height:1.1}
+    .comp{margin:0 -8px}
+    .tab-pac tr.pr td{font-size:.86rem}
+    .tab-pac tr.pr th{font-size:.74rem}
+    .tab-pac td.txt,.tab-pac tr.prazo td{font-size:.7rem}
+    .tab-pac tr.grp th{font-size:.82rem}
+    .botao.mini{padding:8px 4px;font-size:.74rem}
     .fluxo{grid-template-columns:1fr}
     .fluxo div+div{padding-left:0;border-left:0;border-top:1px solid var(--linha-clara);margin-top:24px}
     .nav nav{display:none}
@@ -304,6 +311,7 @@
   @media (max-width:560px){
     .wrap{padding:0 18px}
     .nav{height:60px;gap:8px}
+    .tab-pac tr.nomes th{top:60px}
     .abertura{margin-top:-60px}
     .ab-hero{padding:calc(60px + 7vh) 0 40px}
     .logo{height:27px}
@@ -505,35 +513,49 @@
         <button type="button" data-plano="2" data-i18n="pl2"></button>
       </div>
       <p class="plano-nota" id="planoNota" aria-live="polite"></p>
-      <div class="escada">
-        <div class="pacote um">
-          <div class="nome">Start</div>
-          <div class="valor" data-pac="0"></div>
-          <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f1a"></li><li data-i18n="f1b"></li><li data-i18n="f1c"></li></ul>
-          <a class="botao fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="btn1"></a>
-        </div>
-        <div class="pacote dois">
-          <div class="nome" data-i18n="nome2"></div>
-          <div class="valor" data-pac="1"></div>
-          <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f2a"></li><li data-i18n="f2b"></li><li data-i18n="f2c"></li><li data-i18n="f2d"></li></ul>
-          <a class="botao wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="btn2"></a>
-        </div>
-        <div class="pacote tres">
-          <div class="nome" data-i18n="nome3"></div>
-          <div class="valor" data-pac="2"></div>
-          <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f3a"></li><li data-i18n="f3b"></li><li data-i18n="f3c"></li><li data-i18n="f3d"></li></ul>
-          <a class="botao wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="btn3"></a>
-        </div>
-        <div class="pacote quatro">
-          <div class="nome">Enterprise</div>
-          <div class="valor" data-pac="3"></div>
-          <div class="setup" data-i18n="setup"></div>
-          <ul><li data-i18n="f4a"></li><li data-i18n="f4b"></li><li data-i18n="f4c"></li><li data-i18n="f4d"></li></ul>
-          <a class="botao wa" data-msg="msgP4" target="_blank" rel="noopener" data-i18n="btn4"></a>
-        </div>
+      <div class="comp" id="comp" role="region" aria-labelledby="compTit" tabindex="0">
+        <table class="tab-pac">
+          <caption class="so-leitor" id="compTit" data-i18n="tCap"></caption>
+          <thead>
+            <tr class="nomes"><th scope="col" class="b"></th><th scope="col" data-c="0">Start</th><th scope="col" data-c="1" data-i18n="nomeP"></th><th scope="col" data-c="2" data-i18n="nomeC"></th><th scope="col" data-c="3" data-i18n="nomeE"></th></tr>
+            <tr class="pr"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td><td data-c="3" data-impl="3"></td></tr>
+            <tr class="pr"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td><td data-c="3" data-mes="3"></td></tr>
+          </thead>
+          <tbody>
+            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e1t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t1"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t2"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t3"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e2t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t4"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t5"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t6"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e3t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t7"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t8"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="txt" data-i18n="tUsa"></td><td data-c="3" class="txt" data-i18n="tUsb"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t9"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t10"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t11"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+          </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="5" scope="colgroup" data-i18n="e4t"></th></tr>
+            <tr><th scope="row" class="b" data-i18n="t12"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t13"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t14"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t15"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t16"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="3" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+          </tbody>
+          <tbody>
+            <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td><td data-c="3" data-i18n="tPz3"></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="3"><a class="botao mini wa" data-msg="msgP4" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
+          </tfoot>
+        </table>
       </div>
       <div class="modulos">
         <div>
@@ -704,8 +726,15 @@
       f3a: 'Tudo do Presença', f3b: 'AbertoCore: conversas e clientes num só lugar', f3c: 'Chatbot de menu que faz a triagem no WhatsApp', f3d: 'Assistente de IA que organiza os clientes e manda o resumo do dia',
       f4a: 'Tudo do Completo', f4b: 'Instagram, Facebook e e-mail na mesma caixa', f4c: 'Atendimento com IA 24h que responde, qualifica e agenda', f4d: 'CRM completo, usuários ilimitados e e-mail com o seu domínio',
       btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo', btn4: 'Quero o Enterprise',
+      tCap: 'Comparativo dos pacotes', tImpl: 'Implantação (R$)', tMes: 'Mensalidade (R$)', tSim: 'incluído', tNao: 'não incluído', tQuero: 'Quero', tSob: 'Sob consulta',
+      t1: 'Perfil no Google otimizado e verificado', t2: 'Site de 1 página com botão de WhatsApp', t3: 'Domínio no 1º ano, hospedagem e 1 alteração por mês',
+      t4: 'Logo e identidade visual', t5: 'Relatório mensal do Google', t6: '1º mês de acompanhamento com reunião',
+      t7: 'WhatsApp Business com catálogo e respostas rápidas', t8: 'AbertoCore: conversas e clientes num só lugar', tUsa: 'até 2 usuários', tUsb: 'sem limite',
+      t9: 'Chatbot de menu com botões', t10: 'IA que atende sozinha 24h, qualifica e agenda', t11: 'Instagram, Facebook e e-mail na mesma caixa',
+      t12: 'Funil e agenda com lembrete de retorno', t13: 'Assistente de IA interno e resumo do dia', t14: 'Agendamento online', t15: 'E-mail com o seu domínio', t16: 'Painel de resultados e ajustes sob medida',
+      tPrazo: 'Prazo de entrega (dias úteis)', tPz0: '7', tPz1: '10', tPz2: '15', tPz3: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pre&shy;sença', nomeC: 'Com&shy;pleto',
       hMod: 'Módulos avulsos',
-      pMod: 'Entram em qualquer pacote, quando você precisar.',
+      pMod: 'Entram em qualquer pacote, quando você precisar. O valor vai na sua proposta.',
       btnMod: 'Perguntar sobre módulos',
       hProc: 'Da primeira conversa ao primeiro contato no WhatsApp.',
       st1t: 'Você conta o negócio', st1d: 'Uma conversa rápida no WhatsApp sobre o que você vende, onde atende e o que está travando.',
@@ -800,8 +829,15 @@
       f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that organizes customers and sends a daily summary',
       f4a: 'Everything in Complete', f4b: 'Instagram, Facebook and email in one inbox', f4c: '24/7 AI service that answers, qualifies and books', f4d: 'Full CRM, unlimited users and email on your domain',
       btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete', btn4: 'Choose Enterprise',
+      tCap: 'Package comparison', tImpl: 'Setup', tMes: 'Monthly', tSim: 'included', tNao: 'not included', tQuero: 'Choose', tSob: 'On request',
+      t1: 'Optimized, verified Google profile', t2: 'One-page website with a WhatsApp button', t3: 'Domain for year 1, hosting and 1 change a month',
+      t4: 'Logo and visual identity', t5: 'Monthly Google report', t6: 'First month of follow-up with a meeting',
+      t7: 'WhatsApp Business with catalog and quick replies', t8: 'AbertoCore: chats and customers in one place', tUsa: 'up to 2 users', tUsb: 'unlimited',
+      t9: 'Menu chatbot with buttons', t10: 'AI that answers 24/7, qualifies and books', t11: 'Instagram, Facebook and email in one inbox',
+      t12: 'Pipeline and follow-up reminders', t13: 'Internal AI assistant and daily summary', t14: 'Online booking', t15: 'Email on your own domain', t16: 'Results dashboard and custom tweaks',
+      tPrazo: 'Delivery (business days)', tPz0: '7', tPz1: '10', tPz2: '15', tPz3: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pres&shy;ence', nomeC: 'Com&shy;plete',
       hMod: 'Add-on modules',
-      pMod: 'Add them to any package, whenever you need them.',
+      pMod: 'Add them to any package, whenever you need them. Pricing comes in your proposal.',
       btnMod: 'Ask about modules',
       hProc: 'From the first chat to the first customer message on WhatsApp.',
       st1t: 'You tell us about your business', st1d: 'A quick WhatsApp chat about what you sell, where you serve and what is holding you back.',
@@ -893,26 +929,29 @@
   /* preços: implantação + mensalidade; o plano dá desconto só na mensalidade */
   var PRECOS = [[650, 49], [990, 99], [1900, 249], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 0;
   var MODS = [
-    ['Chatbot de menu (triagem)', 'Menu chatbot', 'R$ 600 + R$ 199/mês'],
-    ['Gestão mensal do perfil no Google', 'Monthly Google profile management', 'R$ 149/mês'],
-    ['Respostas às avaliações do Google', 'Google review replies', 'R$ 79/mês'],
-    ['Pós-venda que pede avaliação', 'Post-sale review request', 'R$ 200'],
-    ['Instagram profissional', 'Professional Instagram setup', 'R$ 290'],
-    ['Calendário mensal de conteúdo', 'Monthly content calendar', 'R$ 390/mês'],
-    ['Fotos e vídeos curtos com IA', 'Photos and short videos with AI', 'R$ 290 por sessão'],
-    ['Agendamento online', 'Online booking', 'R$ 250'],
-    ['Cardápio ou catálogo com QR Code', 'Menu or catalog with QR code', 'R$ 350']
+    ['Chatbot de menu', 'Menu chatbot', 'Triagem com botões no WhatsApp, para quem tem Start ou Presença', 'Button triage on WhatsApp, for Start or Presence'],
+    ['Gestão mensal do perfil no Google', 'Monthly Google profile care', 'Posts, fotos novas, horários de feriado e respostas', 'Posts, new photos, holiday hours and replies'],
+    ['Respostas às avaliações do Google', 'Google review replies', 'A IA sugere, revisamos e publicamos em até 48h', 'AI drafts, we review and post within 48h'],
+    ['Pós-venda que pede avaliação', 'Post-sale review requests', 'Mensagem pronta, QR Code e cartão de balcão', 'Ready message, QR code and counter card'],
+    ['Instagram profissional', 'Professional Instagram', 'Conta comercial, bio, destaques e 9 posts iniciais', 'Business account, bio, highlights and 9 starter posts'],
+    ['Calendário mensal de conteúdo', 'Monthly content calendar', '12 artes com legenda por mês, para você publicar', '12 designs with captions a month, ready to post'],
+    ['Fotos e vídeos curtos com IA', 'AI photos and short videos', '1h no local: 10 fotos tratadas e 3 vídeos curtos', '1h on site: 10 edited photos and 3 short videos'],
+    ['Agendamento online', 'Online booking', 'Link de agenda no site e no WhatsApp, com lembrete', 'Booking link on your site and WhatsApp, with reminders'],
+    ['Cardápio ou catálogo com QR Code', 'Menu or catalog with QR code', 'Página com seus produtos e QR Code impresso', 'A page with your products and a printed QR code']
   ];
   function reais(v){ return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
+  function num(v){ return v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
   function precos(){
-    document.querySelectorAll('[data-pac]').forEach(function(e){
-      var p = PRECOS[+e.getAttribute('data-pac')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
-      e.innerHTML = L === 'en' ? 'Quote <small>on request</small>' : reais(p[0]) + ' <small>de implantação</small><small class="mes">+ ' + reais(m) + '/mês' + (planoSel ? ' <s>' + reais(p[1]) + '</s>' : '') + '</small>';
+    document.querySelector('.tab-pac').classList.toggle('en', L === 'en');
+    document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : num(p[0]); });
+    document.querySelectorAll('[data-mes]').forEach(function(e){
+      var p = PRECOS[+e.getAttribute('data-mes')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
+      e.innerHTML = L === 'en' ? '' : num(m) + (planoSel ? '<s>' + num(p[1]) + '</s>' : '');
     });
     document.querySelectorAll('[data-plano]').forEach(function(b){ var on = +b.getAttribute('data-plano') === planoSel; b.classList.toggle('ativo', on); b.setAttribute('aria-pressed', on); });
     document.querySelector('.planos').hidden = L === 'en';
     document.getElementById('planoNota').textContent = L === 'en' ? '' : T[L]['pn' + planoSel];
-    document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? 'on request' : m[2]) + '</span></li>'; }).join('');
+    document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? m[3] : m[2]) + '</span></li>'; }).join('');
   }
   document.querySelectorAll('[data-plano]').forEach(function(b){ b.addEventListener('click', function(){ planoSel = +b.getAttribute('data-plano'); precos(); }); });
 
@@ -1060,10 +1099,10 @@
   /* selo da etapa: rola até Pacotes e destaca o pacote */
   document.querySelectorAll('.selo[data-pacote]').forEach(function(a){
     a.addEventListener('click', function(){
-      var alvo = document.querySelectorAll('.escada .pacote')[+a.getAttribute('data-pacote')];
-      if (!alvo) return;
-      document.querySelectorAll('.pacote.realce').forEach(function(x){ x.classList.remove('realce'); });
-      setTimeout(function(){ alvo.classList.add('realce'); setTimeout(function(){ alvo.classList.remove('realce'); }, 2600); }, 500);
+      var t = document.querySelector('.tab-pac'), k = 'realce-' + a.getAttribute('data-pacote');
+      if (!t) return;
+      t.classList.remove('realce-0', 'realce-1', 'realce-2', 'realce-3');
+      setTimeout(function(){ t.classList.add(k); setTimeout(function(){ t.classList.remove(k); }, 2800); }, 500);
     });
   });
 
