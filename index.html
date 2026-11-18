@@ -360,6 +360,9 @@
   .ch-m.eq{align-self:flex-start;background:#fff;border:1px solid var(--linha-clara);border-bottom-left-radius:4px}
   .ch-m.cli{align-self:flex-end;background:var(--ceu);color:#fff;border-bottom-right-radius:4px}
   .ch-m.pend{opacity:.6}
+  .ch-dig{display:flex;gap:4px;padding:12px 14px}.ch-dig i{width:7px;height:7px;border-radius:50%;background:var(--secundario);animation:chdig 1s infinite}.ch-dig i:nth-child(2){animation-delay:.15s}.ch-dig i:nth-child(3){animation-delay:.3s}
+  @keyframes chdig{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+  @media (prefers-reduced-motion:reduce){.ch-dig i{animation:none}}
   .ch-ini{display:grid;gap:8px;margin-top:4px}
   .ch-ini input,.ch-pe textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--linha-clara);border-radius:12px;padding:10px 12px;background:#fff;color:var(--texto)}
   .ch-ini small{color:var(--secundario);font-size:.78rem}
@@ -852,7 +855,7 @@
       fCons: 'Concordo em receber contato da abertodigital pelo WhatsApp sobre a minha solicitação.',
       fEnv: 'Enviar pelo WhatsApp',
       fNota: 'Seus dados vão para o nosso sistema de atendimento e para a conversa no WhatsApp. Não compartilhamos com ninguém.',
-      chAbre: 'Fale com a gente', chSub: 'Respondemos em horário comercial', chFecha: 'Fechar conversa', chEnviar: 'Enviar', chPh: 'Escreva sua mensagem…', chPref: 'Prefere WhatsApp?', chZap: 'Abrir conversa', chOla: 'Oi! 👋 Conte o que você precisa e a gente responde por aqui mesmo.', chNome: 'Seu nome (opcional)', chZapPh: 'WhatsApp com DDD (opcional)', chPriv: 'Se deixar o WhatsApp, podemos te chamar lá. Veja a política de privacidade no rodapé.', chFalha: 'Não conseguimos enviar agora. Tente de novo ou fale pelo WhatsApp.',
+      chAbre: 'Fale com a gente', chSub: 'Respondemos na hora, 24h', chFecha: 'Fechar conversa', chEnviar: 'Enviar', chPh: 'Escreva sua mensagem…', chPref: 'Prefere WhatsApp?', chZap: 'Abrir conversa', chOla: 'Oi! 👋 Conte o que você precisa: respondemos na hora, a qualquer hora. Nossa equipe acompanha a conversa.', chNome: 'Seu nome (opcional)', chZapPh: 'WhatsApp com DDD (opcional)', chPriv: 'Se deixar o WhatsApp, podemos te chamar lá. Veja a política de privacidade no rodapé.', chFalha: 'Não conseguimos enviar agora. Tente de novo ou fale pelo WhatsApp.',
       fOk: 'Pronto! Seu WhatsApp abriu com os dados preenchidos. Só enviar a mensagem.',
       mIntro: 'Oi! Vim pelo site da abertodigital.', mNome: 'Nome', mNeg: 'Negócio', mRamo: 'Ramo', mCid: 'Cidade', mZap: 'WhatsApp', mNeed: 'Preciso de',
       hCont: 'Quer que a sua loja responda enquanto você atende?',
@@ -958,7 +961,7 @@
       fCons: 'I agree to be contacted by abertodigital about my request by WhatsApp.',
       fEnv: 'Send via WhatsApp',
       fNota: 'Your details go to our customer service system and into the WhatsApp chat. We never share them.',
-      chAbre: 'Chat with us', chSub: 'We reply during business hours (Brazil)', chFecha: 'Close chat', chEnviar: 'Send', chPh: 'Type your message…', chPref: 'Prefer WhatsApp?', chZap: 'Open chat', chOla: 'Hi! 👋 Tell us what you need and we will reply right here.', chNome: 'Your name (optional)', chZapPh: 'WhatsApp number (optional)', chPriv: 'If you leave your WhatsApp, we can reach you there. See our privacy policy in the footer.', chFalha: 'We could not send it right now. Try again or reach us on WhatsApp.',
+      chAbre: 'Chat with us', chSub: 'We reply right away, 24/7', chFecha: 'Close chat', chEnviar: 'Send', chPh: 'Type your message…', chPref: 'Prefer WhatsApp?', chZap: 'Open chat', chOla: 'Hi! 👋 Tell us what you need and we will reply right here.', chNome: 'Your name (optional)', chZapPh: 'WhatsApp number (optional)', chPriv: 'If you leave your WhatsApp, we can reach you there. See our privacy policy in the footer.', chFalha: 'We could not send it right now. Try again or reach us on WhatsApp.',
       fOk: 'Done! WhatsApp opened with your details filled in. Just send the message.',
       mIntro: 'Hi! I came from the abertodigital website.', mNome: 'Name', mNeg: 'Business', mRamo: 'Type', mCid: 'City', mZap: 'WhatsApp', mNeed: 'I need',
       hCont: 'Want your business to answer while you work?',
@@ -1175,6 +1178,7 @@
           '<small>' + esc(tx('chPriv')) + '</small></div>';
       }
       msgs.forEach(function(m){ h += '<div class="ch-m ' + (m.de === 'cli' ? 'cli' : 'eq') + (m.pend ? ' pend' : '') + '">' + esc(m.txt) + '</div>'; });
+      if (bt.disabled) h += '<div class="ch-m eq ch-dig"><i></i><i></i><i></i></div>';
       if (erro) h += '<div class="ch-erro">' + esc(erro) + '</div>';
       box.innerHTML = h; box.scrollTop = box.scrollHeight;
     }
