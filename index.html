@@ -136,7 +136,8 @@
 
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
-  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt palco" "passos palco";column-gap:56px;align-items:center}
+  .cg-txt{grid-area:txt;align-self:end}.cg-passos{grid-area:passos;align-self:start}.core-grid .palco{grid-area:palco}
   .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
   .passos-core{list-style:none;margin-top:30px;display:grid;gap:10px;counter-reset:pc}
   .passos-core button{counter-increment:pc;display:grid;grid-template-columns:34px 1fr;column-gap:12px;text-align:left;width:100%;background:none;border:1px solid transparent;border-radius:14px;padding:14px 16px;font:inherit;color:inherit;cursor:pointer}
@@ -146,6 +147,15 @@
   .passos-core button[aria-pressed="true"]{background:var(--papel);border-color:var(--linha-clara)}
   .passos-core button[aria-pressed="true"]::before{background:var(--ambar);color:var(--ink)}
   .core-nota{margin-top:18px;font-size:.9rem}
+  .demo h2{color:var(--papel)}
+  .demo .core-p{color:var(--muted)}
+  .demo .passos-core button b{color:var(--papel)}
+  .demo .passos-core button span{color:var(--muted)}
+  .demo .passos-core button::before{background:var(--navy);color:var(--muted)}
+  .demo .passos-core button[aria-pressed="true"]{background:rgba(30,48,80,.7);border-color:var(--slate)}
+  .demo .passos-core button[aria-pressed="true"]::before{background:var(--ambar);color:var(--ink)}
+  .demo .core-nota{color:var(--muted)}
+  .core-grid{position:relative;z-index:1}
   .exemplo.escuro{color:var(--secundario);border-bottom-color:var(--linha-clara)}
   .tel-core{padding:14px 12px 18px}
   .core-topo{display:flex;align-items:center;gap:8px;color:var(--papel);font-family:var(--display);font-weight:800;font-stretch:85%;padding:2px 6px 12px;border-bottom:1px solid var(--slate);margin-bottom:12px}
@@ -287,6 +297,7 @@
 
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
+    .core-grid{grid-template-areas:"txt" "palco" "passos";row-gap:28px}
     .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
     .etapas{grid-template-columns:1fr}
     .mods{grid-template-columns:1fr}
@@ -400,23 +411,45 @@
     </div>
   </div>
 
-  <div class="demo">
+  <div class="demo" id="abertocore">
     <canvas id="campo" aria-hidden="true"></canvas>
-    <div class="wrap demo-grid">
-      <div>
-        <h2 data-i18n="hDemo"></h2>
-        <p data-i18n="pDemo"></p>
+    <div class="wrap core-grid">
+      <div class="cg-txt">
+        <h2 data-i18n="hCore"></h2>
+        <p class="core-p" data-i18n="pCore"></p>
+      </div>
+      <div class="cg-passos">
+        <ol class="passos-core" id="passosCore">
+          <li><button type="button" data-cena="0" aria-pressed="true"><b data-i18n="k1t"></b><span data-i18n="k1d"></span></button></li>
+          <li><button type="button" data-cena="1" aria-pressed="false"><b data-i18n="k2t"></b><span data-i18n="k2d"></span></button></li>
+          <li><button type="button" data-cena="2" aria-pressed="false"><b data-i18n="k3t"></b><span data-i18n="k3d"></span></button></li>
+        </ol>
+        <p class="core-nota" data-i18n="kNota"></p>
       </div>
       <div class="palco">
-        <span class="exemplo" data-i18n="exemplo"></span>
-        <div class="celular">
-          <div class="cab"><span class="av">AD</span><div><span data-i18n="cabT"></span><small data-i18n="cabS"></small></div></div>
-          <div class="chat espera" id="chat">
-            <div class="bolha cliente"><span data-i18n="c1"></span><span class="hora">09:12</span></div>
-            <div class="bolha bot"><span class="etiqueta-bot">IA</span><br><span data-i18n="c2"></span><span class="hora">09:12</span></div>
-            <div class="bolha cliente"><span data-i18n="c3"></span><span class="hora">09:13</span></div>
-            <div class="bolha bot"><span class="etiqueta-bot">IA</span><br><span data-i18n="c4"></span><span class="hora">09:13</span></div>
-            <div class="bolha dono"><span data-i18n="c5"></span><span class="hora">09:14</span></div>
+        <span class="exemplo" data-i18n="exCore"></span>
+        <div class="celular tel-core" aria-hidden="true">
+          <div class="core-topo"><span class="core-logo"></span>AbertoCore<i></i></div>
+          <div class="cenas" id="cenas">
+            <div class="cena ativa">
+              <div class="ac-item novo"><span class="ac-av">M</span><div><b>Marcos</b><small data-i18n="kc1"></small></div><em>1</em></div>
+              <div class="ac-bal cli" data-i18n="kc1"></div>
+              <div class="ac-bal bot"><span class="ac-tag">Chatbot</span><span data-i18n="kc2"></span>
+                <div class="ac-bts"><span data-i18n="kb1"></span><span data-i18n="kb2"></span><span data-i18n="kb3"></span></div></div>
+              <div class="ac-bal cli toque" data-i18n="kb1"></div>
+            </div>
+            <div class="cena">
+              <div class="ac-funil">
+                <div class="col"><small data-i18n="kf1"></small><div class="card fantasma"></div></div>
+                <div class="col"><small data-i18n="kf2"></small><div class="card fantasma"></div></div>
+                <div class="col"><small data-i18n="kf3"></small><div class="card move"><b>Marcos</b><span data-i18n="kc3"></span><em data-i18n="kval"></em></div></div>
+              </div>
+              <div class="ac-nota" data-i18n="kc4"></div>
+            </div>
+            <div class="cena">
+              <div class="ac-item ia"><span class="ac-av ia">IA</span><div><b data-i18n="kia"></b><small>18:00</small></div><em>1</em></div>
+              <div class="ac-bal resumo"><span class="ac-tag azul" data-i18n="kres"></span><span data-i18n="kc5"></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -456,48 +489,6 @@
         </article>
       </div>
       <div class="ponte"><p data-i18n="ponteT"></p><a class="botao escuro" href="#auditoria" data-i18n="ponteB"></a></div>
-    </div>
-  </section>
-
-  <section id="abertocore" class="core">
-    <div class="wrap core-grid">
-      <div>
-        <h2 data-i18n="hCore"></h2>
-        <p class="core-p" data-i18n="pCore"></p>
-        <ol class="passos-core" id="passosCore">
-          <li><button type="button" data-cena="0" aria-pressed="true"><b data-i18n="k1t"></b><span data-i18n="k1d"></span></button></li>
-          <li><button type="button" data-cena="1" aria-pressed="false"><b data-i18n="k2t"></b><span data-i18n="k2d"></span></button></li>
-          <li><button type="button" data-cena="2" aria-pressed="false"><b data-i18n="k3t"></b><span data-i18n="k3d"></span></button></li>
-        </ol>
-        <p class="core-nota" data-i18n="kNota"></p>
-      </div>
-      <div class="palco">
-        <span class="exemplo escuro" data-i18n="exCore"></span>
-        <div class="celular tel-core" aria-hidden="true">
-          <div class="core-topo"><span class="core-logo"></span>AbertoCore<i></i></div>
-          <div class="cenas" id="cenas">
-            <div class="cena ativa">
-              <div class="ac-item novo"><span class="ac-av">M</span><div><b>Marcos</b><small data-i18n="kc1"></small></div><em>1</em></div>
-              <div class="ac-bal cli" data-i18n="kc1"></div>
-              <div class="ac-bal bot"><span class="ac-tag">Chatbot</span><span data-i18n="kc2"></span>
-                <div class="ac-bts"><span data-i18n="kb1"></span><span data-i18n="kb2"></span><span data-i18n="kb3"></span></div></div>
-              <div class="ac-bal cli toque" data-i18n="kb1"></div>
-            </div>
-            <div class="cena">
-              <div class="ac-funil">
-                <div class="col"><small data-i18n="kf1"></small><div class="card fantasma"></div></div>
-                <div class="col"><small data-i18n="kf2"></small><div class="card fantasma"></div></div>
-                <div class="col"><small data-i18n="kf3"></small><div class="card move"><b>Marcos</b><span data-i18n="kc3"></span><em data-i18n="kval"></em></div></div>
-              </div>
-              <div class="ac-nota" data-i18n="kc4"></div>
-            </div>
-            <div class="cena">
-              <div class="ac-item ia"><span class="ac-av ia">IA</span><div><b data-i18n="kia"></b><small>18:00</small></div><em>1</em></div>
-              <div class="ac-bal resumo"><span class="ac-tag azul" data-i18n="kres"></span><span data-i18n="kc5"></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -702,8 +693,8 @@
       e4s: 'Incluído a partir do Completo',
       ponteT: 'Não sabe em qual etapa está perdendo cliente? A auditoria gratuita mostra, com nota de 0 a 100.',
       ponteB: 'Ver como é a auditoria',
-      hCore: 'Tudo chega num lugar só.',
-      pCore: 'O AbertoCore é o nosso sistema de atendimento. Vem nos pacotes Completo e Enterprise, já configurado com as perguntas e os preços do seu negócio.',
+      hCore: 'O cliente pergunta. O AbertoCore responde na hora.',
+      pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem nos pacotes Completo e Enterprise, já configurado para o seu negócio.',
       k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
       k2t: 'O card anda sozinho no funil', k2d: 'A IA lê a conversa, anota o que o cliente quer, o valor e quando retornar.',
       k3t: 'Às 18h chega o resumo do dia', k3d: 'Quantas conversas, quanto está em negociação e quem precisa de você.',
@@ -805,8 +796,8 @@
       e4s: 'Included from Complete',
       ponteT: 'Not sure which stage is costing you customers? The free audit shows it, with a score from 0 to 100.',
       ponteB: 'See what the audit looks like',
-      hCore: 'Everything lands in one place.',
-      pCore: 'AbertoCore is our customer service system. It comes with the Complete and Enterprise packages, already set up with your business questions and prices.',
+      hCore: 'The customer asks. AbertoCore answers right away.',
+      pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes with the Complete and Enterprise packages, set up for your business.',
       k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
       k2t: 'The card moves by itself', k2d: 'AI reads the chat and notes what the customer wants, the value and when to follow up.',
       k3t: 'At 6pm the daily summary arrives', k3d: 'How many chats, how much is in negotiation and who needs you.',
@@ -1030,14 +1021,6 @@
   }, {passive: true});
   window.addEventListener('resize', atualiza);
   atualiza();
-
-  var chat = document.getElementById('chat');
-  if (reduz || !('IntersectionObserver' in window)) { chat.classList.remove('espera'); }
-  else {
-    new IntersectionObserver(function(es, ob){
-      es.forEach(function(e){ if (e.isIntersecting) { chat.classList.remove('espera'); chat.classList.add('anima'); ob.disconnect(); } });
-    }, {threshold: 0.35}).observe(chat);
-  }
 
   document.getElementById('cadForm').addEventListener('submit', function(e){
     e.preventDefault();
