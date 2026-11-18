@@ -227,7 +227,7 @@
   .comp{overflow:visible}
   .tab-pac{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
   .tab-pac th,.tab-pac td{padding:13px 12px;text-align:center;vertical-align:middle;border-bottom:1px solid rgba(255,255,255,.07)}
-  .tab-pac .b{text-align:left;width:42%;color:var(--papel);font-weight:500;font-size:.95rem;padding-left:0}
+  .tab-pac .b{text-align:left;width:42%;color:var(--papel);font-weight:500;font-size:.95rem;padding-left:14px}
   .tab-pac [data-c]{width:19.33%}
   .tab-pac [data-c="1"]{background:#24395F;border-left:1.5px solid var(--ceu);border-right:1.5px solid var(--ceu)}
   .tab-pac thead th{position:sticky;top:70px;z-index:2;background:var(--navy);border-bottom:1px solid var(--slate);padding:22px 8px 16px;vertical-align:bottom}
@@ -244,12 +244,18 @@
   .tab-pac tfoot th,.tab-pac tfoot td{border-bottom:0}
   .tab-pac tr.prazo th,.tab-pac tr.prazo td{padding-top:24px;border-bottom:1px solid rgba(255,255,255,.07)}
   .tab-pac tr.prazo td{color:var(--papel);font-weight:650;font-size:.9rem}
-  .tab-pac tr.pr th{color:var(--muted);font-size:.9rem}
+  .tab-pac tr.pr th{color:var(--papel);font-size:.95rem;font-weight:650;text-align:right;padding-right:28px}
+  .tab-pac tr.pr th small{display:block;color:var(--muted);font-weight:500;font-size:.8rem}
+  .tab-pac tr.impl td small{font-size:.55em;color:var(--muted);font-weight:700;vertical-align:.35em}
+  .tab-pac tr.mes td small{display:block;font-size:.78rem;color:var(--muted);font-weight:500}
+  /* card discreto que liga o texto da linha aos valores ao passar o mouse */
+  .tab-pac tbody tr:not(.grp):hover>*,.tab-pac tr.pr:hover>*,.tab-pac tr.prazo:hover>*{background-image:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.055))}
+  .tab-pac tbody tr:not(.grp):hover>th,.tab-pac tr.pr:hover>th,.tab-pac tr.prazo:hover>th{border-radius:10px 0 0 10px}
+  .tab-pac tbody tr:not(.grp):hover>td[data-c="2"],.tab-pac tr.pr:hover>td[data-c="2"],.tab-pac tr.prazo:hover>td[data-c="2"]{border-radius:0 10px 10px 0}
   .tab-pac tr.impl th,.tab-pac tr.impl td{padding-top:22px;padding-bottom:4px}
   .tab-pac tr.impl td{font-family:var(--display);font-weight:800;font-size:1.65rem;color:var(--papel);white-space:nowrap;letter-spacing:-.02em}
   .tab-pac tr.mes td{font-weight:650;color:var(--papel);font-size:.95rem;padding-top:2px}
   .tab-pac tr.mes td s{display:block;font-weight:500;font-size:.78rem;color:var(--muted)}
-  .tab-pac tr.mes td small{color:var(--muted);font-weight:500}
   .tab-pac.en tr.pr{display:none}
   .tab-pac tr.acoes td{padding:16px 10px 22px}
   .tab-pac tr.acoes td[data-c="1"]{border-bottom:1.5px solid var(--ceu);border-radius:0 0 14px 14px}
@@ -257,15 +263,7 @@
   .tab-pac.realce-1 [data-c="1"]{background-color:#3A4A62;transition:background-color .4s}
   .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
   .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
-  .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:8px}
-  .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
-  .planos button span{color:var(--ambar);font-weight:700}
-  .planos button.ativo{background:var(--papel);color:var(--ink)}
-  .planos button.ativo span{color:#B56F00}
-  .planos button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
-  .plano-nota{color:var(--muted);font-size:.85rem;font-weight:500;min-height:1.4em}
   .cabeca+.comp{margin-top:8px}
-  .tab-pac tr.periodo th{padding-top:26px;padding-bottom:6px}
   .mods{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:18px 0 6px}
   .mods li{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
   .mods li b{color:var(--papel);font-weight:650}
@@ -326,9 +324,6 @@
     .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
     .etapas{grid-template-columns:1fr}
     .mods{grid-template-columns:1fr}
-    .planos{display:flex;flex-direction:column;border-radius:16px;width:100%}
-    .planos button{padding:7px 6px;font-size:.74rem;text-align:left}
-    .plano-nota{font-size:.68rem}
     .tab-pac th,.tab-pac td{padding:10px 4px}
     .tab-pac .b{width:37%;font-size:.8rem;padding-left:0}
     .tab-pac [data-c]{width:21%}
@@ -342,7 +337,10 @@
     .tab-pac tr.grp th{font-size:.85rem}
     .tab-pac tr.impl td{font-size:1.05rem}
     .tab-pac tr.mes td{font-size:.76rem}
-    .tab-pac tr.mes td small{display:block;font-size:.62rem}
+    .tab-pac tr.mes td small{font-size:.62rem}
+    .tab-pac tr.pr th{text-align:left;padding-right:4px}
+    .tab-pac tr.pr th small{font-size:.66rem}
+    .tab-pac .b{padding-left:6px}
     .tab-pac tr.mes td s{font-size:.66rem}
     .tab-pac tr.pr th{font-size:.74rem}
     .botao.mini{padding:8px 4px;font-size:.74rem}
@@ -571,14 +569,8 @@
           </tbody>
           <tfoot>
             <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td></tr>
-            <tr class="pr periodo"><th scope="row" class="b"><div class="planos" role="group" aria-label="Plano">
-        <button type="button" data-plano="0" class="ativo" data-i18n="pl0"></button>
-        <button type="button" data-plano="1" data-i18n="pl1"></button>
-        <button type="button" data-plano="2" data-i18n="pl2"></button>
-      </div>
-      <p class="plano-nota" id="planoNota" aria-live="polite"></p></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
-            <tr class="pr impl"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
-            <tr class="pr mes"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
+            <tr class="pr impl"><th scope="row" class="b"><span data-i18n="tImpl"></span><small data-i18n="tImplS"></small></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
+            <tr class="pr mes"><th scope="row" class="b"><span data-i18n="tMes"></span><small data-i18n="tMesS"></small></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
             <tr class="acoes"><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini fantasma wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
           </tfoot>
         </table>
@@ -742,7 +734,7 @@
       f3a: 'Tudo do Presença', f3b: 'AbertoCore: conversas e clientes num só lugar', f3c: 'Chatbot de menu que faz a triagem no WhatsApp', f3d: 'Assistente de IA que organiza os clientes e manda o resumo do dia',
       f4a: 'Tudo do Completo', f4b: 'Instagram, Facebook e e-mail na mesma caixa', f4c: 'Atendimento com IA 24h que responde, qualifica e agenda', f4d: 'CRM completo, usuários ilimitados e e-mail com o seu domínio',
       btn1: 'Quero o Start', btn2: 'Quero o Presença', btn3: 'Quero o Completo', btn4: 'Quero o Enterprise',
-      tCap: 'Comparativo dos pacotes', tImpl: 'Implantação (R$)', tMes: 'Mensalidade (R$)', tSim: 'incluído', tNao: 'não incluído', tQuero: 'Quero', tSob: 'Sob consulta',
+      tCap: 'Comparativo dos pacotes', tImpl: 'Implantação', tImplS: 'pagamento único', tMes: 'Mensalidade', tMesS: 'no plano de 12 meses, 30% off', tSim: 'incluído', tNao: 'não incluído', tQuero: 'Quero', tSob: 'Sob consulta',
       t1: 'Perfil no Google otimizado e verificado', t2: 'Site de 1 página com botão de WhatsApp', t3: 'Domínio no 1º ano, hospedagem e 1 alteração por mês',
       t4: 'Logo e identidade visual', t5: 'Relatório mensal do Google', t6: '1º mês de acompanhamento com reunião',
       t7: 'WhatsApp Business com catálogo e respostas rápidas', t8: 'AbertoCore: conversas e clientes num só lugar', tUsa: 'até 2 usuários', tUsb: 'sem limite',
@@ -846,7 +838,7 @@
       f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that organizes customers and sends a daily summary',
       f4a: 'Everything in Complete', f4b: 'Instagram, Facebook and email in one inbox', f4c: '24/7 AI service that answers, qualifies and books', f4d: 'Full CRM, unlimited users and email on your domain',
       btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete', btn4: 'Choose Enterprise',
-      tCap: 'Package comparison', tImpl: 'Setup', tMes: 'Monthly', tSim: 'included', tNao: 'not included', tQuero: 'Choose', tSob: 'On request',
+      tCap: 'Package comparison', tImpl: 'Setup', tImplS: '', tMes: 'Monthly', tMesS: '', tSim: 'included', tNao: 'not included', tQuero: 'Choose', tSob: 'On request',
       t1: 'Optimized, verified Google profile', t2: 'One-page website with a WhatsApp button', t3: 'Domain for year 1, hosting and 1 change a month',
       t4: 'Logo and visual identity', t5: 'Monthly Google report', t6: 'First month of follow-up with a meeting',
       t7: 'WhatsApp Business with catalog and quick replies', t8: 'AbertoCore: chats and customers in one place', tUsa: 'up to 2 users', tUsb: 'unlimited',
@@ -945,7 +937,7 @@
   } else { dg.visivel = true; }
 
   /* preços: implantação + mensalidade; o plano dá desconto só na mensalidade */
-  var PRECOS = [[650, 49], [1650, 150], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 0;
+  var PRECOS = [[650, 49], [1650, 150], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 2;
   var MODS = [
     ['Chatbot de menu', 'Menu chatbot', 'Triagem com botões no WhatsApp, para quem tem o Start', 'Button triage on WhatsApp, for Start customers'],
     ['Gestão mensal do perfil no Google', 'Monthly Google profile care', 'Posts, fotos novas, horários de feriado e respostas', 'Posts, new photos, holiday hours and replies'],
@@ -961,17 +953,13 @@
   function num(v){ return v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
   function precos(){
     document.querySelector('.tab-pac').classList.toggle('en', L === 'en');
-    document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : num(p[0]); });
+    document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : '<small>R$</small> ' + num(p[0]); });
     document.querySelectorAll('[data-mes]').forEach(function(e){
       var p = PRECOS[+e.getAttribute('data-mes')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
-      e.innerHTML = L === 'en' ? '' : num(m) + '<small>/mês</small>' + (planoSel ? '<s>' + num(p[1]) + '</s>' : '');
+      e.innerHTML = L === 'en' ? '' : '<small>12x de</small> R$ ' + num(m) + '<s>R$ ' + num(p[1]) + '</s>';
     });
-    document.querySelectorAll('[data-plano]').forEach(function(b){ var on = +b.getAttribute('data-plano') === planoSel; b.classList.toggle('ativo', on); b.setAttribute('aria-pressed', on); });
-    document.querySelector('.planos').hidden = L === 'en';
-    document.getElementById('planoNota').textContent = L === 'en' ? '' : T[L]['pn' + planoSel];
     document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? m[3] : m[2]) + '</span></li>'; }).join('');
   }
-  document.querySelectorAll('[data-plano]').forEach(function(b){ b.addEventListener('click', function(){ planoSel = +b.getAttribute('data-plano'); precos(); }); });
 
   aplica();
   precos();
