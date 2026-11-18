@@ -137,6 +137,7 @@
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
   .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt palco" "passos palco";column-gap:56px;align-items:center}
+  .core-grid>*{min-width:0}
   .cg-txt{grid-area:txt;align-self:end}.cg-passos{grid-area:passos;align-self:start}.core-grid .palco{grid-area:palco}
   .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
   .passos-core{list-style:none;margin-top:30px;display:grid;gap:10px;counter-reset:pc}
@@ -297,7 +298,12 @@
 
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
-    .core-grid{grid-template-areas:"txt" "palco" "passos";row-gap:28px}
+    .core-grid{grid-template-areas:"txt" "passos" "palco";row-gap:24px}
+    .passos-core{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none;scroll-padding:0 18px}
+    .passos-core::-webkit-scrollbar{display:none}
+    .passos-core li{flex:0 0 80%;scroll-snap-align:start;display:flex}
+    .passos-core button{border-color:var(--slate)!important;align-content:start}
+    .core-nota{display:none}
     .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
     .etapas{grid-template-columns:1fr}
     .mods{grid-template-columns:1fr}
@@ -696,13 +702,13 @@
       hCore: 'O cliente pergunta. O AbertoCore responde na hora.',
       pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem nos pacotes Completo e Enterprise, já configurado para o seu negócio.',
       k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
-      k2t: 'O card anda sozinho no funil', k2d: 'A IA lê a conversa, anota o que o cliente quer, o valor e quando retornar.',
-      k3t: 'Às 18h chega o resumo do dia', k3d: 'Quantas conversas, quanto está em negociação e quem precisa de você.',
+      k2t: 'A IA organiza seus clientes', k2d: 'Separa quem pediu orçamento, quem já comprou e quem precisa de retorno, sem você anotar nada.',
+      k3t: 'Às 18h, o resumo do dia', k3d: 'Numa mensagem só: como foi o dia e quem está esperando por você.',
       kNota: 'Funciona no celular e no computador, com os mesmos dados nos dois.', exCore: 'Exemplo ilustrativo do AbertoCore',
       kc1: 'Oi! Quanto fica a revisão do Onix?', kc2: 'Olá! Aqui é o Auto Center Lima. Como podemos ajudar?',
       kb1: 'Orçamento', kb2: 'Horário e endereço', kb3: 'Falar com uma pessoa',
-      kf1: 'Novo contato', kf2: 'Qualificado', kf3: 'Proposta enviada', kc3: 'Revisão do Onix',
-      kc4: 'IA atualizou o card: valor R$ 450, retorno na sexta.', kia: 'Assistente AbertoCore', kres: 'Resumo do dia',
+      kf1: 'Novos', kf2: 'Em conversa', kf3: 'Pediram orçamento', kc3: 'Revisão do Onix',
+      kc4: 'A IA anotou: revisão do Onix, R$ 450, retornar na sexta.', kia: 'Assistente AbertoCore', kres: 'Resumo do dia',
       kc5: '14 conversas, 3 orçamentos (R$ 2.300).\nPrecisam de você: Marcos aguarda o horário da revisão.\nAmanhã: 2 retornos combinados.',
       hServ: WM + ' é para quem não quer perder tempo',
       hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
@@ -799,13 +805,13 @@
       hCore: 'The customer asks. AbertoCore answers right away.',
       pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes with the Complete and Enterprise packages, set up for your business.',
       k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
-      k2t: 'The card moves by itself', k2d: 'AI reads the chat and notes what the customer wants, the value and when to follow up.',
-      k3t: 'At 6pm the daily summary arrives', k3d: 'How many chats, how much is in negotiation and who needs you.',
+      k2t: 'AI keeps your customers organized', k2d: 'It sorts who asked for a quote, who already bought and who needs a follow-up, without you writing anything down.',
+      k3t: 'At 6pm, your daily summary', k3d: 'One message: how the day went and who is waiting for you.',
       kNota: 'Works on phone and computer, with the same data on both.', exCore: 'Illustrative AbertoCore example',
       kc1: 'Hi! How much is a service for my car?', kc2: 'Hello! This is Lima Auto Center. How can we help?',
       kb1: 'Get a quote', kb2: 'Hours and address', kb3: 'Talk to a person',
-      kf1: 'New contact', kf2: 'Qualified', kf3: 'Proposal sent', kc3: 'Car service',
-      kc4: 'AI updated the card: value $450, follow up on Friday.', kia: 'AbertoCore Assistant', kres: 'Daily summary',
+      kf1: 'New', kf2: 'Talking', kf3: 'Asked for a quote', kc3: 'Car service',
+      kc4: 'AI noted: car service, $450, follow up on Friday.', kia: 'AbertoCore Assistant', kres: 'Daily summary',
       kc5: '14 chats, 3 quotes ($2,300).\nNeed you: Marcos is waiting for a service time.\nTomorrow: 2 follow-ups scheduled.',
       hServ: WM + ' is for people who don\'t want to waste time',
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
@@ -1094,11 +1100,27 @@
     var cenas = document.querySelectorAll('#cenas .cena'), bts = document.querySelectorAll('#passosCore button');
     if (!cenas.length) return;
     var atualC = 0, timer = null, parado = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function mostra(i){
+    var lista = document.getElementById('passosCore'), rolandoAuto = false, tLista = 0;
+    function carrossel(){ return lista.scrollWidth > lista.clientWidth + 4; }
+    function mostra(i, deslizou){
       atualC = i;
       cenas.forEach(function(c, k){ c.classList.toggle('ativa', k === i); });
       bts.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i); });
+      if (!deslizou && carrossel()){
+        var li = lista.children[i]; rolandoAuto = true;
+        lista.scrollTo({left: li.offsetLeft - lista.offsetLeft - 18, behavior: parado ? 'auto' : 'smooth'});
+        setTimeout(function(){ rolandoAuto = false; }, 700);
+      }
     }
+    lista.addEventListener('scroll', function(){
+      if (rolandoAuto) return;
+      clearTimeout(tLista);
+      tLista = setTimeout(function(){
+        var x = lista.scrollLeft, melhor = 0, dist = 1e9;
+        Array.prototype.forEach.call(lista.children, function(li, k){ var d = Math.abs(li.offsetLeft - lista.offsetLeft - 18 - x); if (d < dist){ dist = d; melhor = k; } });
+        if (melhor !== atualC){ mostra(melhor, true); roda(); }
+      }, 90);
+    }, {passive: true});
     function roda(){ clearInterval(timer); if (!parado) timer = setInterval(function(){ mostra((atualC + 1) % cenas.length); }, 4200); }
     bts.forEach(function(b, k){ b.addEventListener('click', function(){ mostra(k); roda(); }); });
     if ('IntersectionObserver' in window){
