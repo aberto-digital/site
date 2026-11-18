@@ -59,21 +59,19 @@
   .ab-frase em{font-style:normal;color:var(--ambar)}
   .ab-vao{position:absolute;overflow:hidden;pointer-events:none}
   .frase-wm{display:block;width:100%;height:auto;margin:0 auto}
-  .ab-hero{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;padding:calc(70px + 9vh) 0 56px;color:var(--papel);opacity:0;pointer-events:none}
+  .ab-hero{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;padding:calc(70px + 9vh) 0 28px;color:var(--papel);opacity:0;pointer-events:none}
   .ab-hero.ativo{pointer-events:auto}
   .ab-hero h1{font-family:var(--display);font-weight:850;font-stretch:70%;font-size:clamp(2.6rem,7vw,6rem);line-height:.94;letter-spacing:-.02em;max-width:900px}
   .ab-hero h1 .linha2{color:var(--ambar)}
   .ab-hero .apoio{color:var(--muted);font-size:1.12rem;max-width:580px;margin-top:24px}
   .wm-inline{display:inline-block;height:1.05em;width:5.74em;vertical-align:-.24em}
-  .core-cta{grid-area:cta;display:flex;justify-content:space-between;align-items:center;gap:28px 48px;flex-wrap:wrap;margin-top:64px;padding-top:36px;border-top:1px solid var(--slate)}
+  .demo .core-apoio{grid-area:apoio;margin-top:56px;max-width:820px;font-size:1.12rem;color:var(--muted)}
+  .core-cta{grid-area:cta;display:flex;justify-content:space-between;align-items:center;gap:28px 48px;flex-wrap:wrap;margin-top:28px;padding-top:36px;border-top:1px solid var(--slate)}
+  .cg-txt{margin-bottom:8px}.cg-txt h2{max-width:none}
   .core-cta .acoes{display:flex;gap:12px;flex-wrap:wrap}
   .core-cta .prova{display:flex;gap:40px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
   .core-cta .prova b{display:block;color:var(--papel);font-weight:700;font-size:1rem}
   .core-cta .prova div{max-width:300px}
-  @media (min-width:1000px){
-    .ab-hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:80px;align-items:end}
-    .ab-hero .apoio{margin-top:0;padding-bottom:.6em;max-width:520px;justify-self:end}
-  }
 
   /* demonstração do WhatsApp */
   .demo{background:var(--ink);color:var(--papel);padding:16px 0 110px;position:relative;z-index:2;overflow:hidden}
@@ -141,7 +139,7 @@
 
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
-  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt palco" "passos palco" "cta cta";column-gap:56px;align-items:center}
+  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt txt" "passos palco" "apoio apoio" "cta cta";column-gap:56px;align-items:center}
   .core-grid>*{min-width:0}
   .cg-txt{grid-area:txt;align-self:end}.cg-passos{grid-area:passos;align-self:start}.core-grid .palco{grid-area:palco}
   .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
@@ -248,6 +246,7 @@
   .tab-pac tr.pr th small{display:block;color:var(--muted);font-weight:500;font-size:.8rem}
   .tab-pac tr.impl td small{font-size:.55em;color:var(--muted);font-weight:700;vertical-align:.35em}
   .tab-pac tr.mes td small{display:block;font-size:.78rem;color:var(--muted);font-weight:500}
+  .tab-pac tr.mes td em{display:block;font-style:normal;font-weight:500;font-size:.75rem;color:var(--muted);margin-top:3px}
   /* card discreto que liga o texto da linha aos valores ao passar o mouse */
   .tab-pac tbody tr:not(.grp):hover>*,.tab-pac tr.pr:hover>*,.tab-pac tr.prazo:hover>*{background-image:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.055))}
   .tab-pac tbody tr:not(.grp):hover>th,.tab-pac tr.pr:hover>th,.tab-pac tr.prazo:hover>th{border-radius:10px 0 0 10px}
@@ -315,7 +314,7 @@
 
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
-    .core-grid{grid-template-areas:"txt" "passos" "palco" "cta";row-gap:24px}
+    .core-grid{grid-template-areas:"txt" "passos" "palco" "apoio" "cta";row-gap:24px}
     .passos-core{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none;scroll-padding:0 18px}
     .passos-core::-webkit-scrollbar{display:none}
     .passos-core li{flex:0 0 80%;scroll-snap-align:start;display:flex}
@@ -341,7 +340,7 @@
     .tab-pac tr.pr th{text-align:left;padding-right:4px}
     .tab-pac tr.pr th small{font-size:.66rem}
     .tab-pac .b{padding-left:6px}
-    .tab-pac tr.mes td s{font-size:.66rem}
+    .tab-pac tr.mes td em{font-size:.62rem;line-height:1.25}
     .tab-pac tr.pr th{font-size:.74rem}
     .botao.mini{padding:8px 4px;font-size:.74rem}
     .fluxo{grid-template-columns:1fr}
@@ -362,8 +361,8 @@
     .direita .botao{padding:9px 13px;font-size:.84rem}
     .idioma{padding:7px 10px;font-size:.78rem}
     .ab-hero h1{font-size:clamp(2.3rem,11vw,3rem)}
-    .ab-hero .apoio{font-size:1rem;margin-top:18px}
-    .core-cta{margin-top:40px;padding-top:28px}
+    .core-cta{margin-top:24px;padding-top:28px}
+    .core-apoio{margin-top:36px;font-size:1rem}
     .core-cta .acoes .botao{width:100%;justify-content:center}
     .core-cta .acoes{width:100%}
     .core-cta .prova{gap:18px;font-size:.86rem}
@@ -432,7 +431,6 @@
   <div class="ab-hero" id="abHero">
     <div class="wrap">
       <h1 data-i18n="h1"></h1>
-      <p class="apoio" data-i18n="apoio"></p>
     </div>
   </div>
 
@@ -478,6 +476,7 @@
           </div>
         </div>
       </div>
+      <p class="core-apoio" data-i18n="apoio"></p>
       <div class="core-cta">
         <div class="acoes">
           <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnA"></a>
@@ -956,7 +955,7 @@
     document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : '<small>R$</small> ' + num(p[0]); });
     document.querySelectorAll('[data-mes]').forEach(function(e){
       var p = PRECOS[+e.getAttribute('data-mes')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
-      e.innerHTML = L === 'en' ? '' : '<small>12x de</small> R$ ' + num(m) + '<s>R$ ' + num(p[1]) + '</s>';
+      e.innerHTML = L === 'en' ? '' : '<small>12x de</small> R$ ' + num(m) + '<em>ou R$ ' + num(p[1]) + ' sem fidelidade</em>';
     });
     document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? m[3] : m[2]) + '</span></li>'; }).join('');
   }
