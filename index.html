@@ -259,13 +259,15 @@
   .tab-pac.realce-1 [data-c="1"]{background-color:#3A4A62;transition:background-color .4s}
   .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
   .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
-  .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:10px}
+  .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:8px}
   .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
   .planos button span{color:var(--ambar);font-weight:700}
   .planos button.ativo{background:var(--papel);color:var(--ink)}
   .planos button.ativo span{color:#B56F00}
   .planos button:focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
-  .plano-nota{color:var(--muted);font-size:.92rem;margin-bottom:28px;min-height:1.4em}
+  .plano-nota{color:var(--muted);font-size:.85rem;font-weight:500;min-height:1.4em}
+  .cabeca+.comp{margin-top:8px}
+  .tab-pac tr.periodo th{padding-top:26px;padding-bottom:6px}
   .mods{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:18px 0 6px}
   .mods li{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
   .mods li b{color:var(--papel);font-weight:650}
@@ -326,7 +328,9 @@
     .auditoria{grid-template-areas:"texto" "modelo" "cta";gap:36px}
     .etapas{grid-template-columns:1fr}
     .mods{grid-template-columns:1fr}
-    .planos button{padding:9px 12px}
+    .planos{display:flex;flex-direction:column;border-radius:16px;width:100%}
+    .planos button{padding:7px 6px;font-size:.74rem;text-align:left}
+    .plano-nota{font-size:.68rem}
     .tab-pac th,.tab-pac td{padding:10px 4px}
     .tab-pac .b{width:37%;font-size:.8rem;padding-left:0}
     .tab-pac [data-c]{width:21%}
@@ -530,12 +534,6 @@
         <h2 data-i18n="hPac"></h2>
         <p data-i18n="pPac"></p>
       </div>
-      <div class="planos" role="group" aria-label="Plano">
-        <button type="button" data-plano="0" class="ativo" data-i18n="pl0"></button>
-        <button type="button" data-plano="1" data-i18n="pl1"></button>
-        <button type="button" data-plano="2" data-i18n="pl2"></button>
-      </div>
-      <p class="plano-nota" id="planoNota" aria-live="polite"></p>
       <div class="comp" id="comp" role="region" aria-labelledby="compTit" tabindex="0">
         <table class="tab-pac">
           <caption class="so-leitor" id="compTit" data-i18n="tCap"></caption>
@@ -572,6 +570,12 @@
           </tbody>
           <tfoot>
             <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td></tr>
+            <tr class="pr periodo"><th scope="row" class="b"><div class="planos" role="group" aria-label="Plano">
+        <button type="button" data-plano="0" class="ativo" data-i18n="pl0"></button>
+        <button type="button" data-plano="1" data-i18n="pl1"></button>
+        <button type="button" data-plano="2" data-i18n="pl2"></button>
+      </div>
+      <p class="plano-nota" id="planoNota" aria-live="polite"></p></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
             <tr class="pr impl"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
             <tr class="pr mes"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
             <tr class="acoes"><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini fantasma wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
@@ -726,7 +730,7 @@
       kc5: '14 conversas, 3 orçamentos (R$ 2.300).\nPrecisam de você: Marcos aguarda o horário da revisão.\nAmanhã: 2 retornos combinados.',
       hServ: WM + ' é para quem não quer perder tempo',
       hServLeitor: ' configurando, monitorando, pesquisando, postando nas redes ou correndo atrás de cliente sumido.',
-      hPac: 'Três pontos de partida. Todos com entrega configurada.',
+      hPac: 'O que você quer melhorar no seu negócio hoje?',
       pPac: 'Valores de lançamento, sem pegadinha. A proposta final chega por escrito antes de qualquer pagamento.',
       pl0: 'Mensal', pl1: '6 meses <span>−15%</span>', pl2: '12 meses <span>−30%</span>',
       pn0: 'Sem fidelidade. Cancele com 30 dias de aviso.', pn1: 'Mensalidade com 15% de desconto, com prazo mínimo de 6 meses.', pn2: 'Mensalidade com 30% de desconto, com prazo mínimo de 12 meses.',
@@ -830,7 +834,7 @@
       kc5: '14 chats, 3 quotes ($2,300).\nNeed you: Marcos is waiting for a service time.\nTomorrow: 2 follow-ups scheduled.',
       hServ: WM + ' is for people who don\'t want to waste time',
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
-      hPac: 'Three starting points. Every one comes fully set up.',
+      hPac: 'What do you want to improve in your business today?',
       pPac: 'Prices for the US are quoted in dollars. You get a written proposal before paying anything.',
       pl0: 'Monthly', pl1: '6 months <span>−15%</span>', pl2: '12 months <span>−30%</span>',
       pn0: 'No contract. Cancel with 30 days notice.', pn1: '15% off the monthly fee with a 6-month minimum.', pn2: '30% off the monthly fee with a 12-month minimum.',
