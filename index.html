@@ -65,16 +65,14 @@
   .ab-hero h1 .linha2{color:var(--ambar)}
   .ab-hero .apoio{color:var(--muted);font-size:1.12rem;max-width:580px;margin-top:24px}
   .wm-inline{display:inline-block;height:1.05em;width:5.74em;vertical-align:-.24em}
-  .ab-hero .acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-  .ab-hero .prova{margin-top:36px;display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
-  .ab-hero .prova b{display:block;color:var(--papel);font-weight:700;font-size:1rem}
-  .ab-hero .prova div{max-width:300px}
+  .core-cta{grid-area:cta;display:flex;justify-content:space-between;align-items:center;gap:28px 48px;flex-wrap:wrap;margin-top:64px;padding-top:36px;border-top:1px solid var(--slate)}
+  .core-cta .acoes{display:flex;gap:12px;flex-wrap:wrap}
+  .core-cta .prova{display:flex;gap:40px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
+  .core-cta .prova b{display:block;color:var(--papel);font-weight:700;font-size:1rem}
+  .core-cta .prova div{max-width:300px}
   @media (min-width:1000px){
-    .ab-hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:72px;align-items:end}
-    .ab-hero h1{grid-column:1;grid-row:1/4;align-self:end}
-    .ab-hero .apoio,.ab-hero .acoes,.ab-hero .prova{grid-column:2}
-    .ab-hero .apoio{margin-top:0}
-    .ab-hero .prova div{max-width:none;flex:1 1 180px}
+    .ab-hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:80px;align-items:end}
+    .ab-hero .apoio{margin-top:0;padding-bottom:.6em;max-width:520px;justify-self:end}
   }
 
   /* demonstração do WhatsApp */
@@ -143,7 +141,7 @@
 
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
-  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt palco" "passos palco";column-gap:56px;align-items:center}
+  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt palco" "passos palco" "cta cta";column-gap:56px;align-items:center}
   .core-grid>*{min-width:0}
   .cg-txt{grid-area:txt;align-self:end}.cg-passos{grid-area:passos;align-self:start}.core-grid .palco{grid-area:palco}
   .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
@@ -319,7 +317,7 @@
 
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
-    .core-grid{grid-template-areas:"txt" "passos" "palco";row-gap:24px}
+    .core-grid{grid-template-areas:"txt" "passos" "palco" "cta";row-gap:24px}
     .passos-core{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none;scroll-padding:0 18px}
     .passos-core::-webkit-scrollbar{display:none}
     .passos-core li{flex:0 0 80%;scroll-snap-align:start;display:flex}
@@ -367,15 +365,16 @@
     .idioma{padding:7px 10px;font-size:.78rem}
     .ab-hero h1{font-size:clamp(2.3rem,11vw,3rem)}
     .ab-hero .apoio{font-size:1rem;margin-top:18px}
-    .ab-hero .acoes{margin-top:22px}
-    .ab-hero .prova{margin-top:24px;gap:18px;font-size:.86rem}
+    .core-cta{margin-top:40px;padding-top:28px}
+    .core-cta .acoes .botao{width:100%;justify-content:center}
+    .core-cta .acoes{width:100%}
+    .core-cta .prova{gap:18px;font-size:.86rem}
     .pdf{padding:20px 18px 18px;box-shadow:8px 8px 0 var(--ambar)}
     .ponte{padding:18px}.ponte .botao{width:100%;justify-content:center}
     .au-cta .botao{width:100%;justify-content:center}
     .modulos{flex-direction:column;align-items:flex-start}
     .modulos .botao{width:100%;justify-content:center}
   }
-  @media (max-height:640px) and (max-width:560px){ .ab-hero .prova{display:none} }
 
   /* sem animação: mostra a hero direto */
   .abertura.estatica{display:none}
@@ -436,14 +435,6 @@
     <div class="wrap">
       <h1 data-i18n="h1"></h1>
       <p class="apoio" data-i18n="apoio"></p>
-      <div class="acoes">
-        <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnA"></a>
-        <a class="botao fantasma" href="#pacotes" data-i18n="btnP"></a>
-      </div>
-      <div class="prova">
-        <div><b data-i18n="pr1t"></b><span data-i18n="pr1d"></span></div>
-        <div><b data-i18n="pr2t"></b><span data-i18n="pr2d"></span></div>
-      </div>
     </div>
   </div>
 
@@ -487,6 +478,16 @@
               <div class="ac-bal resumo"><span class="ac-tag azul" data-i18n="kres"></span><span data-i18n="kc5"></span></div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="core-cta">
+        <div class="acoes">
+          <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnA"></a>
+          <a class="botao fantasma" href="#pacotes" data-i18n="btnP"></a>
+        </div>
+        <div class="prova">
+          <div><b data-i18n="pr1t"></b><span data-i18n="pr1d"></span></div>
+          <div><b data-i18n="pr2t"></b><span data-i18n="pr2d"></span></div>
         </div>
       </div>
     </div>
