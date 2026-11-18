@@ -65,7 +65,12 @@
   .ab-hero h1 .linha2{color:var(--ambar)}
   .ab-hero .apoio{color:var(--muted);font-size:1.12rem;max-width:580px;margin-top:24px}
   .wm-inline{display:inline-block;height:1.05em;width:5.74em;vertical-align:-.24em}
-  .demo .core-apoio{grid-area:apoio;margin-top:56px;max-width:820px;font-size:1.12rem;color:var(--muted)}
+  .demo .core-apoio{grid-area:apoio;margin-top:110px}
+  .demo .core-apoio h2{max-width:900px}
+  @media (min-width:900px){.demo .tempo .gira{min-height:1.1em}}
+  .demo .core-apoio p{max-width:760px;font-size:1.12rem;color:var(--muted);margin-top:8px}
+  .demo .tempo .wm-inline{--wm-aberto:var(--papel)}
+  .demo .tempo .gira,.demo .tempo .cursor{color:#7FA6FF}.demo .tempo .cursor{background:#7FA6FF}
   .core-cta{grid-area:cta;display:flex;justify-content:space-between;align-items:center;gap:28px 48px;flex-wrap:wrap;margin-top:28px;padding-top:36px;border-top:1px solid var(--slate)}
   .cg-txt{margin-bottom:8px}.cg-txt h2{max-width:none}
   .core-cta .acoes{display:flex;gap:12px;flex-wrap:wrap}
@@ -380,7 +385,7 @@
     .idioma{padding:7px 10px;font-size:.78rem}
     .ab-hero h1{font-size:clamp(2.3rem,11vw,3rem)}
     .core-cta{margin-top:24px;padding-top:28px}
-    .core-apoio{margin-top:36px;font-size:1rem}
+    .demo .core-apoio{margin-top:64px}.demo .core-apoio p{font-size:1rem}
     .core-cta .acoes .botao{width:100%;justify-content:center}
     .core-cta .acoes{width:100%}
     .core-cta .prova{gap:18px;font-size:.86rem}
@@ -502,7 +507,10 @@
         </div>
         <p class="core-p" data-i18n="pCore"></p>
       </div>
-      <p class="core-apoio" data-i18n="apoio"></p>
+      <div class="core-apoio">
+        <h2 class="tempo"><span class="fixo" data-i18n="hServ"></span><span class="gira" aria-hidden="true"><span id="digita"></span><span class="cursor"></span></span><span class="so-leitor" data-i18n="hServLeitor"></span></h2>
+        <p data-i18n="apoio"></p>
+      </div>
       <div class="core-cta">
         <div class="acoes">
           <a class="botao wa" data-msg="msgAud" target="_blank" rel="noopener" data-i18n="btnA"></a>
@@ -519,7 +527,7 @@
   <section id="servicos">
     <div class="wrap">
       <div class="cabeca">
-        <h2 class="tempo"><span class="fixo" data-i18n="hServ"></span><span class="gira" aria-hidden="true"><span id="digita"></span><span class="cursor"></span></span><span class="so-leitor" data-i18n="hServLeitor"></span></h2>
+        <h2 data-i18n="hEtapas"></h2>
         <p data-i18n="pServ"></p>
       </div>
       <div class="etapas">
@@ -720,7 +728,7 @@
       c3: 'Quanto fica a troca de óleo?',
       c4: 'Sai a partir de R$ 189, com filtro incluído. Passo para o Rogério confirmar o horário?',
       c5: 'Sim, pode mandar pra mim. Agendado para sábado às 10h.',
-      pServ: 'Até comprar de você, o cliente passa por 4 etapas. Em cada uma, um ponto fraco custa venda. A gente cuida das quatro, e você começa pela que mais dói.',
+      hEtapas: 'Até comprar de você, o cliente passa por 4 etapas.', pServ: 'Em cada uma, um ponto fraco custa venda. A gente cuida das quatro, e você começa pela que mais dói.',
       e1t: 'Ser encontrado', e1d: 'Quem busca "mecânica em Arujá" precisa achar você primeiro, não o concorrente.',
       e1a: 'Perfil no Google completo, verificado e com fotos', e1b: 'Site de 1 página rápido no celular, com botão de WhatsApp', e1c: 'Gestão mensal do perfil: posts, fotos novas e horários de feriado',
       e1s: 'Incluído a partir do Start',
@@ -825,7 +833,7 @@
       c3: 'How much is an oil change?',
       c4: 'Starts at a fixed price, filter included. Want me to have Rogério confirm a time?',
       c5: 'Yes, send it to me. Booked for Saturday at 10am.',
-      pServ: 'Before buying from you, a customer goes through 4 stages. A weak spot in any of them costs you sales. We take care of all four, and you start with the one that hurts most.',
+      hEtapas: 'Before buying from you, a customer goes through 4 stages.', pServ: 'A weak spot in any of them costs you sales. We take care of all four, and you start with the one that hurts most.',
       e1t: 'Get found', e1d: 'Someone searching for "mechanic near me" needs to find you first, not the competitor.',
       e1a: 'Complete, verified Google profile with photos', e1b: 'One-page website, fast on mobile, with a WhatsApp button', e1c: 'Monthly profile care: posts, new photos and holiday hours',
       e1s: 'Included from Start',
