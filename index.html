@@ -139,7 +139,7 @@
 
   /* vitrine AbertoCore */
   .core{background:#fff;border-top:1px solid var(--linha-clara)}
-  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"txt txt" "passos palco" "apoio apoio" "cta cta";column-gap:56px;align-items:center}
+  .core-grid{display:grid;grid-template-columns:1.1fr 1fr;grid-template-areas:"passos palco" "apoio apoio" "cta cta";column-gap:56px;align-items:center}
   .core-grid>*{min-width:0}
   .cg-txt{grid-area:txt;align-self:end}.cg-passos{grid-area:passos;align-self:start}.core-grid .palco{grid-area:palco}
   .core-p{margin-top:20px;max-width:480px;font-size:1.05rem}
@@ -162,7 +162,7 @@
   .core-grid{position:relative;z-index:1}
   .exemplo.escuro{color:var(--secundario);border-bottom-color:var(--linha-clara)}
   .tel-core{padding:14px 12px 18px}
-  @media (min-width:1200px){.core-grid .palco{width:380px;justify-self:end;margin-right:40px;align-self:start;margin-top:-270px;position:relative;z-index:3}.demo{overflow:visible}#campo{top:-320px}.core-grid{grid-template-columns:1fr 1fr;grid-template-areas:"txt palco" "passos palco" "apoio apoio" "cta cta"}.cg-txt h2{max-width:620px}}
+  @media (min-width:1200px){.core-grid .palco{width:380px;justify-self:end;margin-right:40px;align-self:start;margin-top:-190px;position:relative;z-index:3}.demo{overflow:visible}#campo{top:-320px}.core-grid{grid-template-columns:1fr 1fr}}
   .core-topo{display:flex;align-items:center;gap:8px;color:var(--papel);font-family:var(--display);font-weight:800;font-stretch:85%;padding:2px 6px 12px;border-bottom:1px solid var(--slate);margin-bottom:12px}
   .core-topo i{width:8px;height:8px;border-radius:50%;background:#1F9D55;margin-left:2px}
   .core-logo{width:22px;height:22px;border-radius:6px;background:var(--navy);position:relative;flex:none;display:inline-block}
@@ -196,6 +196,20 @@
   .ac-abas span{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:.64rem;font-weight:600;transition:color .3s}
   .ac-abas svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
   .ac-abas span.on{color:var(--ambar)}
+  .ac-dash-t{color:var(--papel);font-weight:700;font-size:.86rem;padding:2px 2px 0}
+  .ac-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ac-kpis div{background:#18263F;border-radius:12px;padding:10px}
+  .ac-kpis small{display:block;color:var(--muted);font-size:.66rem;font-weight:600;line-height:1.2}
+  .ac-kpis b{display:block;color:var(--papel);font-family:var(--display);font-weight:800;font-size:1.2rem;margin-top:4px}
+  .ac-kpis em{font-style:normal;font-size:.68rem;font-weight:700;color:var(--ambar)}
+  .ac-barras{background:#18263F;border-radius:12px;padding:10px}
+  .ac-barras small{display:block;color:var(--muted);font-size:.66rem;font-weight:600;margin-bottom:8px}
+  .ac-barras div{display:flex;align-items:flex-end;gap:6px;height:70px}
+  .ac-barras i{flex:1;height:var(--h);background:var(--ceu);border-radius:4px 4px 0 0;transform-origin:bottom}
+  .ac-barras i:nth-child(6){background:var(--ambar)}
+  .cena.ativa .ac-barras i{animation:cresce .8s both cubic-bezier(.2,.8,.2,1)}
+  @keyframes cresce{from{transform:scaleY(0)}}
+  .palco .core-p{color:var(--muted);margin-top:22px;font-size:.98rem;max-width:none}
   .ac-nota{font-size:.78rem;color:var(--ink);background:#FFE4A8;border-radius:10px;padding:8px 10px}
   @media (prefers-reduced-motion: reduce){.cena{transition:none}.cena.ativa .card.move{animation:none}}
 
@@ -318,7 +332,7 @@
 
   @media (max-width:900px){
     .demo-grid,.auditoria,.cad,.core-grid{grid-template-columns:1fr}
-    .core-grid{grid-template-areas:"txt" "passos" "palco" "apoio" "cta";row-gap:24px}
+    .core-grid{grid-template-areas:"passos" "palco" "apoio" "cta";row-gap:24px}
     .passos-core{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 -18px;padding:0 18px 4px;scrollbar-width:none;scroll-padding:0 18px}
     .passos-core::-webkit-scrollbar{display:none}
     .passos-core li{flex:0 0 80%;scroll-snap-align:start;display:flex}
@@ -441,17 +455,13 @@
   <div class="demo" id="abertocore">
     <canvas id="campo" aria-hidden="true"></canvas>
     <div class="wrap core-grid">
-      <div class="cg-txt">
-        <h2 data-i18n="hCore"></h2>
-        <p class="core-p" data-i18n="pCore"></p>
-      </div>
       <div class="cg-passos">
         <ol class="passos-core" id="passosCore">
           <li><button type="button" data-cena="0" aria-pressed="true"><b data-i18n="k1t"></b><span data-i18n="k1d"></span></button></li>
           <li><button type="button" data-cena="1" aria-pressed="false"><b data-i18n="k2t"></b><span data-i18n="k2d"></span></button></li>
           <li><button type="button" data-cena="2" aria-pressed="false"><b data-i18n="k3t"></b><span data-i18n="k3d"></span></button></li>
+          <li><button type="button" data-cena="3" aria-pressed="false"><b data-i18n="k4t"></b><span data-i18n="k4d"></span></button></li>
         </ol>
-        <p class="core-nota" data-i18n="kNota"></p>
       </div>
       <div class="palco">
         <span class="exemplo" data-i18n="exCore"></span>
@@ -477,9 +487,20 @@
               <div class="ac-item ia"><span class="ac-av ia">IA</span><div><b data-i18n="kia"></b><small>18:00</small></div><em>1</em></div>
               <div class="ac-bal resumo"><span class="ac-tag azul" data-i18n="kres"></span><span data-i18n="kc5"></span></div>
             </div>
+            <div class="cena">
+              <div class="ac-dash-t" data-i18n="kdT"></div>
+              <div class="ac-kpis">
+                <div><small data-i18n="kd1"></small><b>23</b><em>+38%</em></div>
+                <div><small data-i18n="kd2"></small><b>1 min</b><em data-i18n="kd2b"></em></div>
+                <div><small data-i18n="kd3"></small><b data-i18n="kd3v"></b><em data-i18n="kd3b"></em></div>
+                <div><small data-i18n="kd4"></small><b>5</b><em data-i18n="kd4b"></em></div>
+              </div>
+              <div class="ac-barras"><small data-i18n="kd5"></small><div><i style="--h:40%"></i><i style="--h:65%"></i><i style="--h:50%"></i><i style="--h:80%"></i><i style="--h:70%"></i><i style="--h:95%"></i><i style="--h:30%"></i></div></div>
+            </div>
           </div>
           <nav class="ac-abas"><span class="on"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><b data-i18n="kab_msg"></b></span><span><svg viewBox="0 0 24 24"><path d="M4 4h4v16H4zM10 4h4v11h-4zM16 4h4v7h-4z"/></svg><b data-i18n="kab_fun"></b></span><span><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b data-i18n="kab_pai"></b></span><span><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><b data-i18n="kab_ia"></b></span></nav>
         </div>
+        <p class="core-p" data-i18n="pCore"></p>
       </div>
       <p class="core-apoio" data-i18n="apoio"></p>
       <div class="core-cta">
@@ -685,7 +706,7 @@
     pt: {
       i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
       nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro',
-      h1: 'Quando o cliente pergunta, <span class="linha2">alguém responde.</span>',
+      h1: 'Quando o cliente pergunta, <span class="linha2">o AbertoCore responde.</span>',
       apoio: 'A ' + WM + ' cria a presença do seu negócio online com ferramentas de ponta. Você cuida do atendimento, a gente cuida do resto: Google Business, site, redes sociais, chatbot e muito mais!',
       btnA: 'Pedir auditoria gratuita', btnP: 'Ver pacotes',
       pr1t: 'Arujá e região', pr1d: 'atendimento presencial e remoto',
@@ -718,6 +739,7 @@
       pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem a partir do pacote Presença, já configurado para o seu negócio.',
       k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
       k2t: 'A IA organiza seus clientes', k2d: 'Separa quem pediu orçamento, quem já comprou e quem precisa de retorno, sem você anotar nada.',
+      k4t: 'O painel mostra seus números', k4d: 'Quantos clientes chegaram, quanto foi orçado e quanto fechou, sem planilha.', kdT: 'Esta semana', kd1: 'Novos clientes', kd2: 'Tempo de resposta', kd2b: 'chatbot 24h', kd3: 'Orçamentos', kd3v: 'R$ 6,8 mil', kd3b: '9 pedidos', kd4b: 'R$ 2,3 mil', kd4: 'Fechados', kd5: 'Conversas por dia',
       k3t: 'Às 18h, o resumo do dia', k3d: 'Numa mensagem só: como foi o dia e quem está esperando por você.',
       kNota: 'Funciona no celular e no computador, com os mesmos dados nos dois.', exCore: 'Exemplo ilustrativo do AbertoCore',
       kc1: 'Oi! Quanto fica a revisão do Onix?', kc2: 'Olá! Aqui é o Auto Center Lima. Como podemos ajudar?',
@@ -789,7 +811,7 @@
     en: {
       i2: 'Your online presence', i3: 'is our <em>business!</em>',
       nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up',
-      h1: 'When customers ask, <span class="linha2">someone answers.</span>',
+      h1: 'When customers ask, <span class="linha2">AbertoCore answers.</span>',
       apoio: WM + ' builds your business\'s online presence with cutting-edge tools. You handle the customers, we handle the rest: Google Business, website, social media, chatbot and much more!',
       btnA: 'Get a free audit', btnP: 'See packages',
       pr1t: 'Brazil and remote', pr1d: 'in person and remote',
@@ -822,6 +844,7 @@
       pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes from the Presence package up, set up for your business.',
       k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
       k2t: 'AI keeps your customers organized', k2d: 'It sorts who asked for a quote, who already bought and who needs a follow-up, without you writing anything down.',
+      k4t: 'The dashboard shows your numbers', k4d: 'How many customers came in, how much was quoted and how much closed, no spreadsheet.', kdT: 'This week', kd1: 'New customers', kd2: 'Response time', kd2b: '24h chatbot', kd3: 'Quotes', kd3v: '$6.8k', kd3b: '9 requests', kd4b: '$2.3k', kd4: 'Closed', kd5: 'Chats per day',
       k3t: 'At 6pm, your daily summary', k3d: 'One message: how the day went and who is waiting for you.',
       kNota: 'Works on phone and computer, with the same data on both.', exCore: 'Illustrative AbertoCore example',
       kc1: 'Hi! How much is a service for my car?', kc2: 'Hello! This is Lima Auto Center. How can we help?',
@@ -1123,7 +1146,7 @@
     function mostra(i, deslizou){
       atualC = i;
       cenas.forEach(function(c, k){ c.classList.toggle('ativa', k === i); });
-      document.querySelectorAll('.ac-abas span').forEach(function(t, k){ t.classList.toggle('on', k === [0, 1, 3][i]); });
+      document.querySelectorAll('.ac-abas span').forEach(function(t, k){ t.classList.toggle('on', k === [0, 1, 3, 2][i]); });
       bts.forEach(function(b, k){ b.setAttribute('aria-pressed', k === i); });
       if (!deslizou && carrossel()){
         var li = lista.children[i]; rolandoAuto = true;
