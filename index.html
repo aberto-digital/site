@@ -217,29 +217,40 @@
   .pdf-perdas li.alta{background:#FBF3F3;border-left-color:#D64545}
   .pdf-rec{margin-top:12px;border:2px solid var(--ceu);border-radius:10px;padding:9px 12px;background:#F5F8FF;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--secundario)}
   .pdf-rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
-  /* comparativo de pacotes */
-  .comp{background:var(--ink);border:1px solid var(--slate);border-radius:14px;overflow:visible}
-  .tab-pac{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:.95rem}
-  .tab-pac th,.tab-pac td{padding:11px 10px;text-align:center;border-bottom:1px solid #22324F;vertical-align:middle}
-  .tab-pac .b{text-align:left;width:40%;color:var(--papel);font-weight:500}
-  .tab-pac thead th,.tab-pac thead td{position:sticky;background:var(--ink);z-index:2}
-  .tab-pac tr.nomes th{top:70px;font-family:var(--display);font-weight:800;font-stretch:76%;font-size:1.3rem;color:var(--papel);padding-top:18px;border-bottom:0}
-  .tab-pac tr.nomes th:first-child{border-top-left-radius:14px}.tab-pac tr.nomes th:last-child{border-top-right-radius:14px}
-  .tab-pac tr.pr th,.tab-pac tr.pr td{position:static;font-size:.9rem}
-  .tab-pac tr.pr td{font-family:var(--display);font-weight:800;color:var(--papel);font-size:1.15rem;white-space:nowrap}
-  .tab-pac tr.pr td s{display:block;font-family:var(--corpo);font-weight:500;font-size:.75rem;color:var(--muted)}
-  .tab-pac tr.pr th{color:var(--muted)}
-  .tab-pac tr.grp th{text-align:left;background:#18263F;color:var(--ambar);font-family:var(--display);font-weight:800;font-size:.95rem;padding:9px 10px}
-  .tab-pac td.sim{color:var(--ambar);font-weight:800;font-size:1.1rem}
-  .tab-pac td.nao{color:#3B4B68}
-  .tab-pac td.txt{color:var(--papel);font-size:.82rem;font-weight:650}
+  /* comparativo de pacotes: o Presença vira um cartão destacado no meio da tabela */
+  .comp{overflow:visible}
+  .tab-pac{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+  .tab-pac th,.tab-pac td{padding:13px 12px;text-align:center;vertical-align:middle;border-bottom:1px solid rgba(255,255,255,.07)}
+  .tab-pac .b{text-align:left;width:42%;color:var(--papel);font-weight:500;font-size:.95rem;padding-left:0}
+  .tab-pac [data-c]{width:19.33%}
+  .tab-pac [data-c="1"]{background:#24395F;border-left:1.5px solid var(--ceu);border-right:1.5px solid var(--ceu)}
+  .tab-pac thead th{position:sticky;top:70px;z-index:2;background:var(--navy);border-bottom:1px solid var(--slate);padding:22px 8px 16px;vertical-align:bottom}
+  .tab-pac thead th[data-c="1"]{background:#24395F;border-top:1.5px solid var(--ceu);border-radius:14px 14px 0 0}
+  .tab-pac thead .nm{display:block;font-family:var(--display);font-weight:800;font-stretch:76%;font-size:1.55rem;line-height:1.05;color:var(--papel)}
+  .tab-pac thead small{display:block;margin-top:5px;font-size:.78rem;font-weight:500;color:var(--muted);line-height:1.3;min-height:2.6em}
+  .tab-pac thead .rec{display:inline-block;margin-bottom:8px;font-size:.7rem;font-weight:800;color:var(--ink);background:var(--ambar);border-radius:999px;padding:2px 9px}
+  .tab-pac tr.grp th,.tab-pac tr.grp td{padding-top:26px;padding-bottom:8px;border-bottom:0}
+  .tab-pac tr.grp th{color:var(--ambar);font-family:var(--display);font-weight:800;font-size:1rem}
+  .tab-pac td.sim svg{width:22px;height:22px;display:inline-block;vertical-align:middle}
+  .tab-pac td.sim circle{fill:var(--ambar)}.tab-pac td.sim path{stroke:var(--ink)}
+  .tab-pac td.nao i{display:inline-block;width:12px;height:2px;border-radius:2px;background:#41526F;vertical-align:middle}
+  .tab-pac td.txt{color:var(--papel);font-size:.85rem;font-weight:650}
+  .tab-pac tfoot th,.tab-pac tfoot td{border-bottom:0}
+  .tab-pac tr.prazo th,.tab-pac tr.prazo td{padding-top:24px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .tab-pac tr.prazo td{color:var(--papel);font-weight:650;font-size:.9rem}
+  .tab-pac tr.pr th{color:var(--muted);font-size:.9rem}
+  .tab-pac tr.impl th,.tab-pac tr.impl td{padding-top:22px;padding-bottom:4px}
+  .tab-pac tr.impl td{font-family:var(--display);font-weight:800;font-size:1.65rem;color:var(--papel);white-space:nowrap;letter-spacing:-.02em}
+  .tab-pac tr.mes td{font-weight:650;color:var(--papel);font-size:.95rem;padding-top:2px}
+  .tab-pac tr.mes td s{display:block;font-weight:500;font-size:.78rem;color:var(--muted)}
+  .tab-pac tr.mes td small{color:var(--muted);font-weight:500}
   .tab-pac.en tr.pr{display:none}
-  .tab-pac tr.prazo td{color:var(--papel);font-size:.85rem;font-weight:650}
-  .tab-pac tfoot td,.tab-pac tfoot th{border-bottom:0;padding:16px 8px 18px}
-  .tab-pac [data-c="1"]{background-color:rgba(47,111,237,.10)}
-  .tab-pac tr.nomes th[data-c="1"]{box-shadow:inset 0 3px 0 var(--ceu)}
-  .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-1 [data-c="1"],.tab-pac.realce-2 [data-c="2"]{background-color:rgba(255,176,32,.22);transition:background-color .4s}
-  .botao.mini{padding:9px 10px;font-size:.88rem;width:100%;justify-content:center}
+  .tab-pac tr.acoes td{padding:16px 10px 22px}
+  .tab-pac tr.acoes td[data-c="1"]{border-bottom:1.5px solid var(--ceu);border-radius:0 0 14px 14px}
+  .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-2 [data-c="2"]{background-color:rgba(255,176,32,.16);transition:background-color .4s}
+  .tab-pac.realce-1 [data-c="1"]{background-color:#3A4A62;transition:background-color .4s}
+  .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
+  .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
   .planos{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--slate);border-radius:999px;margin-bottom:10px}
   .planos button{font:inherit;font-size:.92rem;font-weight:600;color:var(--muted);background:none;border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
   .planos button span{color:var(--ambar);font-weight:700}
@@ -308,15 +319,22 @@
     .etapas{grid-template-columns:1fr}
     .mods{grid-template-columns:1fr}
     .planos button{padding:9px 12px}
-    .tab-pac{font-size:.8rem}
-    .tab-pac th,.tab-pac td{padding:9px 4px}
-    .tab-pac .b{width:37%;padding-left:10px}
-    .tab-pac tr.nomes th{font-size:.8rem;letter-spacing:-.01em;padding-top:12px;hyphens:manual;overflow-wrap:normal;line-height:1.1}
-    .comp{margin:0 -8px}
-    .tab-pac tr.pr td{font-size:.86rem}
-    .tab-pac tr.pr th{font-size:.74rem}
+    .tab-pac th,.tab-pac td{padding:10px 4px}
+    .tab-pac .b{width:37%;font-size:.8rem;padding-left:0}
+    .tab-pac [data-c]{width:21%}
+    .tab-pac thead th{padding:16px 3px 12px}
+    .tab-pac thead .nm{font-size:.9rem;letter-spacing:-.02em;hyphens:none}
+    .tab-pac thead th{padding-left:1px;padding-right:1px}
+    .tab-pac thead small{display:none}
+    .tab-pac thead .rec{font-size:.54rem;padding:1px 4px;margin-bottom:6px;letter-spacing:-.01em}
+    .tab-pac td.sim svg{width:18px;height:18px}
     .tab-pac td.txt,.tab-pac tr.prazo td{font-size:.7rem}
-    .tab-pac tr.grp th{font-size:.82rem}
+    .tab-pac tr.grp th{font-size:.85rem}
+    .tab-pac tr.impl td{font-size:1.05rem}
+    .tab-pac tr.mes td{font-size:.76rem}
+    .tab-pac tr.mes td small{display:block;font-size:.62rem}
+    .tab-pac tr.mes td s{font-size:.66rem}
+    .tab-pac tr.pr th{font-size:.74rem}
     .botao.mini{padding:8px 4px;font-size:.74rem}
     .fluxo{grid-template-columns:1fr}
     .fluxo div+div{padding-left:0;border-left:0;border-top:1px solid var(--linha-clara);margin-top:24px}
@@ -328,7 +346,7 @@
   @media (max-width:560px){
     .wrap{padding:0 18px}
     .nav{height:60px;gap:8px}
-    .tab-pac tr.nomes th{top:60px}
+    .tab-pac thead th{top:60px}
     .abertura{margin-top:-60px}
     .ab-hero{padding:calc(60px + 7vh) 0 40px}
     .logo{height:27px}
@@ -378,7 +396,7 @@
     <nav>
       <a href="#servicos" data-i18n="nav1"></a>
       <a href="#pacotes" data-i18n="nav2"></a>
-      <a href="#processo" data-i18n="nav3"></a>
+      <a href="#auditoria" data-i18n="nav3"></a>
       <a href="#cadastro" data-i18n="nav4"></a>
     </nav>
     <div class="direita">
@@ -514,46 +532,45 @@
         <table class="tab-pac">
           <caption class="so-leitor" id="compTit" data-i18n="tCap"></caption>
           <thead>
-            <tr class="nomes"><th scope="col" class="b"></th><th scope="col" data-c="0">Start</th><th scope="col" data-c="1"><span data-i18n="nomeP"></span></th><th scope="col" data-c="2"><span data-i18n="nomeC"></span></th></tr>
-            <tr class="pr"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
-            <tr class="pr"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
+            <tr class="nomes"><th scope="col" class="b"></th><th scope="col" data-c="0"><span class="nm">Start</span><small data-i18n="tLin0"></small></th><th scope="col" data-c="1"><span class="rec" data-i18n="tRec"></span><span class="nm"><span data-i18n="nomeP"></span></span><small data-i18n="tLin1"></small></th><th scope="col" data-c="2"><span class="nm"><span data-i18n="nomeC"></span></span><small data-i18n="tLin2"></small></th></tr>
           </thead>
           <tbody>
-            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e1t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t1"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t2"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t3"></th><td data-c="0" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th scope="colgroup" class="b" data-i18n="e1t"></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t1"></th><td data-c="0" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t2"></th><td data-c="0" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t3"></th><td data-c="0" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e2t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t4"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t5"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t6"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th scope="colgroup" class="b" data-i18n="e2t"></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t4"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t5"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t6"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e3t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t7"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t8"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="txt" data-i18n="tUsa"></td><td data-c="2" class="txt" data-i18n="tUsb"></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t9"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t10"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t11"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr class="grp"><th scope="colgroup" class="b" data-i18n="e3t"></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t7"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t8"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="txt" data-i18n="tUsa"></td><td data-c="2" class="txt" data-i18n="tUsb"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t9"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t10"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t11"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tbody>
-            <tr class="grp"><th colspan="4" scope="colgroup" data-i18n="e4t"></th></tr>
-            <tr><th scope="row" class="b" data-i18n="t12"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t13"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t14"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t15"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-            <tr><th scope="row" class="b" data-i18n="t16"></th><td data-c="0" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><span aria-hidden="true">–</span><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><span aria-hidden="true">✓</span><span class="so-leitor" data-i18n="tSim"></span></td></tr>
-          </tbody>
-          <tbody>
-            <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td></tr>
+            <tr class="grp"><th scope="colgroup" class="b" data-i18n="e4t"></th><td data-c="0"></td><td data-c="1"></td><td data-c="2"></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t12"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t13"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t14"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t15"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
+            <tr><th scope="row" class="b" data-i18n="t16"></th><td data-c="0" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="1" class="nao"><i aria-hidden="true"></i><span class="so-leitor" data-i18n="tNao"></span></td><td data-c="2" class="sim"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.3l2.7 2.7 5.7-6" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="so-leitor" data-i18n="tSim"></span></td></tr>
           </tbody>
           <tfoot>
-            <tr><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
+            <tr class="prazo"><th scope="row" class="b" data-i18n="tPrazo"></th><td data-c="0" data-i18n="tPz0"></td><td data-c="1" data-i18n="tPz1"></td><td data-c="2" data-i18n="tPz2"></td></tr>
+            <tr class="pr impl"><th scope="row" class="b" data-i18n="tImpl"></th><td data-c="0" data-impl="0"></td><td data-c="1" data-impl="1"></td><td data-c="2" data-impl="2"></td></tr>
+            <tr class="pr mes"><th scope="row" class="b" data-i18n="tMes"></th><td data-c="0" data-mes="0"></td><td data-c="1" data-mes="1"></td><td data-c="2" data-mes="2"></td></tr>
+            <tr class="acoes"><th class="b"></th><td data-c="0"><a class="botao mini fantasma wa" data-msg="msgP1" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="1"><a class="botao mini wa" data-msg="msgP2" target="_blank" rel="noopener" data-i18n="tQuero"></a></td><td data-c="2"><a class="botao mini fantasma wa" data-msg="msgP3" target="_blank" rel="noopener" data-i18n="tQuero"></a></td></tr>
           </tfoot>
         </table>
       </div>
+      <p class="garantia" data-i18n="tGar"></p>
       <div class="modulos">
         <div>
           <h3 data-i18n="hMod"></h3>
@@ -561,17 +578,6 @@
           <ul class="mods" id="mods"></ul>
         </div>
         <a class="botao fantasma wa" data-msg="msgMod" target="_blank" rel="noopener" data-i18n="btnMod"></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="processo">
-    <div class="wrap">
-      <div class="cabeca"><h2 data-i18n="hProc"></h2></div>
-      <div class="fluxo">
-        <div><div class="passo">1</div><h3 data-i18n="st1t"></h3><p data-i18n="st1d"></p></div>
-        <div><div class="passo">2</div><h3 data-i18n="st2t"></h3><p data-i18n="st2d"></p></div>
-        <div><div class="passo">3</div><h3 data-i18n="st3t"></h3><p data-i18n="st3d"></p></div>
       </div>
     </div>
   </section>
@@ -669,7 +675,7 @@
   var T = {
     pt: {
       i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
-      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Como funciona', nav4: 'Cadastro',
+      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro',
       h1: 'Quando o cliente pergunta, <span class="linha2">alguém responde.</span>',
       apoio: 'A ' + WM + ' cria a presença do seu negócio online com ferramentas de ponta. Você cuida do atendimento, a gente cuida do resto: Google Business, site, redes sociais, chatbot e muito mais!',
       btnA: 'Pedir auditoria gratuita', btnP: 'Ver pacotes',
@@ -729,6 +735,7 @@
       t7: 'WhatsApp Business com catálogo e respostas rápidas', t8: 'AbertoCore: conversas e clientes num só lugar', tUsa: 'até 2 usuários', tUsb: 'sem limite',
       t9: 'Chatbot de menu com botões', t10: 'IA que atende sozinha 24h, qualifica e agenda', t11: 'Instagram, Facebook e e-mail na mesma caixa',
       t12: 'Funil e agenda com lembrete de retorno', t13: 'Assistente de IA interno e resumo do dia', t14: 'Agendamento online', t15: 'E-mail com o seu domínio', t16: 'Painel de resultados e ajustes sob medida',
+      tRec: 'Recomendado', tLin0: 'Para ser encontrado', tLin1: 'Para atender e vender mais', tLin2: 'Todos os canais, com IA atendendo', tGar: 'Começa com uma conversa rápida no WhatsApp sobre o seu negócio. A gente monta tudo, nada vai ao ar sem a sua aprovação, e você recebe com um passo a passo de uso.',
       tPrazo: 'Prazo de entrega (dias úteis)', tPz0: '7', tPz1: '15', tPz2: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pre&shy;sença', nomeC: 'Com&shy;pleto',
       hMod: 'Módulos avulsos',
       pMod: 'Entram em qualquer pacote, quando você precisar. O valor vai na sua proposta.',
@@ -772,7 +779,7 @@
     },
     en: {
       i2: 'Your online presence', i3: 'is our <em>business!</em>',
-      nav1: 'Services', nav2: 'Packages', nav3: 'How it works', nav4: 'Sign up',
+      nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up',
       h1: 'When customers ask, <span class="linha2">someone answers.</span>',
       apoio: WM + ' builds your business\'s online presence with cutting-edge tools. You handle the customers, we handle the rest: Google Business, website, social media, chatbot and much more!',
       btnA: 'Get a free audit', btnP: 'See packages',
@@ -832,6 +839,7 @@
       t7: 'WhatsApp Business with catalog and quick replies', t8: 'AbertoCore: chats and customers in one place', tUsa: 'up to 2 users', tUsb: 'unlimited',
       t9: 'Menu chatbot with buttons', t10: 'AI that answers 24/7, qualifies and books', t11: 'Instagram, Facebook and email in one inbox',
       t12: 'Pipeline and follow-up reminders', t13: 'Internal AI assistant and daily summary', t14: 'Online booking', t15: 'Email on your own domain', t16: 'Results dashboard and custom tweaks',
+      tRec: 'Recommended', tLin0: 'To get found', tLin1: 'To answer and sell more', tLin2: 'Every channel, with AI answering', tGar: 'It starts with a quick WhatsApp chat about your business. We set everything up, nothing goes live without your approval, and you get a step-by-step guide.',
       tPrazo: 'Delivery (business days)', tPz0: '7', tPz1: '15', tPz2: '30', nomeE: 'Enter&shy;prise', nomeP: 'Pres&shy;ence', nomeC: 'Com&shy;plete',
       hMod: 'Add-on modules',
       pMod: 'Add them to any package, whenever you need them. Pricing comes in your proposal.',
@@ -943,7 +951,7 @@
     document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : num(p[0]); });
     document.querySelectorAll('[data-mes]').forEach(function(e){
       var p = PRECOS[+e.getAttribute('data-mes')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
-      e.innerHTML = L === 'en' ? '' : num(m) + (planoSel ? '<s>' + num(p[1]) + '</s>' : '');
+      e.innerHTML = L === 'en' ? '' : num(m) + '<small>/mês</small>' + (planoSel ? '<s>' + num(p[1]) + '</s>' : '');
     });
     document.querySelectorAll('[data-plano]').forEach(function(b){ var on = +b.getAttribute('data-plano') === planoSel; b.classList.toggle('ativo', on); b.setAttribute('aria-pressed', on); });
     document.querySelector('.planos').hidden = L === 'en';
