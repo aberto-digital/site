@@ -235,14 +235,18 @@
   .pdf-meta{text-align:right;font-size:.72rem;color:var(--secundario);white-space:pre-line}
   .pdf-nome{font-family:var(--display);font-weight:850;font-stretch:76%;font-size:1.6rem;line-height:1.05;color:var(--ink)}
   .pdf-cid{color:var(--secundario);font-size:.8rem}
-  .pdf-nota{text-align:center;margin:6px auto 4px;max-width:220px}.pdf-nota svg{width:100%;display:block}
+  .pdf-topo{display:grid;grid-template-columns:42% 1fr;gap:16px;align-items:center;margin:10px 0 14px}
+  .pdf-nota{text-align:center}.pdf-nota svg{width:100%;display:block}
   .pdf-nivel{font-weight:800;color:#E08A00;font-size:.85rem}
-  .pdf-areas{display:grid;gap:7px;margin:12px 0 14px}
+  .pdf-areas{display:grid;gap:7px}
   .pdf-areas div{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:.78rem;font-weight:650}
   .pdf-areas i{grid-column:1/-1;height:7px;border-radius:4px;background:#EDF0F5;overflow:hidden}.pdf-areas s{display:block;height:100%}
   .pdf-sub{font-family:var(--display);font-weight:800;font-size:.95rem;margin-bottom:6px;color:var(--ink)}
   .pdf-perdas{list-style:none;display:grid;gap:6px}
-  .pdf-perdas li{background:#FFF8EC;border-left:3px solid #E08A00;border-radius:6px;padding:7px 9px;font-size:.78rem;font-weight:600;color:var(--texto)}
+  .pdf-perdas li{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#FFF8EC;border-left:3px solid #E08A00;border-radius:6px;padding:7px 9px;font-size:.74rem;font-weight:600;color:var(--texto);line-height:1.3}
+  .pdf-perdas li em{font-style:normal;color:#146B3A;font-weight:700;border-left:1px dashed rgba(16,26,44,.2);padding-left:8px}
+  .pdf-perdas li.cab{background:none;border-left-color:transparent;padding:0 9px;font-size:.66rem;color:var(--secundario);font-weight:700}
+  .pdf-perdas li.cab span:last-child{padding-left:9px}
   .pdf-perdas li.alta{background:#FBF3F3;border-left-color:#D64545}
   .pdf-rec{margin-top:12px;border:2px solid var(--ceu);border-radius:10px;padding:9px 12px;background:#F5F8FF;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--secundario)}
   .pdf-rec b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
@@ -669,6 +673,7 @@
         <div class="pdf" aria-hidden="true">
           <div class="pdf-cab"><span class="pdf-logo"><span class="core-logo"></span><span>aberto<b>digital</b></span></span><span class="pdf-meta" data-i18n="pdfMeta"></span></div>
           <div class="pdf-nome">Auto Center Lima</div><div class="pdf-cid" data-i18n="pdfCid"></div>
+          <div class="pdf-topo">
           <div class="pdf-nota">
             <svg viewBox="0 0 220 124"><path d="M20 112a90 90 0 0 1 180 0" fill="none" stroke="#EDF0F5" stroke-width="18" stroke-linecap="round"/><path d="M20 112a90 90 0 0 1 180 0" fill="none" stroke="#E08A00" stroke-width="18" stroke-linecap="round" pathLength="100" stroke-dasharray="52 100"/><text x="110" y="96" text-anchor="middle" font-family="Archivo,system-ui" font-weight="800" font-size="44" fill="#101A2C">52</text><text x="110" y="116" text-anchor="middle" font-size="11" fill="#5B6678" data-i18n="de100"></text></svg>
             <div class="pdf-nivel" data-i18n="pdfNivel"></div>
@@ -679,8 +684,9 @@
             <div><span data-i18n="ar3"></span><b>30</b><i><s style="width:30%;background:#D64545"></s></i></div>
             <div><span data-i18n="ar4"></span><b>60</b><i><s style="width:60%;background:#E08A00"></s></i></div>
           </div>
+          </div>
           <div class="pdf-sub" data-i18n="pdfPerde"></div>
-          <ul class="pdf-perdas"><li class="alta" data-i18n="pd1"></li><li class="alta" data-i18n="pd2"></li><li data-i18n="pd3"></li></ul>
+          <ul class="pdf-perdas"><li class="cab"><span data-i18n="pdP"></span><span data-i18n="pdS"></span></li><li class="alta"><span data-i18n="pd1"></span><em data-i18n="ps1"></em></li><li class="alta"><span data-i18n="pd2"></span><em data-i18n="ps2"></em></li><li><span data-i18n="pd3"></span><em data-i18n="ps3"></em></li></ul>
           <div class="pdf-rec"><span data-i18n="pdfRec"></span><b data-i18n="nome2"></b></div>
         </div>
       </div>
@@ -835,7 +841,7 @@
       aCta: 'Você recebe pelo WhatsApp, sem compromisso.',
       pdfMeta: 'Auditoria de presença digital\n18/11/2026', pdfCid: 'Oficina mecânica · Arujá/SP', pdfNivel: 'Pode melhorar',
       ar1: 'Ser encontrado', ar2: 'Confiança e reputação', ar3: 'Atendimento', ar4: 'Redes sociais',
-      pdfPerde: 'O que está perdendo hoje', pd1: 'Mensagens no WhatsApp ficam horas sem resposta', pd2: 'Avaliações ruins sem resposta afastam clientes', pd3: 'Instagram parado desde agosto',
+      pdfPerde: 'O que está perdendo hoje', pd1: 'Mensagens no WhatsApp ficam horas sem resposta', pd2: 'Avaliações ruins sem resposta afastam clientes', pd3: 'Instagram parado desde agosto', pdP: 'Ponto fraco', pdS: 'Nossa solução', ps1: 'Chatbot que responde na hora, 24 horas', ps2: 'Responder todas as avaliações, com apoio da IA', ps3: 'Calendário mensal de conteúdo',
       pdfRec: 'Pacote recomendado', de100: 'de 100', kval: 'R$ 450',
       hForm: 'Deixe seus dados e falamos com você.',
       pForm: 'Leva menos de 1 minuto. Sem senha e sem baixar nada. Ao enviar, abrimos seu WhatsApp com os dados prontos.',
@@ -941,7 +947,7 @@
       aCta: 'Sent over WhatsApp, no commitment.',
       pdfMeta: 'Digital presence audit\n11/18/2026', pdfCid: 'Auto repair shop · Arujá, Brazil', pdfNivel: 'Room to improve',
       ar1: 'Get found', ar2: 'Trust and reputation', ar3: 'Customer service', ar4: 'Social media',
-      pdfPerde: 'What it is losing today', pd1: 'WhatsApp messages wait hours for a reply', pd2: 'Unanswered bad reviews push customers away', pd3: 'Instagram inactive since August',
+      pdfPerde: 'What it is losing today', pd1: 'WhatsApp messages wait hours for a reply', pd2: 'Unanswered bad reviews push customers away', pd3: 'Instagram inactive since August', pdP: 'Weak spot', pdS: 'Our fix', ps1: 'Chatbot that replies instantly, 24/7', ps2: 'Reply to every review, with AI help', ps3: 'Monthly content calendar',
       pdfRec: 'Recommended package', de100: 'out of 100', kval: '$450',
       hForm: 'Leave your details and we will reach out.',
       pForm: 'Takes under a minute. No password and no app to download. Sending opens WhatsApp with your details filled in.',
