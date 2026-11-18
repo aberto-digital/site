@@ -32,7 +32,7 @@
   body{font-family:var(--corpo);color:var(--texto);background:var(--papel);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit}
   :focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:4px}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
 
   /* cabeçalho com a logo oficial */
   header{position:sticky;top:0;z-index:40;background:rgba(16,26,44,.92);backdrop-filter:blur(10px);color:var(--papel)}
@@ -69,6 +69,13 @@
   .ab-hero .prova{margin-top:36px;display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
   .ab-hero .prova b{display:block;color:var(--papel);font-weight:700;font-size:1rem}
   .ab-hero .prova div{max-width:300px}
+  @media (min-width:1000px){
+    .ab-hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:72px;align-items:end}
+    .ab-hero h1{grid-column:1;grid-row:1/4;align-self:end}
+    .ab-hero .apoio,.ab-hero .acoes,.ab-hero .prova{grid-column:2}
+    .ab-hero .apoio{margin-top:0}
+    .ab-hero .prova div{max-width:none;flex:1 1 180px}
+  }
 
   /* demonstração do WhatsApp */
   .demo{background:var(--ink);color:var(--papel);padding:16px 0 110px;position:relative;z-index:2;overflow:hidden}
@@ -159,6 +166,7 @@
   .core-grid{position:relative;z-index:1}
   .exemplo.escuro{color:var(--secundario);border-bottom-color:var(--linha-clara)}
   .tel-core{padding:14px 12px 18px}
+  @media (min-width:1200px){.core-grid .palco{width:380px;justify-self:end;margin-right:40px}.core-grid{grid-template-columns:1fr 1fr}}
   .core-topo{display:flex;align-items:center;gap:8px;color:var(--papel);font-family:var(--display);font-weight:800;font-stretch:85%;padding:2px 6px 12px;border-bottom:1px solid var(--slate);margin-bottom:12px}
   .core-topo i{width:8px;height:8px;border-radius:50%;background:#1F9D55;margin-left:2px}
   .core-logo{width:22px;height:22px;border-radius:6px;background:var(--navy);position:relative;flex:none;display:inline-block}
@@ -705,7 +713,7 @@
       e4s: 'Incluído a partir do Presença',
       ponteT: 'Não sabe em qual etapa está perdendo cliente? A auditoria gratuita mostra, com nota de 0 a 100.',
       ponteB: 'Ver como é a auditoria',
-      hCore: 'O cliente pergunta. O AbertoCore responde na hora.',
+      hCore: 'Esse alguém é o AbertoCore.',
       pCore: 'O chatbot resolve horário, preço e orçamento no WhatsApp, a IA organiza os clientes e você só entra na conversa quando precisa. Vem a partir do pacote Presença, já configurado para o seu negócio.',
       k1t: 'O cliente escreve e o chatbot responde', k1d: 'Com botões para tocar: orçamento, horário ou falar com alguém.',
       k2t: 'A IA organiza seus clientes', k2d: 'Separa quem pediu orçamento, quem já comprou e quem precisa de retorno, sem você anotar nada.',
@@ -809,7 +817,7 @@
       e4s: 'Included from Presence',
       ponteT: 'Not sure which stage is costing you customers? The free audit shows it, with a score from 0 to 100.',
       ponteB: 'See what the audit looks like',
-      hCore: 'The customer asks. AbertoCore answers right away.',
+      hCore: 'That someone is AbertoCore.',
       pCore: 'The chatbot handles hours, prices and quotes on WhatsApp, AI keeps your customers organized and you only step in when needed. Comes from the Presence package up, set up for your business.',
       k1t: 'A customer writes and the chatbot answers', k1d: 'With tap buttons: quote, hours or talk to someone.',
       k2t: 'AI keeps your customers organized', k2d: 'It sorts who asked for a quote, who already bought and who needs a follow-up, without you writing anything down.',
