@@ -320,6 +320,26 @@
     .fund-linha{grid-template-columns:1fr;gap:14px}
   }
   .producoes{background:#fff}
+  /* produções em carrossel: troca sozinho a cada 7s, pausa no mouse/foco e respeita "reduzir movimento" */
+  .carrossel{position:relative}
+  .trilho{display:flex;overflow:hidden;transition:none}
+  .slide{flex:0 0 100%;min-width:0;padding:4px 4px 44px;transition:opacity .6s ease,transform .6s ease}
+  .slide[hidden]{display:none}
+  .slide.entra{opacity:0;transform:translateX(24px)}
+  .car-ctl{display:flex;align-items:center;gap:14px;margin-top:8px}
+  .car-pontos{display:flex;gap:8px}
+  .car-pontos button{width:34px;height:6px;border-radius:999px;border:0;background:var(--linha-clara);cursor:pointer;padding:0;position:relative;overflow:hidden}
+  .car-pontos button[aria-current="true"]{background:#C9D2E0}
+  .car-pontos button[aria-current="true"]::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:left;animation:carBarra var(--car-t,7s) linear forwards}
+  .carrossel.parado .car-pontos button[aria-current="true"]::after{animation:none;transform:none}
+  @keyframes carBarra{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .car-seta,.car-pausa{width:40px;height:40px;border-radius:50%;border:1px solid var(--linha-clara);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+  .car-seta:hover,.car-pausa:hover{border-color:var(--ink)}
+  .car-seta svg,.car-pausa svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .car-pausa .ic-play{display:none;fill:currentColor;stroke:none}
+  .carrossel.parado .car-pausa .ic-play{display:block}.carrossel.parado .car-pausa .ic-pausa{display:none}
+  .car-pausa{margin-left:auto}
+  @media (prefers-reduced-motion:reduce){.slide{transition:none}.slide.entra{opacity:1;transform:none}}
   .prod{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}
   .prod-tela{position:relative;display:block;border-radius:16px;background:var(--papel);box-shadow:0 0 0 1px var(--linha-clara),0 30px 60px -30px rgba(16,26,44,.45);margin-right:40px;text-decoration:none}
   .prod-tela>img:not(.prod-cel){width:100%;height:auto;display:block;border-radius:0 0 16px 16px}
@@ -657,7 +677,9 @@
         <h2 data-i18n="hProd"></h2>
         <p data-i18n="pProd"></p>
       </div>
-      <article class="prod">
+      <div class="carrossel" id="carrossel" role="region" aria-roledescription="carrossel" data-i18n-aria="carAria">
+        <div class="trilho" id="trilho" aria-live="off">
+      <article class="prod slide" aria-roledescription="slide" aria-label="1 / 2">
         <a class="prod-tela" href="https://megahairmarcela.com.br/" target="_blank" rel="noopener" aria-label="Mega Hair Marcela (abre o site)">
           <span class="prod-barra" aria-hidden="true"><i></i><i></i><i></i><b>megahairmarcela.com.br</b></span>
           <img src="/producoes/megahairmarcela-desktop.jpg" width="1200" height="703" loading="lazy" alt="">
@@ -674,6 +696,31 @@
           <a class="botao escuro" href="https://megahairmarcela.com.br/" target="_blank" rel="noopener" data-i18n="prodVer"></a>
         </div>
       </article>
+      <article class="prod slide" aria-roledescription="slide" aria-label="2 / 2">
+        <a class="prod-tela" href="https://www.tradingjourney.com.br/" target="_blank" rel="noopener" aria-label="TradingJourney (abre o site)">
+          <span class="prod-barra" aria-hidden="true"><i></i><i></i><i></i><b>tradingjourney.com.br</b></span>
+          <img src="/producoes/tradingjourney-desktop.jpg" width="1200" height="703" loading="lazy" alt="">
+          <img class="prod-cel" src="/producoes/tradingjourney-celular.jpg" width="300" height="600" loading="lazy" alt="">
+        </a>
+        <div class="prod-txt">
+          <h3>TradingJourney</h3>
+          <p class="prod-sub" data-i18n="tjSub"></p>
+          <ul>
+            <li data-i18n="tj1"></li>
+            <li data-i18n="tj2"></li>
+            <li data-i18n="tj3"></li>
+          </ul>
+          <a class="botao escuro" href="https://www.tradingjourney.com.br/" target="_blank" rel="noopener" data-i18n="prodVer"></a>
+        </div>
+      </article>
+        </div>
+        <div class="car-ctl">
+          <button type="button" class="car-seta" id="carAnt" data-i18n-aria="carAnt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="car-pontos" id="carPontos"></div>
+          <button type="button" class="car-seta" id="carProx" data-i18n-aria="carProx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <button type="button" class="car-pausa" id="carPausa" data-i18n-aria="carPausa"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ic-pausa" d="M8 5v14M16 5v14"/><path class="ic-play" d="M7 5l12 7-12 7z"/></svg></button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -866,8 +913,10 @@
       fundRot: 'Quem está por trás', hFund: 'Estratégia de grande empresa, cabeça de empreendedor', pFund: 'Sou o Julio Romanelli. Fiz carreira em vendas até gerenciar o maior evento de negócios da América Latina. Depois empreendi com arte, com ateliê próprio no Brasil e na Flórida, conquistando clientes pelo Instagram. Hoje coloco esse método e essa experiência, com tecnologia, a serviço do seu negócio.',
       fundN1: 'anos no corporativo', fundN2: 'anos empreendendo', fundN3: 'vivência intercultural, dois mercados', fundN3v: 'BR×EUA',
       fund1: 'Corporativo', fund1d: 'De assistente de vendas a gerente de produto na RX, liderando times e grandes eventos.', fund2: 'Negócio próprio', fund2d: 'Ateliê próprio de tatuagem fine line no Brasil e nos EUA, com marca pessoal construída do zero.', fund3: 'Tecnologia', fund3d: 'Produtos com IA, o sistema AbertoCore e a abertodigital.', fundVer: 'Conhecer minha história', fundAlt: 'Julio Romanelli, fundador da abertodigital',
-      hProd: 'Produções', pProd: 'Negócios daqui que já estão atendendo melhor com a gente.',
+      hProd: 'Produções', pProd: 'Projetos no ar, feitos do zero pela abertodigital: de site de salão a aplicativo completo.',
       prodSub: 'Mega hair em Arujá, desde 2008', prodVer: 'Ver o site',
+      tjSub: 'App para traders: diário, métricas e disciplina', tj1: 'Aplicativo criado do zero, com login, assinaturas e notificações no celular', tj2: 'Academia com artigos e comunidade, em português e inglês', tj3: 'Infraestrutura própria e integração com a plataforma NinjaTrader',
+      carAria: 'Produções', carAnt: 'Produção anterior', carProx: 'Próxima produção', carPausa: 'Pausar ou continuar a troca automática', carIr: 'Ver produção',
       prod1: 'Site com antes e depois, métodos e pedido de avaliação',
       prod2: 'Chat 24h com IA: cada conversa cai direto no AbertoCore dela',
       prod3: 'AbertoCore de salão: agenda, ficha do cabelo e aviso de manutenção',
@@ -980,8 +1029,10 @@
       fundRot: "Who's behind it", hFund: 'Big-company strategy, an entrepreneur\'s mindset', pFund: "I'm Julio Romanelli. I built a sales career up to managing Latin America's largest business event. Then I became an entrepreneur through art, with my own studio in Brazil and in Florida, winning clients through Instagram. Today I put that method and experience, plus technology, to work for your business.",
       fundN1: 'years corporate', fundN2: 'years in my own business', fundN3: 'cross-cultural, two markets', fundN3v: 'BR×US',
       fund1: 'Corporate', fund1d: 'From sales assistant to product manager at RX, leading teams and major events.', fund2: 'Own business', fund2d: 'My own fine line tattoo studio in Brazil and the US, with a personal brand built from scratch.', fund3: 'Technology', fund3d: 'AI products, the AbertoCore system and abertodigital.', fundVer: 'Read my story', fundAlt: 'Julio Romanelli, founder of abertodigital',
-      hProd: 'Our work', pProd: 'Local businesses already serving their customers better with us.',
+      hProd: 'Our work', pProd: 'Live projects built from scratch by abertodigital: from a salon website to a full app.',
       prodSub: 'Hair extensions in Arujá, since 2008', prodVer: 'Visit the site',
+      tjSub: 'An app for traders: journal, metrics and discipline', tj1: 'App built from scratch, with sign-in, subscriptions and mobile notifications', tj2: 'Academy articles and community, in Portuguese and English', tj3: 'Own infrastructure and integration with the NinjaTrader platform',
+      carAria: 'Our work', carAnt: 'Previous project', carProx: 'Next project', carPausa: 'Pause or resume automatic rotation', carIr: 'Show project',
       prod1: 'Website with before and after, methods and consultation requests',
       prod2: '24/7 AI chat: every conversation lands in her AbertoCore',
       prod3: 'AbertoCore for salons: schedule, hair records and maintenance reminders',
@@ -1166,10 +1217,55 @@
     document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? m[3] : m[2]) + '</span></li>'; }).join('');
   }
 
+
+  /* carrossel de produções */
+  (function(){
+    var car = document.getElementById('carrossel'); if (!car) return;
+    var slides = [].slice.call(car.querySelectorAll('.slide')), pts = document.getElementById('carPontos');
+    var i = 0, DUR = 7000, timer = null, pausadoUser = false, sobre = false;
+    var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    car.style.setProperty('--car-t', (DUR / 1000) + 's');
+    slides.forEach(function(s, k){
+      var b = document.createElement('button'); b.type = 'button';
+      b.addEventListener('click', function(){ mostra(k, true); });
+      pts.appendChild(b);
+    });
+    function rotulos(){ [].forEach.call(pts.children, function(b, k){ b.setAttribute('aria-label', T[L].carIr + ' ' + (k + 1)); }); }
+    function mostra(k, user){
+      i = (k + slides.length) % slides.length;
+      slides.forEach(function(s, n){
+        var on = n === i;
+        s.hidden = !on; s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (on && !reduz) { s.classList.add('entra'); requestAnimationFrame(function(){ requestAnimationFrame(function(){ s.classList.remove('entra'); }); }); }
+      });
+      [].forEach.call(pts.children, function(b, n){ b.setAttribute('aria-current', n === i ? 'true' : 'false'); });
+      reinicia();
+    }
+    function parado(){ return pausadoUser || sobre || reduz || document.hidden; }
+    function reinicia(){
+      clearTimeout(timer);
+      car.classList.toggle('parado', parado());
+      // reinicia a barrinha do ponto atual
+      var at = pts.children[i]; if (at) { at.style.animation = 'none'; at.offsetHeight; at.style.animation = ''; }
+      if (!parado()) timer = setTimeout(function(){ mostra(i + 1); }, DUR);
+    }
+    document.getElementById('carAnt').addEventListener('click', function(){ mostra(i - 1, true); });
+    document.getElementById('carProx').addEventListener('click', function(){ mostra(i + 1, true); });
+    document.getElementById('carPausa').addEventListener('click', function(){ pausadoUser = !pausadoUser; reinicia(); });
+    car.addEventListener('mouseenter', function(){ sobre = true; reinicia(); });
+    car.addEventListener('mouseleave', function(){ sobre = false; reinicia(); });
+    car.addEventListener('focusin', function(){ sobre = true; reinicia(); });
+    car.addEventListener('focusout', function(e){ if (!car.contains(e.relatedTarget)) { sobre = false; reinicia(); } });
+    document.addEventListener('visibilitychange', reinicia);
+    if (reduz) pausadoUser = true;
+    window.carrosselRotulos = rotulos;
+    mostra(0); rotulos();
+  })();
+
   aplica();
   precos();
   reiniciaDigita();
-  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); precos(); reiniciaDigita(); atualiza(); });
+  document.getElementById('lang').addEventListener('click', function(){ L = L === 'en' ? 'pt' : 'en'; aplica(); precos(); reiniciaDigita(); atualiza(); if (window.carrosselRotulos) window.carrosselRotulos(); });
 
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
