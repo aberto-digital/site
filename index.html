@@ -292,6 +292,24 @@
   .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
   .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
   .cabeca+.comp{margin-top:8px}
+  .producoes{background:#fff}
+  .prod{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}
+  .prod-tela{position:relative;display:block;border-radius:16px;background:var(--papel);box-shadow:0 0 0 1px var(--linha-clara),0 30px 60px -30px rgba(16,26,44,.45);margin-right:40px;text-decoration:none}
+  .prod-tela>img:not(.prod-cel){width:100%;height:auto;display:block;border-radius:0 0 16px 16px}
+  .prod-barra{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--linha-clara)}
+  .prod-barra i{width:10px;height:10px;border-radius:50%;background:var(--linha-clara)}
+  .prod-barra b{margin-left:10px;font-size:.78rem;font-weight:500;color:var(--secundario);background:#fff;border-radius:6px;padding:3px 12px}
+  .prod-cel{position:absolute;right:-40px;bottom:-28px;width:24%;height:auto;border-radius:18px;border:5px solid var(--ink);box-shadow:0 20px 40px -18px rgba(16,26,44,.6)}
+  .prod-tela:hover .prod-cel{transform:translateY(-4px)}
+  .prod-cel{transition:transform .25s ease}
+  .prod-txt h3{font-family:var(--display);font-weight:800;font-stretch:90%;font-size:2rem;line-height:1.1}
+  .prod-sub{color:var(--secundario);margin:6px 0 20px}
+  .prod-txt ul{list-style:none;display:grid;gap:12px;margin-bottom:28px}
+  .prod-txt li{position:relative;padding-left:28px}
+  .prod-txt li::before{content:"";position:absolute;left:0;top:.55em;width:14px;height:8px;border-left:2.5px solid var(--ceu);border-bottom:2.5px solid var(--ceu);transform:rotate(-45deg)}
+  @media (max-width:900px){.prod{grid-template-columns:1fr;gap:44px}.prod-tela{margin-right:24px}.prod-cel{right:-24px;width:26%}}
+  @media (prefers-reduced-motion:reduce){.prod-cel{transition:none}}
+
   .mods{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin:18px 0 6px}
   .mods li{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--slate);color:var(--muted);font-size:.95rem}
   .mods li b{color:var(--papel);font-weight:650}
@@ -470,6 +488,7 @@
     </a>
     <nav>
       <a href="#servicos" data-i18n="nav1"></a>
+      <a href="#producoes" data-i18n="nav5"></a>
       <a href="#pacotes" data-i18n="nav2"></a>
       <a href="#auditoria" data-i18n="nav3"></a>
       <a href="#cadastro" data-i18n="nav4"></a>
@@ -601,6 +620,32 @@
         </article>
       </div>
       <div class="ponte"><p data-i18n="ponteT"></p><a class="botao escuro" href="#auditoria" data-i18n="ponteB"></a></div>
+    </div>
+  </section>
+
+  <section id="producoes" class="producoes">
+    <div class="wrap">
+      <div class="cabeca">
+        <h2 data-i18n="hProd"></h2>
+        <p data-i18n="pProd"></p>
+      </div>
+      <article class="prod">
+        <a class="prod-tela" href="https://megahairmarcela.com.br/" target="_blank" rel="noopener" aria-label="Mega Hair Marcela (abre o site)">
+          <span class="prod-barra" aria-hidden="true"><i></i><i></i><i></i><b>megahairmarcela.com.br</b></span>
+          <img src="/producoes/megahairmarcela-desktop.jpg" width="1200" height="703" loading="lazy" alt="">
+          <img class="prod-cel" src="/producoes/megahairmarcela-celular.jpg" width="300" height="600" loading="lazy" alt="">
+        </a>
+        <div class="prod-txt">
+          <h3>Mega Hair Marcela</h3>
+          <p class="prod-sub" data-i18n="prodSub"></p>
+          <ul>
+            <li data-i18n="prod1"></li>
+            <li data-i18n="prod2"></li>
+            <li data-i18n="prod3"></li>
+          </ul>
+          <a class="botao escuro" href="https://megahairmarcela.com.br/" target="_blank" rel="noopener" data-i18n="prodVer"></a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -767,7 +812,12 @@
   var T = {
     pt: {
       i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
-      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro',
+      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro', nav5: 'Produções',
+      hProd: 'Produções', pProd: 'Negócios daqui que já estão atendendo melhor com a gente.',
+      prodSub: 'Mega hair em Arujá, desde 2008', prodVer: 'Ver o site',
+      prod1: 'Site com antes e depois, métodos e pedido de avaliação',
+      prod2: 'Chat 24h com IA: cada conversa cai direto no AbertoCore dela',
+      prod3: 'AbertoCore de salão: agenda, ficha do cabelo e aviso de manutenção',
       h1: 'Quando o cliente pergunta, <span class="linha2">o AbertoCore responde.</span>',
       apoio: 'A ' + WM + ' cria a presença do seu negócio online com ferramentas de ponta. Você cuida do atendimento, a gente cuida do resto: Google Business, site, redes sociais, chatbot e muito mais!',
       btnA: 'Pedir auditoria gratuita', btnP: 'Ver pacotes',
@@ -873,7 +923,12 @@
     },
     en: {
       i2: 'Your online presence', i3: 'is our <em>business!</em>',
-      nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up',
+      nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up', nav5: 'Our work',
+      hProd: 'Our work', pProd: 'Local businesses already serving their customers better with us.',
+      prodSub: 'Hair extensions in Arujá, since 2008', prodVer: 'Visit the site',
+      prod1: 'Website with before and after, methods and consultation requests',
+      prod2: '24/7 AI chat: every conversation lands in her AbertoCore',
+      prod3: 'AbertoCore for salons: schedule, hair records and maintenance reminders',
       h1: 'When customers ask, <span class="linha2">AbertoCore answers.</span>',
       apoio: WM + ' builds your business\'s online presence with cutting-edge tools. You handle the customers, we handle the rest: Google Business, website, social media, chatbot and much more!',
       btnA: 'Get a free audit', btnP: 'See packages',
