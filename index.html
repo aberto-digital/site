@@ -292,17 +292,33 @@
   .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
   .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
   .cabeca+.comp{margin-top:8px}
-  /* quem está por trás: retrato no arco da marca + resumo; a história completa fica em /sobre/ */
-  .fundador{background:var(--papel)}
-  .fund{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:64px;align-items:center}
-  .fund-arco{border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:0 0 0 8px var(--ambar)}
-  .fund-arco img{width:100%;height:100%;object-fit:cover;display:block}
-  .fund-txt h2{margin-bottom:20px}
-  .fund-txt>p{font-size:1.08rem;max-width:620px}
-  .fund-linha{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;max-width:620px}
-  .fund-linha li{border-top:2px solid var(--ink);padding-top:12px;padding-right:12px;font-size:.92rem;color:var(--secundario)}
-  .fund-linha b{display:block;font-family:var(--display);font-stretch:72%;font-weight:850;font-size:1.6rem;color:var(--ceu);line-height:1}
-  @media (max-width:860px){.fund{grid-template-columns:1fr;gap:40px}.fund-arco{max-width:300px;width:80%;justify-self:center}}
+  /* quem está por trás: fundo no tom do retrato, a foto se dissolve nele; a história completa fica em /sobre/ */
+  .fundador{background:radial-gradient(ellipse 60% 90% at 18% 40%,#1F1A16 0%,#120F0D 60%,#0D0C0B 100%);color:var(--papel);padding:0;overflow:hidden}
+  .fund{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:48px;align-items:stretch}
+  .fund-foto{position:relative;min-height:100%}
+  .fund-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(#000 78%,transparent 100%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 62%,transparent 100%),linear-gradient(#000 78%,transparent 100%);mask-composite:intersect}
+  .fund-txt{padding:88px 0}
+  .fund-txt .rotulo{color:var(--ambar);font-weight:700;margin-bottom:12px}
+  .fund-txt h2{color:var(--papel);margin-bottom:18px}
+  .fund-txt>p{color:#CFC7BC;font-size:1.06rem;max-width:640px}
+  .fund-num{display:grid;grid-template-columns:repeat(3,1fr);max-width:640px;margin:28px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+  .fund-num div{padding:14px 0}
+  .fund-num div+div{padding-left:18px;border-left:1px solid rgba(255,255,255,.14)}
+  .fund-num b{display:block;font-family:var(--display);font-stretch:72%;font-weight:850;font-size:2.4rem;line-height:1;color:var(--papel)}
+  .fund-num span{font-size:.85rem;color:#B3AA9D}
+  .fund-linha{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:760px;margin-bottom:32px}
+  .fund-linha li{font-size:.92rem;color:#B9B0A4;line-height:1.5}
+  .fund-linha b{display:block;font-family:var(--display);font-stretch:72%;font-weight:850;font-size:1.5rem;color:var(--ambar);line-height:1;margin-bottom:6px}
+  .fund-linha strong{display:block;color:var(--papel);font-weight:700;font-size:.95rem;margin-bottom:2px}
+  @media (max-width:900px){
+    .fund{grid-template-columns:1fr;gap:0}
+    .fund-foto{height:420px}
+    .fund-foto img{-webkit-mask-image:linear-gradient(#000 60%,transparent 100%);mask-image:linear-gradient(#000 60%,transparent 100%)}
+    .fund-txt{padding:0 0 64px;margin-top:-40px;position:relative}
+    .fund-linha{grid-template-columns:1fr;gap:14px}
+  }
   .producoes{background:#fff}
   .prod{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}
   .prod-tela{position:relative;display:block;border-radius:16px;background:var(--papel);box-shadow:0 0 0 1px var(--linha-clara),0 30px 60px -30px rgba(16,26,44,.45);margin-right:40px;text-decoration:none}
@@ -663,16 +679,22 @@
 
   <section id="sobre" class="fundador">
     <div class="wrap fund">
-      <div class="fund-arco"><img src="/sobre/julio-retrato.jpg" width="800" height="1000" loading="lazy" alt="Julio Romanelli, fundador da abertodigital" data-i18n-alt="fundAlt"></div>
+      <div class="fund-foto"><img src="/sobre/julio-retrato.jpg" width="800" height="1000" loading="lazy" alt="Julio Romanelli, fundador da abertodigital" data-i18n-alt="fundAlt"></div>
       <div class="fund-txt">
+        <p class="rotulo" data-i18n="fundRot"></p>
         <h2 data-i18n="hFund"></h2>
         <p data-i18n="pFund"></p>
+        <div class="fund-num">
+          <div><b>11</b><span data-i18n="fundN1"></span></div>
+          <div><b>9</b><span data-i18n="fundN2"></span></div>
+          <div><b>2</b><span data-i18n="fundN3"></span></div>
+        </div>
         <ol class="fund-linha">
-          <li><b>2009</b><span data-i18n="fund1"></span></li>
-          <li><b>2017</b><span data-i18n="fund2"></span></li>
-          <li><b>2024</b><span data-i18n="fund3"></span></li>
+          <li><b>2009</b><strong data-i18n="fund1"></strong><span data-i18n="fund1d"></span></li>
+          <li><b>2017</b><strong data-i18n="fund2"></strong><span data-i18n="fund2d"></span></li>
+          <li><b>2024</b><strong data-i18n="fund3"></strong><span data-i18n="fund3d"></span></li>
         </ol>
-        <a class="botao escuro" id="fundLink" href="/sobre/" data-i18n="fundVer"></a>
+        <a class="botao" id="fundLink" href="/sobre/" data-i18n="fundVer"></a>
       </div>
     </div>
   </section>
@@ -841,8 +863,9 @@
     pt: {
       i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
       nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro', nav5: 'Produções', nav6: 'Sobre',
-      hFund: 'Quem está por trás', pFund: 'Sou o Julio Romanelli. Passei mais de dez anos no corporativo, até gerenciar o maior evento de negócios da América Latina. Depois fui tatuador por nove anos, no Brasil e na Flórida. Hoje junto estratégia, cuidado com o detalhe e tecnologia para ajudar o seu negócio a crescer.',
-      fund1: 'Corporativo: vendas, produto e liderança', fund2: 'Tatuagem: Brasil e Estados Unidos', fund3: 'Tecnologia e abertodigital', fundVer: 'Conhecer minha história', fundAlt: 'Julio Romanelli, fundador da abertodigital',
+      fundRot: 'Quem está por trás', hFund: 'Estratégia de grande empresa, cabeça de empreendedor', pFund: 'Sou o Julio Romanelli. Fiz carreira em vendas até gerenciar o maior evento de negócios da América Latina. Depois empreendi com arte, com ateliê próprio no Brasil e na Flórida, conquistando clientes pelo Instagram. Hoje coloco esse método e essa experiência, com tecnologia, a serviço do seu negócio.',
+      fundN1: 'anos no corporativo', fundN2: 'anos empreendendo', fundN3: 'países, Brasil e EUA',
+      fund1: 'Corporativo', fund1d: 'De assistente de vendas a gerente de produto na RX, liderando times e grandes eventos.', fund2: 'Negócio próprio', fund2d: 'Ateliê próprio de tatuagem fine line no Brasil e nos EUA, com marca pessoal construída do zero.', fund3: 'Tecnologia', fund3d: 'Produtos com IA, o sistema AbertoCore e a abertodigital.', fundVer: 'Conhecer minha história', fundAlt: 'Julio Romanelli, fundador da abertodigital',
       hProd: 'Produções', pProd: 'Negócios daqui que já estão atendendo melhor com a gente.',
       prodSub: 'Mega hair em Arujá, desde 2008', prodVer: 'Ver o site',
       prod1: 'Site com antes e depois, métodos e pedido de avaliação',
@@ -954,8 +977,9 @@
     en: {
       i2: 'Your online presence', i3: 'is our <em>business!</em>',
       nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up', nav5: 'Our work', nav6: 'About',
-      hFund: "Who's behind it", pFund: "I'm Julio Romanelli. I spent over a decade in the corporate world, up to managing Latin America's largest business event. Then I worked as a tattoo artist for nine years, in Brazil and in Florida. Today I bring strategy, care for detail and technology together to help your business grow.",
-      fund1: 'Corporate: sales, product and leadership', fund2: 'Tattooing: Brazil and the United States', fund3: 'Technology and abertodigital', fundVer: 'Read my story', fundAlt: 'Julio Romanelli, founder of abertodigital',
+      fundRot: "Who's behind it", hFund: 'Big-company strategy, an entrepreneur\'s mindset', pFund: "I'm Julio Romanelli. I built a sales career up to managing Latin America's largest business event. Then I became an entrepreneur through art, with my own studio in Brazil and in Florida, winning clients through Instagram. Today I put that method and experience, plus technology, to work for your business.",
+      fundN1: 'years corporate', fundN2: 'years in my own business', fundN3: 'countries, Brazil and US',
+      fund1: 'Corporate', fund1d: 'From sales assistant to product manager at RX, leading teams and major events.', fund2: 'Own business', fund2d: 'My own fine line tattoo studio in Brazil and the US, with a personal brand built from scratch.', fund3: 'Technology', fund3d: 'AI products, the AbertoCore system and abertodigital.', fundVer: 'Read my story', fundAlt: 'Julio Romanelli, founder of abertodigital',
       hProd: 'Our work', pProd: 'Local businesses already serving their customers better with us.',
       prodSub: 'Hair extensions in Arujá, since 2008', prodVer: 'Visit the site',
       prod1: 'Website with before and after, methods and consultation requests',
