@@ -78,6 +78,8 @@
   .num div+div{border-left:1px solid rgba(255,255,255,.12)}
   .num b{display:block;font-family:var(--display);font-stretch:80%;font-weight:850;font-size:1.7rem;line-height:1;color:var(--papel)}
   .num span{font-size:.74rem;color:#B3AA9D}
+  .num b span{font-size:inherit;color:inherit}
+  .num b.bi{font-size:1.25rem;line-height:1.36;letter-spacing:.01em;color:var(--ambar)}
   .jornada{list-style:none;display:grid;gap:14px}
   .jornada li{padding-left:16px;position:relative}
   .jornada li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--ambar)}
@@ -86,6 +88,9 @@
   .jornada small{display:block;font-size:.76rem;color:#A79E92}
   .habil{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
   .habil li{font-size:.8rem;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 10px;color:#E6DFD4}
+  .entrega{list-style:none;display:grid;gap:11px}
+  .entrega li{font-size:.82rem;color:#B9B0A4;line-height:1.45;padding-left:14px;border-left:2px solid var(--ambar)}
+  .entrega b{display:block;color:var(--papel);font-size:.9rem;font-weight:700}
   .contatos{list-style:none;display:grid;gap:10px;font-size:.9rem}
   .contatos a{text-decoration:none;color:var(--papel);display:flex;align-items:center;gap:10px}
   .contatos a:hover{color:var(--ambar)}
@@ -106,8 +111,12 @@
   .rodape-cap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px}
   .marcos{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
   .marcos li{font-size:.85rem;background:#fff;border:1px solid var(--linha);border-radius:999px;padding:5px 12px;color:var(--ink)}
-  .ficou{font-size:.95rem;color:var(--ink);font-weight:600}
-  .ficou i{font-style:normal;color:var(--secundario);font-weight:500;margin-right:6px}
+  .ficou{margin-top:26px;max-width:880px;background:var(--ink);color:var(--papel);border-radius:16px;padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:center}
+  .ficou .rot{grid-row:1/3;font-size:.8rem;font-weight:700;color:var(--ambar);writing-mode:horizontal-tb;max-width:90px;line-height:1.3}
+  .ficou .frase{font-family:var(--display);font-stretch:76%;font-weight:850;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.02;color:var(--papel)}
+  .ficou .hoje-txt{color:#B9C1D0;font-size:.95rem}
+  .ficou .hoje-txt b{color:var(--ambar);font-weight:700}
+  @media (max-width:600px){.ficou{grid-template-columns:1fr}.ficou .rot{grid-row:auto;max-width:none}}
   .link-sub{font-weight:700;color:var(--ceu);text-decoration:none;border-bottom:2px solid currentColor}
   .link-sub:hover{color:var(--navy)}
 
@@ -194,7 +203,7 @@
             <div class="num">
               <div><b>11</b><span lang="pt">anos no corporativo</span><span lang="en">years corporate</span></div>
               <div><b>9</b><span lang="pt">anos empreendendo</span><span lang="en">years running my own business</span></div>
-              <div><b>2</b><span lang="pt">países</span><span lang="en">countries</span></div>
+              <div><b class="bi"><span lang="pt">BR×EUA</span><span lang="en">BR×US</span></b><span lang="pt">vivência intercultural</span><span lang="en">cross-cultural experience</span></div>
             </div>
             <p lang="pt">Fiz carreira em vendas até gerenciar o <b>maior evento de negócios da América Latina</b>. Depois empreendi com arte: abri meu próprio ateliê de tatuagem fine line no Brasil e levei o negócio para a <b>Flórida</b>, onde construí clientela do zero. Hoje junto <b>estratégia comercial, marca pessoal e tecnologia</b> para fazer outros negócios crescerem.</p>
             <p lang="en">I built a sales career up to managing <b>Latin America's largest business event</b>. Then I became an entrepreneur through art: I opened my own fine line tattoo studio in Brazil and took the business to <b>Florida</b>, building a client base from scratch. Today I combine <b>sales strategy, personal branding and technology</b> to help other businesses grow.</p>
@@ -228,9 +237,23 @@
             </ul>
           </div>
           <div class="cartao hab">
-            <h2><span lang="pt">O que eu <b>entrego</b></span><span lang="en">What I <b>deliver</b></span></h2>
-            <ul class="habil" lang="pt"><li>Estratégia de crescimento</li><li>Vendas consultivas e negociação</li><li>Gestão de grandes projetos</li><li>Times de alta performance</li><li>Marca pessoal e Instagram</li><li>Marketing digital</li><li>Produtos digitais com IA</li><li>Experiência do cliente</li><li>Metas, números e KPIs</li></ul>
-            <ul class="habil" lang="en"><li>Growth strategy</li><li>Consultative sales and negotiation</li><li>Large-scale project management</li><li>High-performance teams</li><li>Personal branding and Instagram</li><li>Digital marketing</li><li>AI-powered digital products</li><li>Customer experience</li><li>Goals, numbers and KPIs</li></ul>
+            <h2><span lang="pt">O que eu <b>faço</b> pelo seu negócio</span><span lang="en">What I <b>do</b> for your business</span></h2>
+            <ul class="entrega" lang="pt">
+              <li><b>Estratégia de crescimento</b>Plano, metas e números, com o método de grande empresa.</li>
+              <li><b>Presença no Google e site</b>Ser encontrado por quem já está procurando.</li>
+              <li><b>Redes sociais e marca</b>Conteúdo que gera confiança, como fiz no meu negócio.</li>
+              <li><b>Vendas e atendimento</b>WhatsApp com IA, follow-up e funil que não deixa cliente sumir.</li>
+              <li><b>Tecnologia e IA</b>O AbertoCore e automações sob medida.</li>
+              <li><b>Brasil e EUA</b>Projetos em português e em inglês, para os dois mercados.</li>
+            </ul>
+            <ul class="entrega" lang="en">
+              <li><b>Growth strategy</b>Plans, goals and numbers, with big-company discipline.</li>
+              <li><b>Google presence and website</b>Get found by people already searching.</li>
+              <li><b>Social media and brand</b>Content that builds trust, like I did for my own business.</li>
+              <li><b>Sales and customer service</b>AI-assisted WhatsApp, follow-up and a pipeline that keeps leads warm.</li>
+              <li><b>Technology and AI</b>AbertoCore and custom automations.</li>
+              <li><b>Brazil and the US</b>Projects in Portuguese and English, for both markets.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -259,7 +282,11 @@
         </ul>
         <div class="rodape-cap">
           <ul class="marcos"><li><span lang="pt">Tecnologia em Marketing</span><span lang="en">Marketing Technology</span></li><li><span lang="pt">Mecatrônica</span><span lang="en">Mechatronics</span></li></ul>
-          <p class="ficou"><i lang="pt">O que ficou:</i><i lang="en">What stayed:</i><span lang="pt">método de grande empresa.</span><span lang="en">big-company discipline.</span></p>
+        </div>
+        <div class="ficou">
+          <p class="rot"><span lang="pt">O que ficou</span><span lang="en">What stayed with me</span></p>
+          <p class="frase"><span lang="pt">Método de grande empresa.</span><span lang="en">Big-company discipline.</span></p>
+          <p class="hoje-txt"><span lang="pt"><b>Na abertodigital:</b> todo cliente tem plano, metas claras e acompanhamento dos números.</span><span lang="en"><b>At abertodigital:</b> every client gets a plan, clear goals and follow-up on the numbers.</span></p>
         </div>
       </div>
     </div>
@@ -269,8 +296,8 @@
     <div class="wrap">
       <p class="anos">2017–2026<small><span lang="pt">Arte e empreendedorismo</span><span lang="en">Art and entrepreneurship</span></small></p>
       <div>
-        <h2 lang="pt">Um negócio próprio, do zero, em dois países</h2>
-        <h2 lang="en">My own business, from scratch, in two countries</h2>
+        <h2 lang="pt">Um negócio próprio, do zero, entre Brasil e EUA</h2>
+        <h2 lang="en">My own business, from scratch, between Brazil and the US</h2>
         <p lang="pt">A tatuagem fine line começou como hobby em 2017, ainda na RX. Em 2020 virou meu negócio em tempo integral. Em 2022 levei o trabalho para a <b>Flórida</b>, com ateliê próprio em Deerfield Beach e depois como artista residente no <b>Torres Tattoo Studio</b>, em Pompano Beach.</p>
         <p lang="en">Fine line tattooing started as a hobby in 2017, while I was still at RX. In 2020 it became my full-time business. In 2022 I took it to <b>Florida</b>, with my own studio in Deerfield Beach and later as a resident artist at <b>Torres Tattoo Studio</b> in Pompano Beach.</p>
         <ul class="feitos" lang="pt">
@@ -287,7 +314,11 @@
         </ul>
         <div class="rodape-cap">
           <a class="link-sub" href="https://instagram.com/jrfinetattoo" target="_blank" rel="noopener">@jrfinetattoo</a>
-          <p class="ficou"><i lang="pt">O que ficou:</i><i lang="en">What stayed:</i><span lang="pt">marketing feito na prática, no meu próprio negócio.</span><span lang="en">marketing learned hands-on, in my own business.</span></p>
+        </div>
+        <div class="ficou">
+          <p class="rot"><span lang="pt">O que ficou</span><span lang="en">What stayed with me</span></p>
+          <p class="frase"><span lang="pt">Marketing feito na prática.</span><span lang="en">Marketing learned hands-on.</span></p>
+          <p class="hoje-txt"><span lang="pt"><b>Na abertodigital:</b> aplico no seu negócio o que funcionou no meu, no Brasil e nos EUA: marca, conteúdo e atendimento que converte.</span><span lang="en"><b>At abertodigital:</b> I apply to your business what worked for mine, in Brazil and the US: brand, content and service that converts.</span></p>
         </div>
       </div>
     </div>
