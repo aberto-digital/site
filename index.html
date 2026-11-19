@@ -292,6 +292,17 @@
   .botao.mini{padding:10px 12px;font-size:.9rem;width:100%;justify-content:center}
   .garantia{margin-top:18px;font-size:.92rem;color:var(--muted);max-width:720px}
   .cabeca+.comp{margin-top:8px}
+  /* quem está por trás: retrato no arco da marca + resumo; a história completa fica em /sobre/ */
+  .fundador{background:var(--papel)}
+  .fund{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:64px;align-items:center}
+  .fund-arco{border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:0 0 0 8px var(--ambar)}
+  .fund-arco img{width:100%;height:100%;object-fit:cover;display:block}
+  .fund-txt h2{margin-bottom:20px}
+  .fund-txt>p{font-size:1.08rem;max-width:620px}
+  .fund-linha{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;max-width:620px}
+  .fund-linha li{border-top:2px solid var(--ink);padding-top:12px;padding-right:12px;font-size:.92rem;color:var(--secundario)}
+  .fund-linha b{display:block;font-family:var(--display);font-stretch:72%;font-weight:850;font-size:1.6rem;color:var(--ceu);line-height:1}
+  @media (max-width:860px){.fund{grid-template-columns:1fr;gap:40px}.fund-arco{max-width:300px;width:80%;justify-self:center}}
   .producoes{background:#fff}
   .prod{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}
   .prod-tela{position:relative;display:block;border-radius:16px;background:var(--papel);box-shadow:0 0 0 1px var(--linha-clara),0 30px 60px -30px rgba(16,26,44,.45);margin-right:40px;text-decoration:none}
@@ -489,6 +500,7 @@
     <nav>
       <a href="#servicos" data-i18n="nav1"></a>
       <a href="#producoes" data-i18n="nav5"></a>
+      <a href="#sobre" data-i18n="nav6"></a>
       <a href="#pacotes" data-i18n="nav2"></a>
       <a href="#auditoria" data-i18n="nav3"></a>
       <a href="#cadastro" data-i18n="nav4"></a>
@@ -646,6 +658,22 @@
           <a class="botao escuro" href="https://megahairmarcela.com.br/" target="_blank" rel="noopener" data-i18n="prodVer"></a>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section id="sobre" class="fundador">
+    <div class="wrap fund">
+      <div class="fund-arco"><img src="/sobre/julio-retrato.jpg" width="800" height="1000" loading="lazy" alt="Julio Romanelli, fundador da abertodigital" data-i18n-alt="fundAlt"></div>
+      <div class="fund-txt">
+        <h2 data-i18n="hFund"></h2>
+        <p data-i18n="pFund"></p>
+        <ol class="fund-linha">
+          <li><b>2009</b><span data-i18n="fund1"></span></li>
+          <li><b>2017</b><span data-i18n="fund2"></span></li>
+          <li><b>2024</b><span data-i18n="fund3"></span></li>
+        </ol>
+        <a class="botao escuro" id="fundLink" href="/sobre/" data-i18n="fundVer"></a>
+      </div>
     </div>
   </section>
 
@@ -812,7 +840,9 @@
   var T = {
     pt: {
       i2: 'Sua presença online', i3: 'é o nosso <em>negócio!</em>',
-      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro', nav5: 'Produções',
+      nav1: 'Serviços', nav2: 'Pacotes', nav3: 'Auditoria', nav4: 'Cadastro', nav5: 'Produções', nav6: 'Sobre',
+      hFund: 'Quem está por trás', pFund: 'Sou o Julio Romanelli. Passei mais de dez anos no corporativo, até gerenciar o maior evento de negócios da América Latina. Depois fui tatuador por nove anos, no Brasil e na Flórida. Hoje junto estratégia, cuidado com o detalhe e tecnologia para ajudar o seu negócio a crescer.',
+      fund1: 'Corporativo: vendas, produto e liderança', fund2: 'Tatuagem: Brasil e Estados Unidos', fund3: 'Tecnologia e abertodigital', fundVer: 'Conhecer minha história', fundAlt: 'Julio Romanelli, fundador da abertodigital',
       hProd: 'Produções', pProd: 'Negócios daqui que já estão atendendo melhor com a gente.',
       prodSub: 'Mega hair em Arujá, desde 2008', prodVer: 'Ver o site',
       prod1: 'Site com antes e depois, métodos e pedido de avaliação',
@@ -923,7 +953,9 @@
     },
     en: {
       i2: 'Your online presence', i3: 'is our <em>business!</em>',
-      nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up', nav5: 'Our work',
+      nav1: 'Services', nav2: 'Packages', nav3: 'Audit', nav4: 'Sign up', nav5: 'Our work', nav6: 'About',
+      hFund: "Who's behind it", pFund: "I'm Julio Romanelli. I spent over a decade in the corporate world, up to managing Latin America's largest business event. Then I worked as a tattoo artist for nine years, in Brazil and in Florida. Today I bring strategy, care for detail and technology together to help your business grow.",
+      fund1: 'Corporate: sales, product and leadership', fund2: 'Tattooing: Brazil and the United States', fund3: 'Technology and abertodigital', fundVer: 'Read my story', fundAlt: 'Julio Romanelli, founder of abertodigital',
       hProd: 'Our work', pProd: 'Local businesses already serving their customers better with us.',
       prodSub: 'Hair extensions in Arujá, since 2008', prodVer: 'Visit the site',
       prod1: 'Website with before and after, methods and consultation requests',
@@ -1047,6 +1079,8 @@
     document.querySelectorAll('[data-i18n-aria]').forEach(function(e){ e.setAttribute('aria-label', T[L][e.getAttribute('data-i18n-aria')]); });
     document.querySelectorAll('a.wa').forEach(function(a){ a.href = WA + encodeURIComponent(T[L][a.getAttribute('data-msg')]); });
     document.getElementById('lang').textContent = L === 'en' ? 'PT' : 'EN';
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(e){ e.alt = T[L][e.getAttribute('data-i18n-alt')]; });
+    document.getElementById('fundLink').href = '/sobre/' + (L === 'en' ? '?lang=en' : '');
   }
   /* frase de serviços: digitação das tarefas que tomam o tempo do dono */
   var GIRA = {
