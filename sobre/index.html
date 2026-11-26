@@ -141,7 +141,9 @@
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
   footer a{text-decoration:none}
   footer a:hover{color:#fff;text-decoration:underline}
-  footer .legal{margin-top:12px;font-size:.8rem;justify-content:flex-start}
+  footer .foot-links{display:flex;flex-wrap:wrap;gap:8px 24px}
+  footer .legal{display:block;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;line-height:1.6}
+  @media (max-width:700px){footer{padding-bottom:88px}}
 
   @media (max-width:1060px) and (min-width:861px){.palco{grid-template-columns:280px 1fr 300px}}
   @media (max-width:860px){
@@ -375,11 +377,14 @@
 <footer>
   <div class="wrap">
     <svg class="logo" viewBox="0 0 320 56" role="img" aria-label="abertodigital" style="height:26px"><use href="#g-icone"/><use href="#g-wm"/></svg>
-    <span>WhatsApp (11) 99123-3627</span>
-    <a href="mailto:contato@abertodigital.com">contato@abertodigital.com</a>
-    <a href="/privacidade/"><span lang="pt">Privacidade</span><span lang="en">Privacy</span></a>
+    <nav class="foot-links" aria-label="Contato">
+      <span>WhatsApp (11) 99123-3627</span>
+      <a href="mailto:contato@abertodigital.com">contato@abertodigital.com</a>
+      <a href="/privacidade/"><span lang="pt">Privacidade</span><span lang="en">Privacy</span></a>
+      <a href="/termos/"><span lang="pt">Termos de uso</span><span lang="en">Terms of use</span></a>
+    </nav>
   </div>
-  <div class="wrap legal">CNPJ 70.156.191/0001-60 · Rua Marina de Lima Santangelo, 48 · Chácara São José · Arujá/SP · CEP 07402-295</div>
+  <div class="wrap legal">© 2026 abertodigital · CNPJ 70.156.191/0001-60 · Rua Marina de Lima Santangelo, 48 · Chácara São José · Arujá/SP · CEP 07402-295</div>
 </footer>
 
 <script>
