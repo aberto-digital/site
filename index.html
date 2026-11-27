@@ -1358,6 +1358,38 @@
   window.addEventListener('resize', atualiza);
   atualiza();
 
+  /* Abertura automática: se a pessoa fica 1 segundo parada dentro da abertura (o arco com a porta),
+     a página rola sozinha até o conteúdo. Qualquer toque, roda do mouse ou tecla devolve o controle;
+     se ela voltar para o arco e parar de novo por 1 segundo, a animação recomeça sozinha. */
+  (function(){
+    if (reduz) return;
+    var espera = 0, anim = 0;
+    function fimAbertura(){ var H = stage.clientHeight; return abertura.offsetTop + Math.max(0, abertura.offsetHeight - H); }
+    function dentro(){ var fim = fimAbertura(); return scrollY < fim - 4 && scrollY >= abertura.offsetTop - 80; }
+    function para(){ if (anim){ cancelAnimationFrame(anim); anim = 0; } }
+    function rola(){
+      para();
+      if (!dentro()) return;
+      var de = scrollY, ate = fimAbertura(), dist = ate - de; if (dist <= 4) return;
+      var dur = Math.max(700, 4200 * dist / Math.max(1, abertura.offsetHeight - stage.clientHeight)), t0 = 0;
+      function passo(ts){
+        if (!t0) t0 = ts;
+        var k = Math.min(1, (ts - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        window.scrollTo({top: de + dist * e, behavior: 'instant'});
+        anim = k < 1 ? requestAnimationFrame(passo) : 0;
+      }
+      anim = requestAnimationFrame(passo);
+    }
+    function agenda(){ clearTimeout(espera); espera = setTimeout(function(){ if (!anim && dentro()) rola(); }, 1000); }
+    function usuario(){ para(); agenda(); }
+    ['wheel', 'touchstart', 'touchmove', 'keydown', 'pointerdown'].forEach(function(ev){ window.addEventListener(ev, usuario, {passive: true}); });
+    window.addEventListener('scroll', function(){ if (!anim) agenda(); }, {passive: true});
+    // links do menu (#pacotes etc.) não podem ser puxados de volta pela animação
+    document.addEventListener('click', function(e){ if (e.target.closest('a[href^="#"]')){ para(); clearTimeout(espera); } });
+    if (location.hash.length > 1 && location.hash !== '#topo') return; // chegou por um link direto para uma seção
+    agenda();
+  })();
+
   document.getElementById('cadForm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target, t = T[L];
