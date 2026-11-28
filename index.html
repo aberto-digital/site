@@ -238,6 +238,7 @@
   .pac-pr span em{display:block;font-style:normal;font-family:var(--corpo);font-size:.82rem;font-weight:500;color:var(--muted)}
   .pac.destaque .pac-pr span em{color:var(--secundario)}
   .pac-pr small{color:var(--muted);font-size:.85rem}
+  .tab-pac.en td[data-mes] small{display:none}
   .pac.destaque .pac-pr small{color:var(--secundario)}
   .pac .botao{justify-content:center}
   .pac.destaque .botao.wa{background:var(--ink);color:var(--papel)}
@@ -413,7 +414,6 @@
   .tab-pac tr.impl td{font-family:var(--display);font-weight:800;font-size:1.65rem;color:var(--papel);white-space:nowrap;letter-spacing:-.02em}
   .tab-pac tr.mes td{font-weight:650;color:var(--papel);font-size:.95rem;padding-top:2px}
   .tab-pac tr.mes td s{display:block;font-weight:500;font-size:.78rem;color:var(--muted)}
-  .tab-pac.en tr.pr{display:none}
   .tab-pac tr.acoes td{padding:16px 10px 22px}
   .tab-pac tr.acoes td[data-c="1"]{border-bottom:1.5px solid var(--ceu);border-radius:0 0 14px 14px}
   .tab-pac.realce-0 [data-c="0"],.tab-pac.realce-2 [data-c="2"]{background-color:rgba(255,176,32,.16);transition:background-color .4s}
@@ -1347,7 +1347,7 @@
       hServ: WM + ' is for people who don\'t want to waste time',
       hServLeitor: ' setting things up, monitoring, researching, posting on social media or chasing customers who went quiet.',
       hPac: 'What do you want to improve in your business today?',
-      pPac: 'Prices for the US are quoted in dollars. You get a written proposal before paying anything.',
+      pPac: 'Prices in US dollars, no surprises. You get a written proposal before paying anything.',
       pl0: 'Monthly', pl1: '6 months <span>−15%</span>', pl2: '12 months <span>−30%</span>',
       pn0: 'No contract. Cancel with 30 days notice.', pn1: '15% off the monthly fee with a 6-month minimum.', pn2: '30% off the monthly fee with a 12-month minimum.',
       nome2: 'Presence', nome3: 'Complete',
@@ -1357,7 +1357,7 @@
       f3a: 'Everything in Presence', f3b: 'AbertoCore: chats and customers in one place', f3c: 'Menu chatbot that sorts WhatsApp contacts', f3d: 'AI assistant that organizes customers and sends a daily summary',
       f4a: 'Everything in Complete', f4b: 'Instagram, Facebook and email in one inbox', f4c: '24/7 AI service that answers, qualifies and books', f4d: 'Full CRM, unlimited users and email on your domain',
       btn1: 'Choose Start', btn2: 'Choose Presence', btn3: 'Choose Complete', btn4: 'Choose Enterprise',
-      tCap: 'Package comparison', tImpl: 'Setup', tImplS: '', tMes: 'Monthly', tMesS: '', tSim: 'included', tNao: 'not included', tQuero: 'Choose', tSob: 'On request',
+      tCap: 'Package comparison', tImpl: 'Setup', tImplS: 'one-time payment', tMes: 'Monthly', tMesS: 'on the 12-month plan, 30% off', tSim: 'included', tNao: 'not included', tQuero: 'Choose', tSob: 'On request',
       t1: 'Optimized, verified Google profile', t2: 'One-page website with a WhatsApp button', t3: 'Domain for year 1, hosting and 1 change a month',
       t4: 'Logo and visual identity', t5: 'Monthly Google report', t6: 'First month of follow-up with a meeting',
       t7: 'WhatsApp Business with catalog and quick replies', t8: 'AbertoCore: chats and customers in one place', tUsa: 'up to 2 users', tUsb: 'unlimited',
@@ -1461,7 +1461,7 @@
   } else { dg.visivel = true; }
 
   /* preços: implantação + mensalidade; o plano dá desconto só na mensalidade */
-  var PRECOS = [[650, 49], [1650, 150], [3500, 450]], DESC = [0, 0.15, 0.30], planoSel = 2;
+  var PRECOS = [[650, 49], [1650, 150], [3500, 450]], PRECOS_US = [[590, 59], [1290, 129], [2900, 349]], DESC = [0, 0.15, 0.30], planoSel = 2;
   var MODS = [
     ['Chatbot de menu', 'Menu chatbot', 'Triagem com botões no WhatsApp, para quem tem o Start', 'Button triage on WhatsApp, for Start customers'],
     ['Gestão mensal do perfil no Google', 'Monthly Google profile care', 'Posts, fotos novas, horários de feriado e respostas', 'Posts, new photos, holiday hours and replies'],
@@ -1472,17 +1472,20 @@
     ['Fotos e vídeos curtos com IA', 'AI photos and short videos', '1h no local: 10 fotos tratadas e 3 vídeos curtos', '1h on site: 10 edited photos and 3 short videos'],
     ['Agendamento online', 'Online booking', 'Link de agenda no site e no WhatsApp, com lembrete', 'Booking link on your site and WhatsApp, with reminders'],
     ['Cardápio ou catálogo com QR Code', 'Menu or catalog with QR code', 'Página com seus produtos e QR Code impresso', 'A page with your products and a printed QR code'],
-    ['Pacote extra de IA', 'Extra AI actions', 'Passou das ações do plano no mês: +2.000 por R$ 39 ou +5.000 por R$ 89', 'Went over your plan this month: +2,000 or +5,000 AI actions']
+    ['Pacote extra de IA', 'Extra AI actions', 'Passou das ações do plano no mês: +2.000 por R$ 39 ou +5.000 por R$ 89', 'Went over your plan this month: +2,000 actions for $29 or +5,000 for $69']
   ];
   function reais(v){ return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
   function num(v){ return v.toLocaleString('pt-BR', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
+  var US = PRECOS_US;
+  function numUS(v){ return v.toLocaleString('en-US', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); }
   function precos(){
     document.querySelector('.tab-pac').classList.toggle('en', L === 'en');
-    document.querySelectorAll('[data-impl-txt]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl-txt')]; e.innerHTML = L === 'en' ? T.en.pcSob : '+ R$ ' + num(p[0]) + ' de implantação'; });
-    document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '' : '<small>R$</small> ' + num(p[0]); });
+    document.querySelectorAll('[data-impl-txt]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl-txt')]; e.innerHTML = L === 'en' ? '+ $' + numUS(US[+e.getAttribute('data-impl-txt')][0]) + ' setup' : '+ R$ ' + num(p[0]) + ' de implantação'; });
+    document.querySelectorAll('[data-impl]').forEach(function(e){ var p = PRECOS[+e.getAttribute('data-impl')]; e.innerHTML = L === 'en' ? '<small>$</small> ' + numUS(US[+e.getAttribute('data-impl')][0]) : '<small>R$</small> ' + num(p[0]); });
     document.querySelectorAll('[data-mes]').forEach(function(e){
       var p = PRECOS[+e.getAttribute('data-mes')], m = Math.round(p[1] * (1 - DESC[planoSel]) * 100) / 100;
-      e.innerHTML = L === 'en' ? '' : '<small>12x de</small> R$ ' + num(m) + '<em>ou R$ ' + num(p[1]) + ' sem fidelidade</em>';
+      var u = US[+e.getAttribute('data-mes')], mu = Math.round(u[1] * (1 - DESC[planoSel]) * 100) / 100;
+      e.innerHTML = L === 'en' ? '<small>12-month plan:</small> $' + numUS(mu) + '/mo<em>or $' + numUS(u[1]) + '/mo, no contract</em>' : '<small>12x de</small> R$ ' + num(m) + '<em>ou R$ ' + num(p[1]) + ' sem fidelidade</em>';
     });
     document.getElementById('mods').innerHTML = MODS.map(function(m){ return '<li><b>' + (L === 'en' ? m[1] : m[0]) + '</b><span>' + (L === 'en' ? m[3] : m[2]) + '</span></li>'; }).join('');
   }
